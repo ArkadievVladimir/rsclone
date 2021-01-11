@@ -33,10 +33,11 @@ export const Tweet: React.FC<TweetProps> = ({ _id, text, user, classes }: TweetP
              <Avatar alt="Ava"
                 className={classes.tweetAvatar}
                 src={user.avatarUrl} />
+        <div>
             <Typography>
                 <b>{user.fullName}</b>
                 <span className={classes.tweetsUserName}>@{user.userName}</span>
-                <span className={classes.tweetsUserName}></span>
+                <span className={classes.tweetsUserName}>.</span>
                 <span className={classes.tweetsUserName}>1 ч.</span>
             </Typography>
             <Typography variant="body1" gutterBottom>
@@ -65,7 +66,8 @@ export const Tweet: React.FC<TweetProps> = ({ _id, text, user, classes }: TweetP
                         <ReplyOutlinedIcon style={{fontSize: 16}}/> 
                     </IconButton>                                   
                 </div>
-            </div>  
+            </div> 
+        </div> 
     </Paper>
     </Link>
     )

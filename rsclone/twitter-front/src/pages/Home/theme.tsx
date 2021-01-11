@@ -75,6 +75,7 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
     },
     tweetsHeader: {
         display: 'flex',
+        flex: 1,
         alignItems: 'center',
         borderTop: 0,
         borderLeft: 0,
@@ -88,6 +89,17 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
     },
     tweetsHeaderButton: {
         marginRight: 30
+    },
+    tweetsHeaderUser: {
+        display: 'flex',
+        alignItems: 'center'
+    },
+    fullTweet: {
+        padding: 25
+    },
+    fullTweetText: {
+        fontSize: 28,
+        marginTop: 15
     },
     tweetFooter: {
         display: 'flex',
