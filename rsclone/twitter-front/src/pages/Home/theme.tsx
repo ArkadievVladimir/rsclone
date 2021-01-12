@@ -126,6 +126,14 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
         height: theme.spacing(5),
         marginRight: 15
     }, 
+    tweetHeader: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between'
+    },
+    tweeetContent: {
+        flex: 1,
+    },
     rightSide: {
         paddingTop: 20,
         position: 'sticky',

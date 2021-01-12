@@ -8,10 +8,12 @@ import classNames from 'classnames';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { Tweet } from '../../../components/Tweet';
+import format from 'date-fns/format';
+import ruLang from 'date-fns/locale/ru';
 import { fetchTweetData, setTweetData } from '../../../store/ducks/tweet/actionCreators';
 import { selectIsTweetLoading, selectTweetData } from '../../../store/ducks/tweet/selectors';
 import { useHomeStyles } from '../theme';
+import { Tweet } from '../../../components/Tweet';
 
 
 export const FullTweet: React.FC = (): React.ReactElement | null => {
@@ -19,7 +21,7 @@ export const FullTweet: React.FC = (): React.ReactElement | null => {
     const dispatch = useDispatch();
     const tweetData = useSelector(selectTweetData);
     const isLoading = useSelector(selectIsTweetLoading);
-    const params: {id?: string} = useParams();
+    const params: { id?: string } = useParams();
     const id = params.id;
 
     useEffect(() => {
@@ -37,50 +39,37 @@ export const FullTweet: React.FC = (): React.ReactElement | null => {
         <div className={classes.tweetsCentered} >
             <CircularProgress />
         </div>
-        ) 
+        ); 
     }
 
     if (tweetData) {
         return  <Paper className={classes.fullTweet}>                   
                 <div className={classNames(classes.tweetsHeaderUser)}>
-                    <Avatar alt="Ava" className={classes.tweetAvatar}
-                        src={tweetData.user.avatarUrl} />
+                    <Avatar 
+                        alt="Ava" 
+                        className={classes.tweetAvatar}
+                        src={tweetData.user.avatarUrl} 
+                    />
                     <Typography>
-                        <b>{tweetData.user.fullname}</b>                       
+                        <b>{tweetData.user.fullname}</b>&nbsp;                     
                         <div>
-                            <span className={classes.tweetsUserName}>@{tweetData.user.username}</span>
-                            <span className={classes.tweetsUserName}>.</span>
-                            <span className={classes.tweetsUserName}>1 ч.</span>
+                            <span className={classes.tweetsUserName}>@{tweetData.user.username}</span>&nbsp;
                         </div>
                     </Typography>
-                    {/* <div className={classes.tweetFooter}>
-                        <div>
-                            <IconButton color="primary">
-                                <ChatBubbleOutlineOutlinedIcon style={{fontSize: 16}} />
-                            </IconButton>
-                            <span style={{fontSize: 14}}>1</span>
-                        </div>
-                        <div>
-                            <IconButton color="primary">
-                                <RepeatOutlinedIcon style={{fontSize: 16}} />
-                            </IconButton>
-
-                        </div>
-                        <div>
-                            <IconButton color="primary">
-                                <FavoriteBorderOutlinedIcon style={{fontSize: 16}} /> 
-                            </IconButton>                                  
-                        </div>
-                        <div>
-                            <IconButton color="primary">
-                                <ReplyOutlinedIcon style={{fontSize: 16}}/> 
-                            </IconButton>                                   
-                        </div>
-                    </div>  */}
                 </div> 
                 <Typography variant="body1" gutterBottom className={classes.fullTweetText}>
                         {tweetData.text}
                 </Typography>
+                <Typography>
+                    <span className={classes.tweetsUserName}>{format(new Date(tweetData.createdAt),'H:mm', {locale: ruLang})} · </span>
+                    <span className={classes.tweetsUserName}>{format(new Date(tweetData.createdAt), 'dd MMM yyyy', {locale: ruLang})}</span>
+                </Typography>
+                {/* <div className={classNames(classes.tweetFooter, classes.fullTweetFooter)}> */}
+                <div className={classNames(classes.tweetFooter)}>
+                    <IconButton color="primary">
+                        <ChatBubbleOutlineOutlinedIcon style={{fontSize: 16}} />
+                    </IconButton>
+                </div>
             </Paper>
     }
     
