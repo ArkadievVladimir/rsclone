@@ -1,11 +1,7 @@
 import React from 'react';
+import { LoadingStatus } from '../../../types';
 
-export enum LoadingState {
-    LOADED = "LOADED",
-    LOADING = "LOADING",
-    ERROR = "ERROR",
-    NEVER = "NEVER"
-}
+
 
 export enum AddFormState {
     LOADING = "LOADING",
@@ -27,6 +23,6 @@ export interface Tweet {
 
 export interface TweetsState {
     items: Tweet[];
-    loadingState: LoadingState;
+    LoadingStatus: LoadingStatus;
     addFormState: AddFormState;
 }

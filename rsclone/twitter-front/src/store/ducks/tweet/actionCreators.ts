@@ -1,7 +1,8 @@
 import React from 'react';
-import { FetchTweetDataActionInterface, SetTweetDataActionInterface, SetTweetLoadingStateActionInterface, TweetActionsType } from './contracts/actionTypes';
-import { LoadingState, TweetState } from './contracts/state';
+import { FetchTweetDataActionInterface, SetTweetDataActionInterface, SetTweetLoadingStatusActionInterface, TweetActionsType } from './contracts/actionTypes';
+import { TweetState } from './contracts/state';
 import { Tweet } from '../tweets/contracts/state';
+import { LoadingStatus } from '../../types';
 
 
 export const setTweetData = (payload: TweetState['data']): SetTweetDataActionInterface => ({
@@ -9,9 +10,9 @@ export const setTweetData = (payload: TweetState['data']): SetTweetDataActionInt
     payload,
 });
 
-export const setTweetLoadingState = (
-    payload: LoadingState,
-    ): SetTweetLoadingStateActionInterface => ({
+export const setTweetLoadingStatus = (
+    payload: LoadingStatus,
+    ): SetTweetLoadingStatusActionInterface => ({
     type: TweetActionsType.SET_LOADING_STATE,
     payload,
 });
@@ -21,4 +22,4 @@ export const fetchTweetData = (payload: string): FetchTweetDataActionInterface =
     payload
 });
 
-export type TweetActions = | SetTweetDataActionInterface | SetTweetLoadingStateActionInterface | FetchTweetDataActionInterface;
+export type TweetActions = | SetTweetDataActionInterface | SetTweetLoadingStatusActionInterface | FetchTweetDataActionInterface;

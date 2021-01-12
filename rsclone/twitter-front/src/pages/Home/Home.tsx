@@ -102,7 +102,7 @@ export const Home = (): React.ReactElement => {
                         fullWidth
                         placeholder="Поиск по Твиттеру"
                         inputProps={{
-                            startAdorment: (
+                            startadorment: (
                                 <InputAdornment position="start">
                                     <SearchIcon />
                                 </InputAdornment>

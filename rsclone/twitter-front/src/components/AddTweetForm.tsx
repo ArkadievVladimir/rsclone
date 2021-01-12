@@ -70,9 +70,9 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({classes, rowsMax}: Ad
                     <span>{text.length} /</span>
                     <span>{maxTweetSymbols}</span>
                     <div className={classes.addFormCircleProgress}>
-                        <CircularProgress variant="static" style={text.length >= maxTweetSymbols ? {color:'rgb(255, 0, 0)'} : {}}
+                        <CircularProgress variant="determinate" style={text.length >= maxTweetSymbols ? {color:'rgb(255, 0, 0)'} : {}}
                          size={20} thickness={4} value={text.length >= maxTweetSymbols ? 100 : percentOfTextInTweet} />
-                        <CircularProgress variant="static" size={20} thickness={4} value={100} 
+                        <CircularProgress variant="determinate" size={20} thickness={4} value={100} 
                         style={{color: 'rgba(0, 0, 0, 0.1'}} />
                     </div>
                     </>

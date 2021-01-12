@@ -12,7 +12,8 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 import SearchIcon from '@material-ui/icons/Search';
 import PeopleOutlineIcon from '@material-ui/icons/PeopleOutline';
 import ChatBubbleOutlineOutlinedIcon from '@material-ui/icons/ChatBubbleOutlineOutlined';
-import { ModalBlock } from '../components/ModalBlock';
+import { ModalBlock } from '../../components/ModalBlock';
+import { LoginModal } from './components/LoginModal';
 
 export const useStylesSignIn = makeStyles((theme) => ({
     wrapper: {
@@ -142,44 +143,7 @@ export const SignIn: React.FC = (): React.ReactElement => {
                     <Button onClick={ handleClickOpenSignIn } variant="outlined" color="primary" fullWidth>
                         Войти
                     </Button>
-                    <ModalBlock
-                     title="Войти в аккаунт"
-                     onClose={handleCloseModal}
-                     visible={visibleModal === 'signIn'}
-                     classes={classes}
-                    >
-                        <FormControl className={classes.loginFormControl} component="fieldset" fullWidth>
-                            <FormGroup aria-label="position" row>
-                                <TextField
-                                    className={classes.loginSideField}
-                                    autoFocus
-                                    id="email"
-                                    label="E-Mail"
-                                    type="email"
-                                    variant="filled"
-                                    InputLabelProps={{
-                                        shrink: true
-                                    }}
-                                    fullWidth 
-                                />
-                                <TextField
-                                    className={classes.loginSideField}
-                                    autoFocus
-                                    id="password"
-                                    label="Пароль"
-                                    type="password"
-                                    variant="filled"
-                                    InputLabelProps={{
-                                        shrink: true
-                                    }}
-                                    fullWidth 
-                                />
-                                <Button onClick={handleCloseModal} variant="contained" color="primary" fullWidth>
-                                    Войти
-                                </Button>
-                            </FormGroup>
-                        </FormControl>
-                    </ModalBlock>
+                    <LoginModal open={visibleModal === 'signIn'} onClose={handleCloseModal}/>
 
                     <ModalBlock
                      title="Создайте учетную запись"

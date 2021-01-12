@@ -1,13 +1,8 @@
 import React from 'react';
+import { LoadingStatus } from '../../../types';
 
-export enum LoadingState {
-    LOADED = "LOADED",
-    LOADING = "LOADING",
-    ERROR = "ERROR",
-    NEVER = "NEVER"
-}
 
-export enum LoadingStateHashTags {
+export enum LoadingStatusHashTags {
     LOADED = "LOADED",
     LOADING = "LOADING",
     ERROR = "ERROR",
@@ -23,5 +18,5 @@ export interface Tag {
 
 export interface TagsState {
     items: Tag[];
-    loadingState: LoadingState;
+    LoadingStatus: LoadingStatus;
 }
