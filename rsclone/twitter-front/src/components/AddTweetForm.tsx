@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useState } from 'react';
 import { useHomeStyles } from '../pages/Home/theme';
 import classNames from 'classnames';

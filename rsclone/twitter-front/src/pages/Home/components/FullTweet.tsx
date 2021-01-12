@@ -46,9 +46,9 @@ export const FullTweet: React.FC = (): React.ReactElement | null => {
                     <Avatar alt="Ava" className={classes.tweetAvatar}
                         src={tweetData.user.avatarUrl} />
                     <Typography>
-                        <b>{tweetData.user.fullName}</b>                       
+                        <b>{tweetData.user.fullname}</b>                       
                         <div>
-                            <span className={classes.tweetsUserName}>@{tweetData.user.userName}</span>
+                            <span className={classes.tweetsUserName}>@{tweetData.user.username}</span>
                             <span className={classes.tweetsUserName}>.</span>
                             <span className={classes.tweetsUserName}>1 ч.</span>
                         </div>

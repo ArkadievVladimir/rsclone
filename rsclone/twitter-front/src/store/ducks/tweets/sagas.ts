@@ -1,9 +1,8 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
-import { AddTweet, setAddFormState, setTweets, setTweetsLoadingState } from './actionCreators';
-import axios from 'axios';
 import { TweetsApi } from '../../../services/api/tweetsApi';
-import { AddFormState, LoadingState, Tweet } from './contracts/state';
+import { AddTweet, setAddFormState, setTweets, setTweetsLoadingState } from './actionCreators';
 import { FetchAddTweetActionInterface, TweetsActionsType } from './contracts/actionTypes';
+import { AddFormState, LoadingState } from './contracts/state';
 
  
 export function* fetchTweetsRequest() {
@@ -15,19 +14,10 @@ export function* fetchTweetsRequest() {
     }
 }
 
-export function* fetchAddTweetRequest({payload}: FetchAddTweetActionInterface) {
+export function* fetchAddTweetRequest({ payload: text }: FetchAddTweetActionInterface) {
     try {
-        const data: Tweet = {
-            _id: Math.random().toString(36).substr(2),
-            text: payload,
-            user: {
-                fullName: 'User',
-                userName: 'test',
-                avatarUrl: './'
-            }
-        };
-        const item = yield call(TweetsApi.addTweet, data);
-        yield put(AddTweet(item))
+        const item = yield call(TweetsApi.addTweet, text);
+        yield put(AddTweet(item));
     } catch (error) {
         yield put(setAddFormState(AddFormState.ERROR));
     }

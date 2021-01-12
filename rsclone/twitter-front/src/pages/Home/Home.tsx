@@ -24,7 +24,7 @@ import { AddTweetForm } from '../../components/AddTweetForm';
 import { useHomeStyles } from './theme';
 import { SearchTextField } from '../../components/SearchTextField';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectIsTweetsLoading, selectTweets, selectTweetsItems } from '../../store/ducks/tweets/selectors';
+import { selectIsTweetsLoading, selectTweetsItems } from '../../store/ducks/tweets/selectors';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { Tags } from '../../components/HashTags';
 import { BackButton } from '../../components/BackButton';
@@ -57,29 +57,29 @@ export const Home = (): React.ReactElement => {
                 <Paper 
                 className={classes.tweetsHeader}
                 variant="outlined" >
-                {/* <Route path='/home/:any'> */}
+                <Route path='/home/:any'>
                     <BackButton />
-                {/* </Route> */}
-                {/* <Route path={['/home', '/home/search']} exact> */}
+                </Route>
+                <Route path={['/home', '/home/search']} exact>
                     <Typography variant="h6">
                         Твиты
                     </Typography>  
-                {/* </Route> */}
-                {/* <Route path='/home/tweet' > */}
+                </Route>
+                <Route path='/home/tweet' >
                     <Typography variant="h6">
                         Твитнуть
                     </Typography>  
-                {/* </Route>  */}
+                </Route> 
                 </Paper>
-                {/* <Route path={['/home', '/home/search']} exact > */}
+                <Route path={['/home', '/home/search']} exact >
                 <Paper>
                     <div className={classes.addForm}>
                         <AddTweetForm classes={classes} rowsMax={2}/>
                     </div>
                     <div className={classes.addFormBottomLine}></div>
                 </Paper>
-                {/* </Route> */}
-                {/* <Route path="/home" exact> */}
+                </Route>
+                <Route path="/home" exact>
                     {isLoading ? (
                         <div className={classes.tweetsWrapper}>
                             <CircularProgress />
@@ -92,8 +92,8 @@ export const Home = (): React.ReactElement => {
                         {...tweet}
                         />)
                     )}
-                {/* </Route> */}
-                {/* <Route path="/home/tweet/:id" component={FullTweet} exact /> */}
+                </Route>
+                <Route path="/home/tweet/:id" component={FullTweet} exact />
                 </Paper>
             </Grid>
             <Grid item sm={3} md={3}>

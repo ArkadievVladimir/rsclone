@@ -1,44 +1,48 @@
 import React from 'react';
 import classNames from 'classnames';
-import { useHomeStyles } from '../pages/Home/theme';
-import { 
-    Avatar,
-    IconButton,
-    Paper,
-    Typography,
-    } from '@material-ui/core';
 import ChatBubbleOutlineOutlinedIcon from '@material-ui/icons/ChatBubbleOutlineOutlined';
 import RepeatOutlinedIcon from '@material-ui/icons/RepeatOutlined';
 import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutlined';
 import ReplyOutlinedIcon from '@material-ui/icons/ReplyOutlined';
-import { Link, Route } from 'react-router-dom';
+
+import { Avatar, IconButton, Paper, Typography, } from '@material-ui/core';
+import { useHomeStyles } from '../pages/Home/theme';
+import { Link } from 'react-router-dom';
+// import { formatDate } from '../utils/formatDate';
 
 interface TweetProps {
     _id: string;
     text: string;
     classes: ReturnType<typeof useHomeStyles>;
+    // createdAt: string;
     user: {
-        fullName: string;
-        userName: string;
+        fullname: string;
+        username: string;
         avatarUrl: string;
-    }
+    };
 }
 
-export const Tweet: React.FC<TweetProps> = ({ _id, text, user, classes }: TweetProps): React.ReactElement => {
+export const Tweet: React.FC<TweetProps> = ({ 
+    _id, 
+    text, 
+    user, 
+    classes,
+    // createdAt,
+}: TweetProps): React.ReactElement => {
     return (
         <Link className={classes.tweetWrapper} to={`/home/tweet/${_id}`}>
-        <Paper 
-        className={classNames(classes.tweet, classes.tweetsHeader)}
-        variant="outlined" >
-             <Avatar alt="Ava"
+        <Paper className={classNames(classes.tweet, classes.tweetsHeader)} variant="outlined" >
+             <Avatar 
+                alt="Ava"
                 className={classes.tweetAvatar}
                 src={user.avatarUrl} />
         <div>
             <Typography>
-                <b>{user.fullName}</b>
-                <span className={classes.tweetsUserName}>@{user.userName}</span>
-                <span className={classes.tweetsUserName}>.</span>
-                <span className={classes.tweetsUserName}>1 ч.</span>
+                <b>{user.fullname}</b>&nbsp;
+                <span className={classes.tweetsUserName}>@{user.username}</span>&nbsp;
+                <span className={classes.tweetsUserName}>.</span>&nbsp;
+                {/* <span className={classes.tweetsUserName}>{formatDate(new Date(createdAt))}</span> */}
+                <span className={classes.tweetsUserName}>1ч</span>
             </Typography>
             <Typography variant="body1" gutterBottom>
                 {text}
@@ -70,5 +74,5 @@ export const Tweet: React.FC<TweetProps> = ({ _id, text, user, classes }: TweetP
         </div> 
     </Paper>
     </Link>
-    )
-}
+    );
+};
