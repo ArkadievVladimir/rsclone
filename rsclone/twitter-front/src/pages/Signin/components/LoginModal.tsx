@@ -56,12 +56,7 @@ export const LoginModal: React.FC<LoginModalProps> = ({ open, onClose }): React.
 
       console.log(errors)
     return (
-        <Notification>
-            {
-                callback => {
-                    openNotificationRef.current = callback
-                    return (
-                        <ModalBlock
+        <ModalBlock
                      title="Войти в аккаунт"
                      onClose={onClose}
                      visible={open}
@@ -114,9 +109,5 @@ export const LoginModal: React.FC<LoginModalProps> = ({ open, onClose }): React.
                         </FormControl>
                         </form>
                     </ModalBlock>
-                    )
-                }
-            }
-        </Notification>
     )
 }

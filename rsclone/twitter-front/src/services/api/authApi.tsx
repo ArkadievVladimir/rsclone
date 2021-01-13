@@ -19,7 +19,7 @@ export const AuthApi = {
         const { data } = await axios.post<AuthResponse>('/auth/register', { username: postData.username, fullname: postData.fullname, email: postData.email, password: postData.password, password2: postData.password2 })
         return data
     },
-    async GetMe(): Promise<AuthResponse> {
+    async getMe(): Promise<AuthResponse> {
         const { data } = await axios.get<AuthResponse>('/users/me')
         return data
     }  
