@@ -59,7 +59,7 @@ export const Tweet: React.FC<TweetProps> = ({
                 className={classes.tweetAvatar}
                 src={user.avatarUrl} />
         <div className={classes.tweeetContent}>
-            <Typography className={classes.tweetHeader}>
+            <div className={classes.tweetHeader}>
                 <div>
                     <b>{user.fullname}</b>&nbsp;
                     <span className={classes.tweetsUserName}>@{user.username}</span>&nbsp;
@@ -91,7 +91,7 @@ export const Tweet: React.FC<TweetProps> = ({
                         </MenuItem>
                     </Menu>
                 </div>
-            </Typography>
+            </div>
             <Typography variant="body1" gutterBottom>
                 {text}
             </Typography>
