@@ -3,13 +3,16 @@ dotenv.config();
 
 import './core/db';
 import express from 'express';
+import multer from 'multer';
 import { UserCtrl } from './controllers/UserController';
 import { registerValidations } from './validations/register';
 import { passport } from './core/passport';
 import { TweetsCtrl } from './controllers/TweetsController';
 import { createTweetValidations } from './validations/createTweet';
+import { UploadFileCtrl } from './controllers/UploadFileController';
 
-
+const storage = multer.memoryStorage()
+const upload = multer({storage})
 
 const app = express();
 
@@ -29,6 +32,8 @@ app.post('/tweets', passport.authenticate('jwt'), createTweetValidations, Tweets
 app.get('/auth/verify', registerValidations, UserCtrl.verify);
 app.post('/auth/register', registerValidations, UserCtrl.create);
 app.post('/auth/login', passport.authenticate('local'), UserCtrl.afterLogin);
+
+app.post('/upload', upload.single('avatar'), UploadFileCtrl.upload);
 
 app.listen(process.env.PORT, (): void => {
   console.log('server running!')
