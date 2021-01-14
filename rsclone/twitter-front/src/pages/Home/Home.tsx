@@ -89,6 +89,7 @@ export const Home = (): React.ReactElement => {
                         <Tweet
                         key={tweet._id}
                         classes={classes}
+                        images={tweet.images}
                         {...tweet}
                         />)
                     )}

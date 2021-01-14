@@ -4,6 +4,7 @@ import ChatBubbleOutlineOutlinedIcon from '@material-ui/icons/ChatBubbleOutlineO
 import RepeatOutlinedIcon from '@material-ui/icons/RepeatOutlined';
 import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutlined';
 import ReplyOutlinedIcon from '@material-ui/icons/ReplyOutlined';
+import mediumZoom from 'medium-zoom'
 import classNames from 'classnames';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -14,6 +15,7 @@ import { fetchTweetData, setTweetData } from '../../../store/ducks/tweet/actionC
 import { selectIsTweetLoading, selectTweetData } from '../../../store/ducks/tweet/selectors';
 import { useHomeStyles } from '../theme';
 import { Tweet } from '../../../components/Tweet';
+import { ImageList } from '../../../components/ImageList';
 
 
 export const FullTweet: React.FC = (): React.ReactElement | null => {
@@ -34,6 +36,12 @@ export const FullTweet: React.FC = (): React.ReactElement | null => {
         }
     }, [dispatch, id]);
 
+    React.useEffect(() => {
+        if (!isLoading) {
+            mediumZoom('.tweet-images img');
+        }
+    },[isLoading])
+
     if (isLoading) {
         return (
         <div className={classes.tweetsCentered} >
@@ -41,7 +49,7 @@ export const FullTweet: React.FC = (): React.ReactElement | null => {
         </div>
         ); 
     }
-
+    
     if (tweetData) {
         return  <Paper className={classes.fullTweet}>                   
                 <div className={classNames(classes.tweetsHeaderUser)}>
@@ -59,6 +67,9 @@ export const FullTweet: React.FC = (): React.ReactElement | null => {
                 </div> 
                 <Typography variant="body1" gutterBottom className={classes.fullTweetText}>
                         {tweetData.text}
+                        <div className='tweet-images'>
+                           { tweetData.images && <ImageList classes={classes} images={tweetData.images}/>}
+                        </div>
                 </Typography>
                 <Typography>
                     <span className={classes.tweetsUserName}>{format(new Date(tweetData.createdAt),'H:mm', {locale: ruLang})} · </span>

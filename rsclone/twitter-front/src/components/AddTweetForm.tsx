@@ -13,19 +13,27 @@ import {
     } from '@material-ui/core';  
 import Alert from '@material-ui/lab/Alert';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchAddTweet } from '../store/ducks/tweets/actionCreators';
+import { fetchAddTweet, setAddFormState } from '../store/ducks/tweets/actionCreators';
 import { selectAddFormState } from '../store/ducks/tweets/selectors';
 import { AddFormState } from '../store/ducks/tweets/contracts/state';
+import { UploadImages } from './UploadImages';
+import { uploadImage } from '../utils/uploadImage';
 
 interface AddTweetFormProps {
     classes: ReturnType<typeof useHomeStyles>;
     rowsMax?: number;
 }    
 
+export interface ImageObj {
+    file: File;
+    blobUrl: string;
+}
+
 export const AddTweetForm: React.FC<AddTweetFormProps> = ({classes, rowsMax}: AddTweetFormProps): React.ReactElement => {
     const dispatch = useDispatch();
     const addFormState = useSelector(selectAddFormState)
     const [text, setText] = useState<string>('');
+    const [images, setImages] = React.useState<ImageObj[]>([])
     const percentOfTextInTweet: number = Math.round((text.length / 200) * 100);
     const maxTweetSymbols: number = 200;
 
@@ -35,9 +43,17 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({classes, rowsMax}: Ad
         };
     };
 
-    const handlerAddTweetOnClick = (): void => {
-        dispatch(fetchAddTweet(text));
+    const handlerAddTweetOnClick = async (): Promise<void> => {
+        let result = []
+        dispatch(setAddFormState(AddFormState.LOADING))
+        for (let i = 0; i < images.length; i++) {
+            let file = images[i].file;
+            const { url } = await uploadImage(file)
+            result.push(url);
+        }
+        dispatch(fetchAddTweet({text, images: result}));
         setText('');
+        setImages([])
     };
     
     return (
@@ -57,12 +73,7 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({classes, rowsMax}: Ad
         </div>
         <div className={classes.addFormBottom}>
             <div className={classNames(classes.tweetFooter, classes.addFormBottomActions)}>
-                <IconButton color="primary">
-                    <ImageOutlinedIcon style={{ fontSize: 24 }} />
-                </IconButton>
-                <IconButton color="primary">
-                    <EmojiIcon style={{ fontSize: 24 }} />
-                </IconButton>
+                <UploadImages images={images} onChangeImages={setImages}/>
             </div>
             <div className={classes.addFormBottomRight}>
                 {text && (
@@ -79,7 +90,7 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({classes, rowsMax}: Ad
                 )}
              
                 <Button disabled={!text || text.length > maxTweetSymbols || addFormState === AddFormState.LOADING} color="primary" variant="contained"
-                    onClick={handlerAddTweetOnClick} > {addFormState === AddFormState.LOADING ? <CircularProgress size={18} color="inherit" /> : 'Твтнуть' }
+                    onClick={handlerAddTweetOnClick} > {addFormState === AddFormState.LOADING ? <CircularProgress size={18} color="inherit" /> : 'Твитнуть' }
                 </Button>
             </div>
         </div>

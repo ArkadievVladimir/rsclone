@@ -30,7 +30,7 @@ export function* fetchUserDataRequest () {
         yield put(setUserLoadingStatus(LoadingStatus.LOADING))
         const {data} = yield call(AuthApi.getMe);
         yield put(setUserData(data))
-        window.localStorage.setItem('token', data.token)
+        //window.localStorage.setItem('token', data.token)
     } catch (error) {
         yield put(setUserLoadingStatus(LoadingStatus.ERROR));
     }

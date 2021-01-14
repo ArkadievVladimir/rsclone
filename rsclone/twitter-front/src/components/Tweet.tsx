@@ -10,11 +10,13 @@ import { Avatar, IconButton, Menu, MenuItem, Paper, Typography, } from '@materia
 import { useHomeStyles } from '../pages/Home/theme';
 import { Link, useHistory } from 'react-router-dom';
 import { formatDate } from '../utils/formatDate';
+import { ImageList } from './ImageList';
 
 
 interface TweetProps {
     _id: string;
     text: string;
+    images?: string[];
     classes: ReturnType<typeof useHomeStyles>;
     createdAt: string;
     user: {
@@ -29,6 +31,7 @@ export const Tweet: React.FC<TweetProps> = ({
     text, 
     user, 
     classes,
+    images,
     createdAt,
 }: TweetProps): React.ReactElement => {
 
@@ -37,8 +40,8 @@ export const Tweet: React.FC<TweetProps> = ({
     const history = useHistory();
 
     const handleClickTweet = (event: React.MouseEvent<HTMLAnchorElement>): void => {
-        // event.preventDefault();
-        // history.push(`/home/tweet/${_id}`);
+        event.preventDefault();
+        history.push(`/home/tweet/${_id}`);
     }
 
     const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -94,6 +97,7 @@ export const Tweet: React.FC<TweetProps> = ({
             </div>
             <Typography variant="body1" gutterBottom>
                 {text}
+                {images && <ImageList classes={classes} images={images}/>}
             </Typography>
             <div className={classes.tweetFooter}>
                 <div>
