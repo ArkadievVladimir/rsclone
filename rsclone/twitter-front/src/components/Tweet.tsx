@@ -11,6 +11,9 @@ import { useHomeStyles } from '../pages/Home/theme';
 import { Link, useHistory } from 'react-router-dom';
 import { formatDate } from '../utils/formatDate';
 import { ImageList } from './ImageList';
+import { removeTweet } from '../store/ducks/tweets/actionCreators';
+import { useDispatch } from 'react-redux';
+import { eventChannel } from 'redux-saga';
 
 
 interface TweetProps {
@@ -38,7 +41,7 @@ export const Tweet: React.FC<TweetProps> = ({
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
     const history = useHistory();
-
+    const dispatch = useDispatch();
     const handleClickTweet = (event: React.MouseEvent<HTMLAnchorElement>): void => {
         event.preventDefault();
         history.push(`/home/tweet/${_id}`);
@@ -53,6 +56,14 @@ export const Tweet: React.FC<TweetProps> = ({
     const handleClose = () => {
         setAnchorEl(null);
     };
+
+    const handleRemove = (event: React.MouseEvent<HTMLElement>): void => {
+        event.stopPropagation();
+        event.preventDefault();
+        if (window.confirm("Вы действительно хотите удалить?")) {
+            dispatch(removeTweet(_id))
+        }
+    }
 
     return (
         <a onClick={handleClickTweet} className={classes.tweetWrapper} href={`/home/tweet/${_id}`}>
@@ -89,7 +100,7 @@ export const Tweet: React.FC<TweetProps> = ({
                         <MenuItem onClick={handleClose}>
                            Редактировать
                         </MenuItem>
-                        <MenuItem onClick={handleClose}>
+                        <MenuItem onClick={handleRemove}>
                            Удалить твит
                         </MenuItem>
                     </Menu>
