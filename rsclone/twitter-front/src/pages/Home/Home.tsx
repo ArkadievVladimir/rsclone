@@ -89,6 +89,7 @@ export const Home = (): React.ReactElement => {
                         <Tweet
                         key={tweet._id}
                         classes={classes}
+                        images={tweet.images}
                         {...tweet}
                         />)
                     )}
@@ -102,7 +103,7 @@ export const Home = (): React.ReactElement => {
                         fullWidth
                         placeholder="Поиск по Твиттеру"
                         inputProps={{
-                            startAdorment: (
+                            startadorment: (
                                 <InputAdornment position="start">
                                     <SearchIcon />
                                 </InputAdornment>

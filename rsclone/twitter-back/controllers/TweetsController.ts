@@ -63,6 +63,7 @@ class TweetsController {
 
         const data: any = {
           text: req.body.text,
+          images: req.body.images,
           user: user._id,
         }
 
@@ -81,7 +82,7 @@ class TweetsController {
       });
     }
   }
-
+ 
   async delete(req: express.Request, res: express.Response): Promise<void> {
     const user = req.user as UserModelInterface;
 
