@@ -42,7 +42,6 @@ export const LoginModal: React.FC<LoginModalProps> = ({ open, onClose }): React.
       });
     const onSubmit = async (data: LoginFormProps) => {
         dispatch(fetchSignIn(data))
-
     }
 
     React.useEffect( () => {
@@ -54,7 +53,6 @@ export const LoginModal: React.FC<LoginModalProps> = ({ open, onClose }): React.
         }
     }, [loadingStatus])
 
-      console.log(errors)
     return (
         <ModalBlock
                      title="Войти в аккаунт"

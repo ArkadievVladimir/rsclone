@@ -24,7 +24,10 @@ export const ModalBlock: React.FC<ModalBlockProps> = ({
     if(!visible) {
         return null;
     };
-
+    const preventClose = (event: React.MouseEvent<HTMLElement>): void => {
+        event.stopPropagation();
+        event.preventDefault();
+    }
     return (
         <Dialog open={visible} onClose={onClose} aria-labelledby="form-dialog">
             <DialogTitle id="form-dialog-title">
@@ -39,7 +42,7 @@ export const ModalBlock: React.FC<ModalBlockProps> = ({
                 </IconButton>
                 { title }
             </DialogTitle>
-            <DialogContent>
+            <DialogContent onClick={preventClose}>
                 { children }
             </DialogContent>
         </Dialog> 

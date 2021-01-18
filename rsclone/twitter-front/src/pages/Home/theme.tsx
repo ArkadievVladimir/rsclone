@@ -206,6 +206,15 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
         fontFamily: 'inherit',
         resize: 'none'
     },
+    addFormTextAreaEditor: {
+        width: '50vmin',
+        height: '10vmin',
+        border: 0,
+        fontSize: 20,
+        outline: 'none',
+        fontFamily: 'inherit',
+        resize: 'none'
+    },
     addFormBottomLine: {
         height: 12,
         backgroundColor: '#e6ecf0'
