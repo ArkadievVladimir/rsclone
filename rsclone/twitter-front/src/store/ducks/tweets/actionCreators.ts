@@ -6,7 +6,7 @@ export const setTweets = (payload: TweetsState['items']): SetTweetsActionInterfa
     type: TweetsActionsType.SET_TWEETS,
     payload
 });
-
+ 
 export const fetchAddTweet = (payload: {text: string, images: string[]}): FetchAddTweetActionInterface => ({
     type: TweetsActionsType.FETCH_ADD_TWEET,
     payload 
@@ -15,7 +15,7 @@ export const fetchAddTweet = (payload: {text: string, images: string[]}): FetchA
 export const AddTweet = (payload: Tweet): AddTweetActionInterface => ({
     type: TweetsActionsType.ADD_TWEET,
     payload
-});
+}); 
 
 export const fetchEditTweet = (payload: {text: string, id: string}): FetchEditTweetActionInterface => ({
     type: TweetsActionsType.FETCH_EDIT_TWEET,

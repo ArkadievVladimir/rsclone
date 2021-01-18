@@ -33,6 +33,7 @@ export const UploadImages: React.FC<UploadImageProps> = ({ images, onChangeImage
                      file
                  }])
             }
+            console.log('handleChangeFileInput')
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])

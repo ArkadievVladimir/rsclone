@@ -32,6 +32,16 @@ export const tweetsReducer = produce((draft: Draft<TweetsState>, action: TweetsA
             draft.items = draft.items.filter(obj => obj._id !== action.payload)
             break;
 
+        case TweetsActionsType.FETCH_EDIT_TWEET:
+            draft.addFormState = AddFormState.LOADING;
+            break;
+
+        case TweetsActionsType.EDIT_TWEET:
+            const index = draft.items.findIndex((obj) => obj._id === action.payload._id)
+            draft.items.splice(index ,index, action.payload);
+            draft.addFormState = AddFormState.NEVER;
+            break;
+
         case TweetsActionsType.SET_ADD_FORM_STATE:
             draft.addFormState = action.payload;
             break;

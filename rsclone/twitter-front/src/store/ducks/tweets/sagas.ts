@@ -18,9 +18,7 @@ export function* fetchTweetsRequest() {
 
 export function* fetchAddTweetRequest({ payload }: FetchAddTweetActionInterface) {
     try {
-        console.log('fetchAddTweetREquest payload ', payload)
         const item = yield call(TweetsApi.addTweet, payload);
-        console.log('fetchAddTweetREquest item ', item)
         yield put(AddTweet(item));
     } catch (error) {
         yield put(setAddFormState(AddFormState.ERROR));
@@ -29,11 +27,11 @@ export function* fetchAddTweetRequest({ payload }: FetchAddTweetActionInterface)
 
 export function* fetchEditTweetRequest({ payload }: FetchEditTweetActionInterface) {
     try {
-        console.log(payload)
         const item = yield call(TweetsApi.editTweet, payload);
-        console.log('item ',item)
+        console.log('item', item)
         yield put(EditTweet(item));
     } catch (error) {
+        alert('Ошибка при редактировании!')
         yield put(setAddFormState(AddFormState.ERROR));
     }
 }

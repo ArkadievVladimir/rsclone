@@ -20,7 +20,6 @@ export const TweetsApi = {
         images: string[]
     }): Promise<Tweet> {
         const { data } = await axios.post<Response<Tweet>>('/tweets', payload);
-        console.log('addTweet ', data)
         return data.data;
     },
     async editTweet(payload: {

@@ -212,8 +212,8 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
         resize: 'none'
     },
     addFormTextAreaEditor: {
-        width: '50vmin',
-        height: '10vmin',
+        width: '32rem',
+        'min-height': '10vmin',
         border: 0,
         fontSize: 20,
         outline: 'none',
