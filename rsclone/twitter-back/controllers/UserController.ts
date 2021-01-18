@@ -32,7 +32,7 @@ class UserController {
         return;
       }
 
-      const user = await UserModel.findById(userId).exec();
+      const user = await UserModel.findById(userId).populate('tweets').exec();
 
       if (!user) {
         res.status(404).send();
@@ -59,13 +59,14 @@ class UserController {
         return;
       }
 
+      const randomStr = Math.random().toString();
+
       const data: UserModelInterface = {
         email: req.body.email,
         username: req.body.username,
         fullname: req.body.fullname,
         password: generateMD5(req.body.password + process.env.SECRET_KEY),
-        // MD5 should be different every time
-        confirmed_hash: generateMD5(process.env.SECRET_KEY || Math.random().toString()),
+        confirmed_hash: generateMD5(process.env.SECRET_KEY + randomStr || Math.random().toString()),
       };
 
       const user = await UserModel.create(data);
@@ -75,8 +76,8 @@ class UserController {
         emailTo: data.email,
         subject: 'Twitter Clone E-Mail confirmation',
         html: `To confirm E-Mail address <a href="http://localhost:${
-          process.env.PORT || 8888
-        }/auth/verify?hash=${data.confirmed_hash}">follow this link</a>`,
+          3000
+        }/user/activate/${data.confirmed_hash}">follow this link</a>`,
       }, 
       (err: Error | null) => {
         if (err) {
@@ -117,6 +118,12 @@ class UserController {
   
         res.json({
           status: 'success',
+          data: {
+            ...user.toJSON(),
+            token: jwt.sign({ data: user.toJSON() }, process.env.SECRET_KEY || '123', { 
+              expiresIn: '30 days',
+            }),
+          },
         });
       } else {
         res.status(404).json({

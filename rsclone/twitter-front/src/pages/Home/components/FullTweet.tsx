@@ -1,20 +1,16 @@
 import { Paper, Avatar, Typography, IconButton } from '@material-ui/core';
 import CircularProgress from '@material-ui/core/CircularProgress/CircularProgress';
 import ChatBubbleOutlineOutlinedIcon from '@material-ui/icons/ChatBubbleOutlineOutlined';
-import RepeatOutlinedIcon from '@material-ui/icons/RepeatOutlined';
-import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutlined';
-import ReplyOutlinedIcon from '@material-ui/icons/ReplyOutlined';
 import mediumZoom from 'medium-zoom'
 import classNames from 'classnames';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import format from 'date-fns/format';
 import ruLang from 'date-fns/locale/ru';
 import { fetchTweetData, setTweetData } from '../../../store/ducks/tweet/actionCreators';
 import { selectIsTweetLoading, selectTweetData } from '../../../store/ducks/tweet/selectors';
 import { useHomeStyles } from '../theme';
-import { Tweet } from '../../../components/Tweet';
 import { ImageList } from '../../../components/ImageList';
 
 
@@ -56,10 +52,10 @@ export const FullTweet: React.FC = (): React.ReactElement | null => {
                     <Avatar 
                         alt="Ava" 
                         className={classes.tweetAvatar}
-                        src={tweetData.user.avatarUrl} 
+                        // src={tweetData.user.avatarUrl} 
                     />
                     <Typography>
-                        <b>{tweetData.user.fullname}</b>&nbsp;                     
+                        <Link to={`/user/${tweetData.user._id}`}><b>{tweetData.user.fullname}</b>&nbsp; </Link>                
                         <div>
                             <span className={classes.tweetsUserName}>@{tweetData.user.username}</span>&nbsp;
                         </div>

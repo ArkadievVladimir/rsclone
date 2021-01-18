@@ -1,9 +1,7 @@
 import React from 'react';
 import { IconButton } from '@material-ui/core';
 import { useHomeStyles } from '../pages/Home/theme';
-import { ImageObj } from './AddTweetForm';
 import ClearIcon from '@material-ui/icons/Clear';
-
 
 interface ImageListProps {
     images: string[];
@@ -23,12 +21,11 @@ export const ImageList: React.FC<ImageListProps> = ({ classes, images, removeIma
                 <IconButton
                  onClick={(): void => removeImage(url)} 
                  className={classes.imagesListItemRemove}>
-                <ClearIcon  style={{fontSize: 18}} />
+                <ClearIcon  style={{fontSize: 15}} />
                 </IconButton>
                 )}
-                <img key={url} src={url} />
-            </div>
-            
+                <img key={url} src={url} alt=''/>
+            </div> 
         ))}
     </div>
     )

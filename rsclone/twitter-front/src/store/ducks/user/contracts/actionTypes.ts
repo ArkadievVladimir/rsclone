@@ -9,7 +9,12 @@ export enum UserActionsType {
     SET_LOADING_STATE = 'user/SET_LOADING_STATE',
     FETCH_USER_DATA = 'user/FETCH_USER_DATA',
     FETCH_SIGN_IN = 'user/FETCH_SIGN_IN',
-    FETCH_SIGN_UP = 'user/FETCH_SIGN_UP'
+    FETCH_SIGN_UP = 'user/FETCH_SIGN_UP',
+    SIGN_OUT = 'user/SIGN_OUT',
+};
+
+export interface SignOutActionInterface extends Action<UserActionsType>{
+    type: UserActionsType.SIGN_OUT;
 };
 
 export interface FetchSignInActionInterface extends Action<UserActionsType>{

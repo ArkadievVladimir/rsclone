@@ -42,4 +42,3 @@ export function* userSaga() {
     yield takeLatest(UserActionsType.FETCH_SIGN_UP, fetchSignUpRequest);
     yield takeLatest(UserActionsType.FETCH_USER_DATA, fetchUserDataRequest);
 }
-

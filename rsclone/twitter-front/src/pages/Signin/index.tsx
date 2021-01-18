@@ -2,9 +2,6 @@ import {
     makeStyles, 
     Typography, 
     Button,
-    FormGroup,
-    FormControl,
-    TextField
     } from '@material-ui/core';
 import React from 'react';
 import { useState } from 'react';
@@ -12,7 +9,6 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 import SearchIcon from '@material-ui/icons/Search';
 import PeopleOutlineIcon from '@material-ui/icons/PeopleOutline';
 import ChatBubbleOutlineOutlinedIcon from '@material-ui/icons/ChatBubbleOutlineOutlined';
-import { ModalBlock } from '../../components/ModalBlock';
 import { LoginModal } from './components/LoginModal';
 import { RegisterModal } from './components/RegisterModal';
 

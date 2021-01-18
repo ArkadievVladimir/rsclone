@@ -1,7 +1,5 @@
-import React from 'react';
 import { FetchTweetDataActionInterface, SetTweetDataActionInterface, SetTweetLoadingStatusActionInterface, TweetActionsType } from './contracts/actionTypes';
 import { TweetState } from './contracts/state';
-import { Tweet } from '../tweets/contracts/state';
 import { LoadingStatus } from '../../types';
 
 

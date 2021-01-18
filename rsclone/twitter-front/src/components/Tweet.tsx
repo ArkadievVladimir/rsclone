@@ -8,12 +8,13 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 import { Avatar, IconButton, Menu, MenuItem, Paper, Typography, } from '@material-ui/core';
 import { useHomeStyles } from '../pages/Home/theme';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { formatDate } from '../utils/formatDate';
-import { ImageList } from './ImageList';
 import { removeTweet } from '../store/ducks/tweets/actionCreators';
 import { useDispatch } from 'react-redux';
-import { eventChannel } from 'redux-saga';
+// import { eventChannel } from 'redux-saga';
+import { User } from '../store/ducks/user/contracts/state';
+import { ImageList } from './ImageList';
 
 
 interface TweetProps {
@@ -22,11 +23,7 @@ interface TweetProps {
     images?: string[];
     classes: ReturnType<typeof useHomeStyles>;
     createdAt: string;
-    user: {
-        fullname: string;
-        username: string;
-        avatarUrl: string;
-    };
+    user: Pick<User, '_id' | 'fullname' | 'username'>;
 }
 
 export const Tweet: React.FC<TweetProps> = ({ 
@@ -71,7 +68,8 @@ export const Tweet: React.FC<TweetProps> = ({
              <Avatar 
                 alt="Ava"
                 className={classes.tweetAvatar}
-                src={user.avatarUrl} />
+                // src={user.avatarUrl} 
+                />
         <div className={classes.tweeetContent}>
             <div className={classes.tweetHeader}>
                 <div>
@@ -95,7 +93,6 @@ export const Tweet: React.FC<TweetProps> = ({
                         keepMounted
                         open={open}
                         onClose={handleClose}
- 
                     >
                         <MenuItem onClick={handleClose}>
                            Редактировать

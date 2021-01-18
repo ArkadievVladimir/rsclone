@@ -28,6 +28,10 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
         margin: 0
     },
     sideMenuListItem: {
+        '& a': {
+            textDecoration: 'none',
+            color: theme.palette.grey[900],
+        },
         '& div': {
             position: 'relative',
             left: -10,
@@ -38,6 +42,7 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
             height: 50,
             marginBottom: 10,
             cursor: 'pointer',
+            userSelect: 'none',
             transition: 'all 0.2s',
             '&:hover': {
                 backgroundColor: 'rgba(29, 161, 242, 0.1)',
@@ -222,34 +227,70 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
     addFormBottomRight: {
         display: 'flex',
         alignItems: 'center',
-        marginTop: 30,
-        marginRight: 30
+    },
+    sideProfile: {
+        display: 'flex',
+        alignItems: 'center',
+        position: 'fixed',
+        bottom: 30,
+        backgroundColor: 'white',
+        border: '1px solid rgba(0,0,0,0.1)',
+        boxSizing: 'content-box',
+        padding: '10px 15px',
+        width: 260,
+        borderRadius: 50,
+        cursor: 'pointer',
+        '&:hover': {
+            backgroundColor: 'rgba(29, 161, 242, 0.1)',
+        }
+    },
+    sideProfileInfo: {
+        flex: 1,
+        marginLeft: 10,
+        '& b': {
+            fontSize: 16,
+        }
+
     },
     imagesList: {
         display: 'flex',
         alignItems: 'center',
         marginTop: 20,
-        flexWrap: 'wrap'
+        flexWrap: 'wrap',
     },
     imagesListItem: {
         width: 50,
         height: 50,
         marginRight: 10,
+        marginBottom: 10,
         position: 'relative',
         '& img': {
-            borderRadius: 6,
             width: '100%',
             height: '100%',
-            'object-fit': 'cover'
+            'object-fit': 'cover',
+            borderRadius: 6,
         },
         '& svg path': {
             fill: 'white'
-        }
+        },
+    },
+    profileMenu: {
+        bottom: '110px !important',
+        left: '17.5% !important',
+        top: 'auto !important',
+        width: '250px !important',
+        boxShadow: '1px 1px 10px rgba(0, 0, 0, 0.08)',
+        borderRadius: '20px',
+        border: '1px solid rgba(0, 0, 0, 0.1)',
+        '& a': {
+            color: 'black',
+            textDecoration: 'none',
+        },
     },
     imagesListItemRemove: {
         position: 'absolute',
-        top: -10,
-        right:-10,
+        top: -8,
+        right: -6,
         padding: '0 !important',
         backgroundColor: '#ff4d4d !important',
         borderRadius: '50%'

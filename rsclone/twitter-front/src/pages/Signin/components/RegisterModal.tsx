@@ -9,8 +9,6 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 import { useStylesSignIn } from '..';
 import { ModalBlock } from '../../../components/ModalBlock';
-import { AuthApi } from '../../../services/api/authApi';
-import { Notification } from '../../../components/Notification'
 import { Color } from '@material-ui/lab';
 import { fetchSignUp } from '../../../store/ducks/user/actionCreators';
 import { selectUserStatus } from '../../../store/ducks/user/selectors';
@@ -75,7 +73,7 @@ export const RegisterModal: React.FC<RegisterModalProps> = ({ open, onClose }): 
                                 name="email"
                                 control={control}
                                 defaultValue=""
-                                //render={({ onChange, value }) => <input onChange={onChange} value={value} />}
+                                // render={({ onChange, value }) => <input onChange={onChange} value={value} />}
                                 className={classes.registerField}
                                 autoFocus
                                 error={!!errors.email}
