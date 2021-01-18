@@ -24,7 +24,7 @@ export const userReducer = produce((draft: Draft<UserState>, action: UserActions
 
         case UserActionsType.SIGN_OUT:
             draft.status = LoadingStatus.LOADED;
-            draft.data= undefined;
+            draft.data = undefined;
             break;
 
         default:

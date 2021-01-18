@@ -28,8 +28,7 @@ function App() {
   React.useEffect(() => {
     if(!isAuth && isReady) {
       history.push('/signin');
-    } else if (history.location.pathname === '/') {
-      console.log('dsfsd');
+    } else {
       history.push('/home');
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -52,7 +51,6 @@ function App() {
           <Route path="/user/:id" component={UserPage} />
           <Route path="/user/activate/:hash" component={ActivatePage} />
         </Layout>
-        
       </Switch>
     </div>
   );
