@@ -2,7 +2,6 @@ import { RootState } from '../../store';
 import { LoadingStatus } from '../../types';
 import { AddFormState, TweetsState } from './contracts/state';
 
-
 export const selectTweetsState = (state: RootState): TweetsState => state.tweets;
   
 export const selectLoadingStatus = (state: RootState): LoadingStatus => 

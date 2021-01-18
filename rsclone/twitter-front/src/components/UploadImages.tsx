@@ -1,6 +1,6 @@
 import { IconButton } from '@material-ui/core';
 import ImageOutlinedIcon from '@material-ui/icons/ImageOutlined';
-import ClearIcon from '@material-ui/icons/Clear'
+// import ClearIcon from '@material-ui/icons/Clear'
 import React from 'react';
 import { useHomeStyles } from '../pages/Home/theme';
 import { ImageObj } from './AddTweetForm';
@@ -34,6 +34,7 @@ export const UploadImages: React.FC<UploadImageProps> = ({ images, onChangeImage
                  }])
             }
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     
     const removeImage = (url: string) => {
@@ -49,6 +50,7 @@ export const UploadImages: React.FC<UploadImageProps> = ({ images, onChangeImage
                 inputRef.current.removeEventListener('change', handleChangeFileInput)
             }
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (

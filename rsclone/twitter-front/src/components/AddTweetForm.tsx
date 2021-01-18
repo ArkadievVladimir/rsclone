@@ -2,10 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { useHomeStyles } from '../pages/Home/theme';
 import classNames from 'classnames';
-import ImageOutlinedIcon from '@material-ui/icons/ImageOutlined';
-import EmojiIcon from '@material-ui/icons/SentimentSatisfiedOutlined';
-import { 
-    IconButton,
+import {
     Avatar,
     Button,
     TextareaAutosize,
@@ -29,12 +26,16 @@ export interface ImageObj {
     blobUrl: string;
 }
 
-export const AddTweetForm: React.FC<AddTweetFormProps> = ({classes, rowsMax}: AddTweetFormProps): React.ReactElement => {
+export const AddTweetForm: React.FC<AddTweetFormProps> = ({
+    classes, 
+    rowsMax,
+}: AddTweetFormProps): React.ReactElement => {
     const dispatch = useDispatch();
-    const addFormState = useSelector(selectAddFormState)
     const [text, setText] = useState<string>('');
-    const [images, setImages] = React.useState<ImageObj[]>([])
-    const percentOfTextInTweet: number = Math.round((text.length / 200) * 100);
+    const [images, setImages] = React.useState<ImageObj[]>([]);
+
+    const addFormState = useSelector(selectAddFormState);
+    const percentOfTextInTweet = Math.round((text.length / 200) * 100);
     const maxTweetSymbols: number = 200;
 
     const handlerChangeTextarea = (e: React.FormEvent<HTMLTextAreaElement>): void => {
@@ -61,7 +62,7 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({classes, rowsMax}: Ad
         <div className={classes.addFormBody}>
             <Avatar className={classes.tweetAvatar}
             alt='ava'
-            src="https://images.unsplash.com/photo-1584799235813-aaf50775698c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80"
+            // src="https://images.unsplash.com/photo-1584799235813-aaf50775698c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80"
             />
         <TextareaAutosize
             onChange={handlerChangeTextarea}

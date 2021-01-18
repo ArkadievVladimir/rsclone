@@ -1,5 +1,4 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
-import axios from 'axios';
 import { setTags, setTagsLoadingStatus, TagsActionsType } from './actionCreators';
 import { TagsApi } from '../../../services/api/TagsApi';
 import { LoadingStatus } from '../../types';

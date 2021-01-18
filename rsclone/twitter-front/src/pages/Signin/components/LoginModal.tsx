@@ -9,13 +9,10 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 import { useStylesSignIn } from '..';
 import { ModalBlock } from '../../../components/ModalBlock';
-import { AuthApi } from '../../../services/api/authApi';
-import { Notification } from '../../../components/Notification'
 import { Color } from '@material-ui/lab';
 import { fetchSignIn } from '../../../store/ducks/user/actionCreators';
 import { selectUserStatus } from '../../../store/ducks/user/selectors';
 import { LoadingStatus } from '../../../store/types';
-
 
 interface LoginModalProps {
     open: boolean;
@@ -31,7 +28,6 @@ const LoginFormSchema = yup.object().shape({
     password: yup.string().min(6, "Минимальная длина пароля 6 символов").required("Введите пароль"),
   });
 
-
 export const LoginModal: React.FC<LoginModalProps> = ({ open, onClose }): React.ReactElement => {
     const dispatch = useDispatch();
     const loadingStatus = useSelector(selectUserStatus);
@@ -42,7 +38,6 @@ export const LoginModal: React.FC<LoginModalProps> = ({ open, onClose }): React.
       });
     const onSubmit = async (data: LoginFormProps) => {
         dispatch(fetchSignIn(data))
-
     }
 
     React.useEffect( () => {
@@ -52,9 +47,9 @@ export const LoginModal: React.FC<LoginModalProps> = ({ open, onClose }): React.
         } else if (loadingStatus === LoadingStatus.ERROR) {
             openNotificationRef.current('Неверный логин или пароль', 'error')
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [loadingStatus])
 
-      console.log(errors)
     return (
         <ModalBlock
                      title="Войти в аккаунт"
@@ -70,7 +65,7 @@ export const LoginModal: React.FC<LoginModalProps> = ({ open, onClose }): React.
                                 name="email"
                                 control={control}
                                 defaultValue=""
-                                //render={({ onChange, value }) => <input onChange={onChange} value={value} />}
+                                // render={({ onChange, value }) => <input onChange={onChange} value={value} />}
                                 className={classes.loginSideField}
                                 autoFocus
                                 error={!!errors.email}

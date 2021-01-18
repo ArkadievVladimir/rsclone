@@ -1,4 +1,3 @@
-import React from 'react';
 import produce from 'immer';
 import { Draft } from 'immer';
 import { UserActions } from './actionCreators'
@@ -21,6 +20,11 @@ export const userReducer = produce((draft: Draft<UserState>, action: UserActions
 
         case UserActionsType.SET_LOADING_STATE:
             draft.status = action.payload;
+            break;
+
+        case UserActionsType.SIGN_OUT:
+            draft.status = LoadingStatus.LOADED;
+            draft.data= undefined;
             break;
 
         default:

@@ -1,6 +1,4 @@
-import React from 'react';
 import { TextField, Theme, withStyles } from '@material-ui/core';
-
 
 export const SearchTextField = withStyles((theme: Theme) => ({
     root: {

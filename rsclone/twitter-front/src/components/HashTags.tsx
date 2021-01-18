@@ -1,11 +1,11 @@
-import { Divider, Link, ListItem, ListItemText, Typography } from '@material-ui/core';
+import { Divider, ListItem, ListItemText, Typography } from '@material-ui/core';
 import List from '@material-ui/core/List';
 import Paper from '@material-ui/core/Paper';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useHomeStyles } from '../pages/Home/theme';
-import { TagsState } from '../store/ducks/tags/contracts/state';
 import { selectTagsItems, selectIsTagsLoaded } from '../store/ducks/tags/selectors';
+import { Link } from 'react-router-dom';
 
 
 interface TagsProps {
@@ -31,7 +31,7 @@ export const Tags: React.FC<TagsProps> = ({
        {
            items.map((obj) => {
            <React.Fragment key={obj._id}>
-            {/* <Link to={`/home/search?q=${obj.name}`}> */}
+            <Link to={`/home/search?q=${obj.name}`}>
             <ListItem className={classes.rightSideBlockItem}>
             <ListItemText primary={obj.name}
             secondary={
@@ -41,7 +41,7 @@ export const Tags: React.FC<TagsProps> = ({
             }
             />
         </ListItem>
-        {/* </Link> */}
+        </Link>
         <Divider component="li" />
             </React.Fragment>
         })

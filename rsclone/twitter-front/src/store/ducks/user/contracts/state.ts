@@ -1,9 +1,7 @@
-import React from 'react';
 import { LoadingStatus } from '../../../types';
 
-
 export interface User {
-    id?: string;
+  _id?: string;
   email: string;
   fullname: string;
   username: string;
@@ -13,6 +11,7 @@ export interface User {
   about?: string;
   website?: string;
   location?: string;
+  createdAt: string;
 }
 
 export interface UserState {

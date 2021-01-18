@@ -1,4 +1,3 @@
-import React from 'react';
 import produce from 'immer';
 import { Draft } from 'immer';
 import { LoadingStatus } from '../../types'
