@@ -10,16 +10,11 @@ import { Avatar, Button, IconButton, Menu, MenuItem, Paper, TextareaAutosize, Ty
 import { useHomeStyles } from '../pages/Home/theme';
 import { useHistory } from 'react-router-dom';
 import { formatDate } from '../utils/formatDate';
-<<<<<<< HEAD
-import { removeTweet } from '../store/ducks/tweets/actionCreators';
 import { useDispatch } from 'react-redux';
 // import { eventChannel } from 'redux-saga';
 import { User } from '../store/ducks/user/contracts/state';
 import { ImageList } from './ImageList';
-=======
-import { ImageList } from './ImageList';
 import { EditTweet, fetchEditTweet, removeTweet, setAddFormState } from '../store/ducks/tweets/actionCreators';
-import { useDispatch } from 'react-redux';
 import { eventChannel } from 'redux-saga';
 import { AddTweetForm, ImageObj } from './AddTweetForm';
 import { ModalBlock } from './ModalBlock';
@@ -29,7 +24,6 @@ import { uploadImage } from '../utils/uploadImage';
 import { UploadImages } from './UploadImages';
 import axios from 'axios';
 
->>>>>>> 423b936 (feat: add tweet edit function)
 
 
 interface TweetProps {
