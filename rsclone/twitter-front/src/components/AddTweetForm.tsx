@@ -19,6 +19,7 @@ import { uploadImage } from '../utils/uploadImage';
 interface AddTweetFormProps {
     classes: ReturnType<typeof useHomeStyles>;
     rowsMax?: number;
+    onClose?: () => void
 }    
 
 export interface ImageObj {
@@ -29,6 +30,7 @@ export interface ImageObj {
 export const AddTweetForm: React.FC<AddTweetFormProps> = ({
     classes, 
     rowsMax,
+    onClose
 }: AddTweetFormProps): React.ReactElement => {
     const dispatch = useDispatch();
     const [text, setText] = useState<string>('');
@@ -91,7 +93,12 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
                 )}
              
                 <Button disabled={!text || text.length > maxTweetSymbols || addFormState === AddFormState.LOADING} color="primary" variant="contained"
-                    onClick={handlerAddTweetOnClick} > {addFormState === AddFormState.LOADING ? <CircularProgress size={18} color="inherit" /> : 'Твитнуть' }
+                    onClick={() => {
+                        handlerAddTweetOnClick() 
+                            if(onClose) {
+                                onClose()
+                            }
+                        }} > {addFormState === AddFormState.LOADING ? <CircularProgress size={18} color="inherit" /> : 'Твитнуть' }
                 </Button>
             </div>
         </div>

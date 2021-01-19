@@ -143,7 +143,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             </Button>
             <ModalBlock title='' visible={visibleAddTweet} onClose={onCloseAddTweet}>
                 <div style={{width: 500}}>
-                    <AddTweetForm classes={classes} rowsMax={5} />
+                    <AddTweetForm classes={classes} rowsMax={5} onClose={onCloseAddTweet}/> 
                 </div>
             </ModalBlock>
             

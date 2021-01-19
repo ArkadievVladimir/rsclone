@@ -13,7 +13,6 @@ export const ImageList: React.FC<ImageListProps> = ({ classes, images, removeIma
     if (!images.length) {
         return null
     }
-    console.log(classes.imagesList)
     return (
         <div className={classes.imagesList}>
         {images.map((url) => (
