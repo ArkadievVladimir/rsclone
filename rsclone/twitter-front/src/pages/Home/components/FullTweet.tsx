@@ -34,7 +34,9 @@ export const FullTweet: React.FC = (): React.ReactElement | null => {
 
     React.useEffect(() => {
         if (!isLoading) {
-            mediumZoom('.tweet-images img');
+            mediumZoom('.tweet-images img', {
+                background: 'rgba(0, 0, 0, 0.74)'
+              });
         }
     },[isLoading])
 

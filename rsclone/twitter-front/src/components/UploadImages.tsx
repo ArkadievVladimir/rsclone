@@ -1,8 +1,8 @@
-import { IconButton } from '@material-ui/core';
+import { IconButton, makeStyles, Theme } from '@material-ui/core';
 import ImageOutlinedIcon from '@material-ui/icons/ImageOutlined';
 // import ClearIcon from '@material-ui/icons/Clear'
 import React from 'react';
-import { useHomeStyles } from '../pages/Home/theme';
+import { uploadImagesListStyles } from '../pages/Home/theme';
 import { ImageObj } from './AddTweetForm';
 import { ImageList } from './ImageList';
  
@@ -12,8 +12,7 @@ interface UploadImageProps {
 }
 
 export const UploadImages: React.FC<UploadImageProps> = ({ images, onChangeImages }) => {
-    const classes = useHomeStyles()
-    
+    const classes = uploadImagesListStyles()
     const inputRef = React.useRef<HTMLInputElement>(null);
 
     const handleClickImage = () => {

@@ -6,8 +6,8 @@ import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutline
 import ReplyOutlinedIcon from '@material-ui/icons/ReplyOutlined';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
-import { Avatar, Button, IconButton, Menu, MenuItem, Paper, TextareaAutosize, Typography, } from '@material-ui/core';
-import { useHomeStyles } from '../pages/Home/theme';
+import { Avatar, Button, IconButton, makeStyles, Menu, MenuItem, Paper, TextareaAutosize, Theme, Typography, } from '@material-ui/core';
+import { tweetImageListStyles, useHomeStyles } from '../pages/Home/theme';
 import { useHistory } from 'react-router-dom';
 import { formatDate } from '../utils/formatDate';
 import { useDispatch } from 'react-redux';
@@ -54,7 +54,8 @@ export const Tweet: React.FC<TweetProps> = ({
         event.preventDefault();
         history.push(`/home/tweet/${_id}`);
     }
-
+    
+    const imageClasses = tweetImageListStyles()
     const handleClick = (event: React.MouseEvent<HTMLElement>) => {
         event.stopPropagation();
         event.preventDefault();
@@ -154,7 +155,7 @@ export const Tweet: React.FC<TweetProps> = ({
             </div>
             <Typography variant="body1" gutterBottom>
                 {text}
-                {images && <ImageList classes={classes} images={images}/>}
+                {images && <ImageList classes={imageClasses} images={images}/>}
             </Typography>
             <div className={classes.tweetFooter}>
                 <div>

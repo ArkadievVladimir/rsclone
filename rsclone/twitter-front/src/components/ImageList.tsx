@@ -5,7 +5,7 @@ import ClearIcon from '@material-ui/icons/Clear';
 
 interface ImageListProps {
     images: string[];
-    classes: ReturnType<typeof useHomeStyles>;
+    classes: any;
     removeImage?: (url: string) => void;
 }
 
@@ -13,6 +13,7 @@ export const ImageList: React.FC<ImageListProps> = ({ classes, images, removeIma
     if (!images.length) {
         return null
     }
+    console.log(classes.imagesList)
     return (
         <div className={classes.imagesList}>
         {images.map((url) => (

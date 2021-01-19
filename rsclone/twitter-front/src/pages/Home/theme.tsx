@@ -265,12 +265,12 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
         display: 'flex',
         alignItems: 'center',
         marginTop: 20,
-        flexWrap: 'wrap',
+        height: '40%'
     },
     imagesListItem: {
-        width: 50,
-        height: 50,
-        marginRight: 10,
+        width: '100%',
+        height: '100%',
+        flexShrink: 1,
         marginBottom: 10,
         position: 'relative',
         '& img': {
@@ -305,3 +305,63 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
         borderRadius: '50%'
     }
 }));
+
+export const uploadImagesListStyles = makeStyles((theme: Theme) => ({
+    imagesList: {
+        display: 'flex',
+        alignItems: 'center',
+        marginTop: 20, 
+        flexWrap: 'wrap',
+    },
+    imagesListItem: {
+        width: 50,
+        height: 50,
+        marginRight: 10,
+        marginBottom: 10,
+        position: 'relative',
+        '& img': {
+            width: '100%',
+            height: '100%',
+            'object-fit': 'cover',
+            borderRadius: 6,
+        },
+        '& svg path': {
+            fill: 'white'
+        },
+    },
+    imagesListItemRemove: {
+        position: 'absolute',
+        top: -8,
+        right: -6,
+        padding: '0 !important',
+        backgroundColor: '#ff4d4d !important',
+        borderRadius: '50%'
+    }
+}))
+
+export const tweetImageListStyles = makeStyles((theme: Theme) => ({
+    imagesList: {
+        display: 'flex',
+        alignItems: 'center',
+        marginTop: 20,
+        width: '90%',
+        height: '40%'
+    },
+    imagesListItem: {
+        width: '100%',
+        height: '100%',
+        flexShrink: 1,
+        marginRight: 10,
+        marginBottom: 10,
+        position: 'relative',
+        '& img': {
+            width: '100%',
+            height: '100%',
+            'object-fit': 'cover',
+            borderRadius: 6,
+        },
+        '& svg path': {
+            fill: 'white'
+        },
+    },
+}))
