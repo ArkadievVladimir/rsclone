@@ -1,8 +1,8 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import { TweetsApi } from '../../../services/api/tweetsApi';
 import { LoadingStatus } from '../../types';
-import { AddTweet, setAddFormState, setTweets, setTweetsLoadingStatus } from './actionCreators';
-import { FetchAddTweetActionInterface, RemoveTweetActionInterface, TweetsActionsType } from './contracts/actionTypes';
+import { AddTweet, EditTweet, setAddFormState, setTweets, setTweetsLoadingStatus } from './actionCreators';
+import { EditTweetActionInterface, FetchAddTweetActionInterface, FetchEditTweetActionInterface, RemoveTweetActionInterface, TweetsActionsType } from './contracts/actionTypes';
 import { AddFormState } from './contracts/state';
 
 export function* fetchTweetsRequest() {
@@ -25,6 +25,16 @@ export function* fetchAddTweetRequest({ payload }: FetchAddTweetActionInterface)
     }
 }
 
+export function* fetchEditTweetRequest({ payload }: FetchEditTweetActionInterface) {
+    try {
+        const item = yield call(TweetsApi.editTweet, payload);
+        yield put(EditTweet(item));
+    } catch (error) {
+        alert('Ошибка при редактировании!')
+        yield put(setAddFormState(AddFormState.ERROR));
+    }
+}
+
 export function* fetchRemoveTweetRequest({ payload }: RemoveTweetActionInterface) {
     try {
         yield call(TweetsApi.removeTweet, payload);
@@ -37,4 +47,5 @@ export function* tweetsSaga() {
     yield takeLatest(TweetsActionsType.FETCH_TWEETS, fetchTweetsRequest);
     yield takeLatest(TweetsActionsType.FETCH_ADD_TWEET, fetchAddTweetRequest);
     yield takeLatest(TweetsActionsType.REMOVE_TWEET, fetchRemoveTweetRequest);
+    yield takeLatest(TweetsActionsType.FETCH_EDIT_TWEET, fetchEditTweetRequest);
 }

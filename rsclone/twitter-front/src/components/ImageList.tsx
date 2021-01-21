@@ -5,7 +5,7 @@ import ClearIcon from '@material-ui/icons/Clear';
 
 interface ImageListProps {
     images: string[];
-    classes: ReturnType<typeof useHomeStyles>;
+    classes: any;
     removeImage?: (url: string) => void;
 }
 
