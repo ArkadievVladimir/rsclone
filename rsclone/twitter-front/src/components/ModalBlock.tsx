@@ -26,7 +26,6 @@ export const ModalBlock: React.FC<ModalBlockProps> = ({
     };
     const preventClose = (event: React.MouseEvent<HTMLElement>): void => {
         event.stopPropagation();
-        event.preventDefault();
     }
     return (
         <Dialog open={visible} onClose={onClose} aria-labelledby="form-dialog">
