@@ -10,7 +10,7 @@ import { Avatar, Button, IconButton, makeStyles, Menu, MenuItem, Paper, Textarea
 import { tweetImageListStyles, useHomeStyles } from '../pages/Home/theme';
 import { useHistory } from 'react-router-dom';
 import { formatDate } from '../utils/formatDate';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 // import { eventChannel } from 'redux-saga';
 import { User } from '../store/ducks/user/contracts/state';
 import { ImageList } from './ImageList';
@@ -23,8 +23,7 @@ import { AddFormState } from '../store/ducks/tweets/contracts/state';
 import { uploadImage } from '../utils/uploadImage';
 import { UploadImages } from './UploadImages';
 import axios from 'axios';
-
-
+import { selectUserData } from '../store/ducks/user/selectors';
 
 interface TweetProps {
     _id: string;
@@ -48,6 +47,7 @@ export const Tweet: React.FC<TweetProps> = ({
     const open = Boolean(anchorEl);
     const [visibility, setVisibility] = useState<boolean>(false)
     const [tweetText, setTweetText] = useState<string>(text)
+    const userData = useSelector(selectUserData);
     const history = useHistory();
     const dispatch = useDispatch();
     const handleClickTweet = (event: React.MouseEvent<HTMLAnchorElement>): void => {
@@ -128,15 +128,17 @@ export const Tweet: React.FC<TweetProps> = ({
                     <span className={classes.tweetsUserName}> · </span>&nbsp;
                     <span className={classes.tweetsUserName}>{formatDate(new Date(createdAt))}</span>
                 </div>
-                <div>
+                <div >
+                {user._id === userData?._id ? 
                     <IconButton
                         aria-label="more"
                         aria-controls="long-menu"
                         aria-haspopup="true"
                         onClick={handleClick}
                     >
-                        <MoreVertIcon />
+                    <MoreVertIcon />
                     </IconButton>
+                 : ''}
                     <Menu
                         id="long-menu"
                         anchorEl={anchorEl}
