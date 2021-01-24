@@ -6,6 +6,7 @@ export enum TweetsActionsType {
     SET_TWEETS = 'tweets/SET_TWEETS',
     FETCH_TWEETS = 'tweets/FETCH_TWEETS',
     FETCH_ADD_TWEET = 'tweets/FETCH_ADD_TWEET',
+    FETCH_ADD_LIKE = 'tweets/FETCH_ADD_LIKE',
     FETCH_EDIT_TWEET = 'tweets/FETCH_EDIT_TWEET',
     ADD_TWEET = 'tweets/ADD_TWEET',
     EDIT_TWEET = 'tweets/EDIT_TWEET',
@@ -24,6 +25,14 @@ export interface FetchAddTweetActionInterface extends Action<TweetsActionsType>{
     payload: {
         text: string,
         images: string[];
+    }
+};
+
+export interface FetchAddLikeActionInterface extends Action<TweetsActionsType>{
+    type: TweetsActionsType.FETCH_ADD_LIKE;
+    payload: {
+        id: string,
+        like: string[],
     }
 };
 

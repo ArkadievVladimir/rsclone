@@ -58,7 +58,7 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
         setText('');
         setImages([])
     };
-    
+
     return (
         <div>
         <div className={classes.addFormBody}>

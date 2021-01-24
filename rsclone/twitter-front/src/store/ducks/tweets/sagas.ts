@@ -2,7 +2,7 @@ import { call, put, takeLatest } from 'redux-saga/effects';
 import { TweetsApi } from '../../../services/api/tweetsApi';
 import { LoadingStatus } from '../../types';
 import { AddTweet, EditTweet, setAddFormState, setTweets, setTweetsLoadingStatus } from './actionCreators';
-import { EditTweetActionInterface, FetchAddTweetActionInterface, FetchEditTweetActionInterface, RemoveTweetActionInterface, TweetsActionsType } from './contracts/actionTypes';
+import { FetchAddLikeActionInterface, FetchAddTweetActionInterface, FetchEditTweetActionInterface, RemoveTweetActionInterface, TweetsActionsType } from './contracts/actionTypes';
 import { AddFormState } from './contracts/state';
 
 export function* fetchTweetsRequest() {
@@ -10,7 +10,7 @@ export function* fetchTweetsRequest() {
         const pathname = window.location.pathname;
         const userId = pathname.includes('/user') ? pathname.split('/').pop() : undefined;
         const items = yield call(TweetsApi.fetchTweets, userId);
-        yield put(setTweets(items))
+        yield put(setTweets(items));
     } catch (error) {
         yield put(setTweetsLoadingStatus(LoadingStatus.ERROR));
     }
@@ -30,7 +30,16 @@ export function* fetchEditTweetRequest({ payload }: FetchEditTweetActionInterfac
         const item = yield call(TweetsApi.editTweet, payload);
         yield put(EditTweet(item));
     } catch (error) {
-        alert('Ошибка при редактировании!')
+        alert('Ошибка при редактировании!');
+        yield put(setAddFormState(AddFormState.ERROR));
+    }
+}
+
+export function* fetchUpdateLike({ payload }: FetchAddLikeActionInterface) {
+    try {
+        const item = yield call(TweetsApi.updateLike, payload);
+        yield put(EditTweet(item));
+    } catch (error) {
         yield put(setAddFormState(AddFormState.ERROR));
     }
 }
@@ -39,7 +48,7 @@ export function* fetchRemoveTweetRequest({ payload }: RemoveTweetActionInterface
     try {
         yield call(TweetsApi.removeTweet, payload);
     } catch (error) {
-        alert('Ошибка при удалении!')
+        alert('Ошибка при удалении!');
     }
 }
    
@@ -48,4 +57,5 @@ export function* tweetsSaga() {
     yield takeLatest(TweetsActionsType.FETCH_ADD_TWEET, fetchAddTweetRequest);
     yield takeLatest(TweetsActionsType.REMOVE_TWEET, fetchRemoveTweetRequest);
     yield takeLatest(TweetsActionsType.FETCH_EDIT_TWEET, fetchEditTweetRequest);
+    yield takeLatest(TweetsActionsType.FETCH_ADD_LIKE, fetchUpdateLike);
 }

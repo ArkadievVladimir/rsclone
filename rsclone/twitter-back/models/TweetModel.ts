@@ -4,6 +4,7 @@ import { UserModelInterface } from './UserModel';
 export interface TweetModelInterface {
   _id?: string;
   text: string;
+  like: string[];
   user: UserModelInterface;
   images?: string[];
 }
@@ -21,10 +22,14 @@ const TweetSchema = new Schema<TweetModelDocumentInterface>({
     ref: 'User',
     type: Schema.Types.ObjectId,
   },
+  like: {
+    type: [
+      {type: String}
+    ],
+  },
   images: [
     {type: String}
   ],
-  
 },
 {
   timestamps: true,

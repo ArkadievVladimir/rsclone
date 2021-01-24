@@ -14,4 +14,4 @@ export const selectIsTweetLoading = (state: RootState): boolean =>
 export const selectIsTweetLoaded = (state: RootState): boolean => 
   selectLoadingStatus(state) === LoadingStatus.LOADED;
 
-export const selectTweetData= (state: RootState): Tweet | undefined => selectTweet(state).data;
+export const selectTweetData = (state: RootState): Tweet | undefined => selectTweet(state).data;

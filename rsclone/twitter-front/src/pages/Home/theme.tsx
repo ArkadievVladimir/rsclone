@@ -119,8 +119,36 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
         position: 'relative',
         left: -10
     },
+    tweetMessagesIcon: {
+        color: grey[500],
+        "&:hover": {
+            color: 'rgb(29,161,242)',
+        },
+    },
+    retweetIcon: {
+        color: grey[500],
+        "&:hover": {
+            color: 'rgb(23, 191, 99)',
+        },
+    },
+    likeIcon: {
+        color: grey[500],
+        fontSize: '14px',
+        "&:hover": {
+            color: 'rgb(224, 36, 94)',
+        },
+    },
+    likeIconAction: {
+        color: 'rgb(224, 36, 94)',
+    },
+    settingIcon: {
+        color: grey[500],
+        "&:hover": {
+            color: 'rgb(29,161,242)',
+        },
+    },
     tweetsUserName: {
-        color: grey[500]
+        color: grey[500],
     },
     tweet: {
         display: 'flex',

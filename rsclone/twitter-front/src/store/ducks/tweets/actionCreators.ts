@@ -1,5 +1,5 @@
 import { LoadingStatus } from '../../types';
-import { SetTweetsActionInterface, FetchAddTweetActionInterface, AddTweetActionInterface, FetchTweetsActionInterface, SetTweetsLoadingStatusInterface, SetAddFormStateInterface, TweetsActionsType, RemoveTweetActionInterface, EditTweetActionInterface, FetchEditTweetActionInterface } from './contracts/actionTypes';
+import { FetchAddLikeActionInterface, SetTweetsActionInterface, FetchAddTweetActionInterface, AddTweetActionInterface, FetchTweetsActionInterface, SetTweetsLoadingStatusInterface, SetAddFormStateInterface, TweetsActionsType, RemoveTweetActionInterface, EditTweetActionInterface, FetchEditTweetActionInterface } from './contracts/actionTypes';
 import { AddFormState, Tweet, TweetsState } from './contracts/state';
 
 export const setTweets = (payload: TweetsState['items']): SetTweetsActionInterface => ({
@@ -12,10 +12,15 @@ export const fetchAddTweet = (payload: {text: string, images: string[]}): FetchA
     payload 
 });
 
+export const fetchAddLike = (payload: { like: string[]; id: string}): FetchAddLikeActionInterface => ({
+    type: TweetsActionsType.FETCH_ADD_LIKE,
+    payload 
+});
+
 export const AddTweet = (payload: Tweet): AddTweetActionInterface => ({
     type: TweetsActionsType.ADD_TWEET,
     payload
-}); 
+});
 
 export const fetchEditTweet = (payload: {text: string, id: string}): FetchEditTweetActionInterface => ({
     type: TweetsActionsType.FETCH_EDIT_TWEET,

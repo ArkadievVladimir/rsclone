@@ -10,6 +10,7 @@ export enum AddFormState {
 export interface Tweet {
     _id: string;
     text: string;
+    like: string[];
     images?: [] | undefined;
     createdAt: string;
     user: User;  
