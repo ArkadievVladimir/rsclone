@@ -22,15 +22,32 @@ export const TweetsApi = {
         const { data } = await axios.post<Response<Tweet>>('/tweets', payload);
         return data.data;
     },
+    async updateLike(payload: {
+        like: string[],
+        id: string
+    }): Promise<Tweet> {
+        const { like, id } = payload
+        const { data } = await axios.get<Response<Tweet>>(`/tweets/${id}`);
+        data.data.like = like;
+        axios.patch<Response<Tweet>>(`/like/${id}`, data.data);
+        return data.data;
+    },
+    async getLikeCount(payload: {
+        id: string,
+    }): Promise<Tweet> {
+        const { id } = payload
+        const { data } = await axios.get<Response<Tweet>>(`/tweets/${id}`);
+        return data.data;
+    },
     async editTweet(payload: {
         text: string,
         id?: string
     }): Promise<Tweet> {
-        const {text, id} = payload
+        const {text, id} = payload;
         const { data } = await axios.get<Response<Tweet>>(`/tweets/${id}`);
         data.data.text = text;
         axios.patch<Response<Tweet>>(`/tweets/${id}`, data.data);
-        return data.data
+        return data.data;
     },
     removeTweet: (id: string): Promise<void> => axios.delete('/tweets/' + id)
 }

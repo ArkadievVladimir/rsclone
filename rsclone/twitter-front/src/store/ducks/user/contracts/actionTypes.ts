@@ -11,6 +11,7 @@ export enum UserActionsType {
     FETCH_SIGN_IN = 'user/FETCH_SIGN_IN',
     FETCH_SIGN_UP = 'user/FETCH_SIGN_UP',
     SIGN_OUT = 'user/SIGN_OUT',
+    SET_LIKED_TWEETS = 'user/SET_LIKED_TWEETS',
 };
 
 export interface SignOutActionInterface extends Action<UserActionsType>{
@@ -39,4 +40,12 @@ export interface FetchUserDataActionInterface extends Action<UserActionsType>{
 export interface SetUserLoadingStatusActionInterface extends Action<UserActionsType>{
     type: UserActionsType.SET_LOADING_STATE;
     payload: LoadingStatus;
+};
+
+export interface SetUserDataLikedTweetsInterface extends Action<UserActionsType>{
+    type: UserActionsType.SET_LIKED_TWEETS;
+    payload: {
+        likedTweets: [],
+        _id: string,
+    };
 };

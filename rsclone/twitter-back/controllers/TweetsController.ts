@@ -92,6 +92,7 @@ class TweetsController {
         const data: any = {
           text: req.body.text,
           images: req.body.images,
+          like: req.body.like || [],
           user: user._id,
         }
 
@@ -162,13 +163,44 @@ class TweetsController {
 
         if (tweet) {
           if (String(tweet.user._id) === String(user._id)) {
-            const text =req.body.text;
+            const text = req.body.text;
             tweet.text = text;
+            tweet.like = req.body.like;
             tweet.save();
             res.send();
           } else  {
             res.status(403).send();
           }
+        } else {
+          res.status(404).send();
+        }
+      }
+    } catch (error) {
+      res.status(500).json({
+        status: 'error',
+        message: error,
+      });
+    }
+  }
+
+  async updateLikeCount(req: any, res: express.Response): Promise<void> {
+    const user = req.user as UserModelInterface;
+
+    try {
+      if (user) {
+        const tweetId = req.params.id;
+
+        if (!isValidObjectId(tweetId)) {
+          res.status(400).send();
+          return;
+        }
+
+        const tweet = await TweetModel.findById(tweetId);
+
+        if (tweet) {
+          tweet.like = req.body.like;
+          tweet.save();
+          res.send();
         } else {
           res.status(404).send();
         }

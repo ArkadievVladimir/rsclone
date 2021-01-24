@@ -3,31 +3,27 @@ import classNames from 'classnames';
 import ChatBubbleOutlineOutlinedIcon from '@material-ui/icons/ChatBubbleOutlineOutlined';
 import RepeatOutlinedIcon from '@material-ui/icons/RepeatOutlined';
 import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutlined';
+import FavoriteIcon from '@material-ui/icons/Favorite';
 import ReplyOutlinedIcon from '@material-ui/icons/ReplyOutlined';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
-import { Avatar, Button, IconButton, makeStyles, Menu, MenuItem, Paper, TextareaAutosize, Theme, Typography, } from '@material-ui/core';
+import { Avatar, Button, IconButton, Menu, MenuItem, Paper, TextareaAutosize, Typography, } from '@material-ui/core';
 import { tweetImageListStyles, useHomeStyles } from '../pages/Home/theme';
 import { useHistory } from 'react-router-dom';
 import { formatDate } from '../utils/formatDate';
 import { useDispatch, useSelector } from 'react-redux';
-// import { eventChannel } from 'redux-saga';
 import { User } from '../store/ducks/user/contracts/state';
 import { ImageList } from './ImageList';
-import { EditTweet, fetchEditTweet, removeTweet, setAddFormState } from '../store/ducks/tweets/actionCreators';
-import { eventChannel } from 'redux-saga';
-import { AddTweetForm, ImageObj } from './AddTweetForm';
+import { fetchAddLike, fetchEditTweet, removeTweet } from '../store/ducks/tweets/actionCreators';
 import { ModalBlock } from './ModalBlock';
-import { CircularProgress } from '@material-ui/core';
-import { AddFormState } from '../store/ducks/tweets/contracts/state';
-import { uploadImage } from '../utils/uploadImage';
-import { UploadImages } from './UploadImages';
-import axios from 'axios';
 import { selectUserData } from '../store/ducks/user/selectors';
+import { TweetsApi } from '../services/api/tweetsApi';
+import { isLiked } from '../utils/isLikedTweet';
 
 interface TweetProps {
     _id: string;
     text: string;
+    like: string[];
     images?: string[];
     classes: ReturnType<typeof useHomeStyles>;
     createdAt: string;
@@ -37,12 +33,12 @@ interface TweetProps {
 export const Tweet: React.FC<TweetProps> = ({ 
     _id, 
     text, 
+    like,
     user, 
     classes,
     images,
     createdAt,
 }: TweetProps): React.ReactElement => {
-
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
     const [visibility, setVisibility] = useState<boolean>(false)
@@ -54,7 +50,7 @@ export const Tweet: React.FC<TweetProps> = ({
         event.preventDefault();
         history.push(`/home/tweet/${_id}`);
     }
-    
+
     const imageClasses = tweetImageListStyles()
     const handleClick = (event: React.MouseEvent<HTMLElement>) => {
         event.stopPropagation();
@@ -95,6 +91,17 @@ export const Tweet: React.FC<TweetProps> = ({
         e.stopPropagation();
         e.preventDefault();
     }
+
+    let likeArray = Object.assign([], like);
+    let isLikedTweet = isLiked(userData, likeArray);
+    const likeClick = async (e: any) => {
+        e.stopPropagation();
+        e.preventDefault();
+        const { like } = await TweetsApi.getLikeCount({ id: _id }).then((data) => data);
+        isLiked(userData, like);
+        dispatch(fetchAddLike({like: like, id: _id}));
+    };
+
     return (
         <a onClick={handleClickTweet} className={classes.tweetWrapper} href={`/home/tweet/${_id}`}>
         
@@ -161,24 +168,28 @@ export const Tweet: React.FC<TweetProps> = ({
             </Typography>
             <div className={classes.tweetFooter}>
                 <div>
-                    <IconButton color="primary">
+                    <IconButton color="primary" className={classes.tweetMessagesIcon}>
                         <ChatBubbleOutlineOutlinedIcon style={{fontSize: 16}} />
                     </IconButton>
-                    <span style={{fontSize: 14}}>1</span>
+                    <span style={{fontSize: 14}}></span>
                 </div>
                 <div>
-                    <IconButton color="primary">
+                    <IconButton color="primary" className={classes.retweetIcon}>
                         <RepeatOutlinedIcon style={{fontSize: 16}} />
                     </IconButton>
-
                 </div>
                 <div>
-                    <IconButton color="primary">
-                        <FavoriteBorderOutlinedIcon style={{fontSize: 16}} /> 
-                    </IconButton>                                  
+                    <IconButton color="primary" onClick={likeClick} className={classes[isLikedTweet ? 'likeIconAction' : 'likeIcon']}>
+                        {isLikedTweet ? 
+                            <FavoriteIcon style={{fontSize: 16}} />
+                        : 
+                            <FavoriteBorderOutlinedIcon style={{fontSize: 16}} />
+                        }
+                    </IconButton>   
+                    <span className={classes[isLikedTweet ? 'likeIconAction' : 'likeIcon']} style={{fontSize: 14}}>{like.length === 0 ? '' : like.length}</span>                            
                 </div>
                 <div>
-                    <IconButton color="primary">
+                    <IconButton color="primary" className={classes.settingIcon}>
                         <ReplyOutlinedIcon style={{fontSize: 16}}/> 
                     </IconButton>                                   
                 </div>
