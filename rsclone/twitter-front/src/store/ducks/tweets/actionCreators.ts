@@ -12,7 +12,7 @@ export const fetchAddTweet = (payload: {text: string, images: string[]}): FetchA
     payload 
 });
 
-export const fetchAddLike = (payload: { like: string[]; id: string}): FetchAddLikeActionInterface => ({
+export const fetchAddLike = (payload: { userId: string | undefined, id: string }): FetchAddLikeActionInterface => ({
     type: TweetsActionsType.FETCH_ADD_LIKE,
     payload 
 });

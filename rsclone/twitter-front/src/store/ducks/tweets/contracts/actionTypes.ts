@@ -31,8 +31,8 @@ export interface FetchAddTweetActionInterface extends Action<TweetsActionsType>{
 export interface FetchAddLikeActionInterface extends Action<TweetsActionsType>{
     type: TweetsActionsType.FETCH_ADD_LIKE;
     payload: {
-        id: string,
-        like: string[],
+        userId: string | undefined,
+        id: string
     }
 };
 

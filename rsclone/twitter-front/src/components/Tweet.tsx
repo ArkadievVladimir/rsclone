@@ -17,7 +17,6 @@ import { ImageList } from './ImageList';
 import { fetchAddLike, fetchEditTweet, removeTweet } from '../store/ducks/tweets/actionCreators';
 import { ModalBlock } from './ModalBlock';
 import { selectUserData } from '../store/ducks/user/selectors';
-import { TweetsApi } from '../services/api/tweetsApi';
 import { isLiked } from '../utils/isLikedTweet';
 
 interface TweetProps {
@@ -92,14 +91,12 @@ export const Tweet: React.FC<TweetProps> = ({
         e.preventDefault();
     }
 
-    let likeArray = Object.assign([], like);
-    let isLikedTweet = isLiked(userData, likeArray);
+    const likeArray = Object.assign([], like);
+    const isLikedTweet = isLiked(userData, likeArray);
     const likeClick = async (e: any) => {
         e.stopPropagation();
         e.preventDefault();
-        const { like } = await TweetsApi.getLikeCount({ id: _id }).then((data) => data);
-        isLiked(userData, like);
-        dispatch(fetchAddLike({like: like, id: _id}));
+        dispatch(fetchAddLike({userId: userData?._id, id: _id}));
     };
 
     return (
