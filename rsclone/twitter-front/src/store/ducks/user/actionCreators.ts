@@ -1,15 +1,10 @@
 import { LoginFormProps } from "../../../pages/Signin/components/LoginModal";
 import { RegisterFormProps } from "../../../pages/Signin/components/RegisterModal";
-import { SetUserDataLikedTweetsInterface, FetchSignInActionInterface, FetchSignUpActionInterface, FetchUserDataActionInterface, SetUserDataActionInterface, SetUserLoadingStatusActionInterface, SignOutActionInterface, UserActionsType } from "./contracts/actionTypes";
+import { FetchSignInActionInterface, FetchSignUpActionInterface, FetchUserDataActionInterface, SetUserDataActionInterface, SetUserLoadingStatusActionInterface, SignOutActionInterface, UserActionsType } from "./contracts/actionTypes";
 import { UserState } from "./contracts/state";
 
 export const setUserData = (payload: UserState['data']): SetUserDataActionInterface => ({
     type: UserActionsType.SET_USER_DATA,
-    payload,
-});
-
-export const SetLikedTweets = (payload: { likedTweets: []; _id: string }): SetUserDataLikedTweetsInterface => ({
-    type: UserActionsType.SET_LIKED_TWEETS,
     payload,
 });
 

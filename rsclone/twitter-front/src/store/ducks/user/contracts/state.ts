@@ -8,7 +8,6 @@ export interface User {
   password: string;
   confirmed?: boolean;
   confirmed_hash: string;
-  likedTweets: [];
   about?: string;
   website?: string;
   location?: string;

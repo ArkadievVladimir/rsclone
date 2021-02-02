@@ -23,12 +23,17 @@ export const TweetsApi = {
         return data.data;
     },
     async updateLike(payload: {
-        like: string[],
+        userId: string,
         id: string
     }): Promise<Tweet> {
-        const { like, id } = payload
+        const { userId, id } = payload
         const { data } = await axios.get<Response<Tweet>>(`/tweets/${id}`);
-        data.data.like = like;
+        const likedTweetIndex = data.data.like.indexOf(userId);
+        if (likedTweetIndex === -1) {
+            data.data.like.push(userId);
+        } else {
+            data.data.like.splice(likedTweetIndex, 1);
+        }
         axios.patch<Response<Tweet>>(`/like/${id}`, data.data);
         return data.data;
     },
@@ -43,7 +48,7 @@ export const TweetsApi = {
         text: string,
         id?: string
     }): Promise<Tweet> {
-        const {text, id} = payload;
+        const { text, id } = payload;
         const { data } = await axios.get<Response<Tweet>>(`/tweets/${id}`);
         data.data.text = text;
         axios.patch<Response<Tweet>>(`/tweets/${id}`, data.data);

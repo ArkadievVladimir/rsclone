@@ -2,7 +2,7 @@ import { call, put, takeLatest } from 'redux-saga/effects';
 import { TweetsApi } from '../../../services/api/tweetsApi';
 import { LoadingStatus } from '../../types';
 import { AddTweet, EditTweet, setAddFormState, setTweets, setTweetsLoadingStatus } from './actionCreators';
-import { FetchAddLikeActionInterface, FetchAddTweetActionInterface, FetchEditTweetActionInterface, RemoveTweetActionInterface, TweetsActionsType } from './contracts/actionTypes';
+import { FetchAddTweetActionInterface, FetchEditTweetActionInterface, RemoveTweetActionInterface, TweetsActionsType } from './contracts/actionTypes';
 import { AddFormState } from './contracts/state';
 
 export function* fetchTweetsRequest() {
@@ -35,7 +35,7 @@ export function* fetchEditTweetRequest({ payload }: FetchEditTweetActionInterfac
     }
 }
 
-export function* fetchUpdateLike({ payload }: FetchAddLikeActionInterface) {
+export function* fetchUpdateLike({ payload }: any) {
     try {
         const item = yield call(TweetsApi.updateLike, payload);
         yield put(EditTweet(item));
