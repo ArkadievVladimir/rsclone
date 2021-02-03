@@ -6,7 +6,7 @@ export const SearchTextField = withStyles((theme: Theme) => ({
             backgroundColor: '#e6ecf0',
             borderRadius: 30,
             padding: 0,
-            paddinfLeft: 15,
+            paddingLeft: 15,
             '& .Mui-focused': {
                 backgroundColor: '#fff',
                 '& fieldset': {
@@ -19,7 +19,7 @@ export const SearchTextField = withStyles((theme: Theme) => ({
             },
         '&:hover': {
             '& fieldset': {
-                borderColor: 'transparent',
+                borderColor: theme.palette.primary.main,
                 borderWidth: 1
             }
         },

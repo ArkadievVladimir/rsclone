@@ -50,7 +50,7 @@ export const Tweet: React.FC<TweetProps> = ({
         history.push(`/home/tweet/${_id}`);
     }
 
-    const imageClasses = tweetImageListStyles()
+    const imageClasses = tweetImageListStyles();
     const handleClick = (event: React.MouseEvent<HTMLElement>) => {
         event.stopPropagation();
         event.preventDefault();
@@ -62,28 +62,27 @@ export const Tweet: React.FC<TweetProps> = ({
     };
 
     const handleClose = () => {
-        setVisibility(false)
-        
+        setVisibility(false);
     };
 
     const handleRemove = (event: React.MouseEvent<HTMLElement>): void => {
         event.stopPropagation();
         event.preventDefault();
         if (window.confirm("Вы действительно хотите удалить?")) {
-            dispatch(removeTweet(_id))
+            dispatch(removeTweet(_id));
         }
     }
 
     const handleEdit = (event: React.MouseEvent<HTMLElement>): void => {
         event.stopPropagation();
         event.preventDefault();
-        setVisibility(true)
+        setVisibility(true);
     }
 
     const handlerAddEditedTweetOnClick = (): void => {
         dispatch(fetchEditTweet({text: tweetText, id: _id}))
         setTweetText(''); 
-        handleClose()
+        handleClose();
     };
     const handlerChangeTextarea = (e: React.FormEvent<HTMLTextAreaElement>): void => {
         if (e.currentTarget && e.currentTarget.value.length <= 288) {
@@ -165,7 +164,7 @@ export const Tweet: React.FC<TweetProps> = ({
             </div>
             <Typography variant="body1" gutterBottom>
                 {text}
-                {images && <ImageList classes={imageClasses} images={images}/>}
+                    {images && <ImageList classes={imageClasses} images={images}/>}
             </Typography>
             <div className={classes.tweetFooter}>
                 <div>

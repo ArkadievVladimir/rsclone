@@ -20,7 +20,6 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
         margin: '10px 0'
     },
     searchIcon: {
-        marginLeft: '10px',
         opacity: '0.25',
     },
     sideMenuList: {
@@ -289,7 +288,7 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
         borderRadius: 50,
         cursor: 'pointer',
         '&:hover': {
-            backgroundColor: 'rgba(29, 161, 242, 0.1)',
+            backgroundColor: 'rgba(230, 250, 255, 1)',
         }
     },
     sideProfileInfo: {

@@ -1,7 +1,7 @@
 import { Paper, Avatar, Typography, IconButton } from '@material-ui/core';
 import CircularProgress from '@material-ui/core/CircularProgress/CircularProgress';
 import ChatBubbleOutlineOutlinedIcon from '@material-ui/icons/ChatBubbleOutlineOutlined';
-import mediumZoom from 'medium-zoom'
+import mediumZoom from 'medium-zoom';
 import classNames from 'classnames';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -10,7 +10,7 @@ import format from 'date-fns/format';
 import ruLang from 'date-fns/locale/ru';
 import { fetchTweetData, setTweetData } from '../../../store/ducks/tweet/actionCreators';
 import { selectIsTweetLoading, selectTweetData } from '../../../store/ducks/tweet/selectors';
-import { useHomeStyles } from '../theme';
+import { tweetImageListStyles, useHomeStyles } from '../theme';
 import { ImageList } from '../../../components/ImageList';
 
 
@@ -19,6 +19,7 @@ export const FullTweet: React.FC = (): React.ReactElement | null => {
     const dispatch = useDispatch();
     const tweetData = useSelector(selectTweetData);
     const isLoading = useSelector(selectIsTweetLoading);
+    const imageClasses = tweetImageListStyles();
     const params: { id?: string } = useParams();
     const id = params.id;
 
@@ -66,7 +67,7 @@ export const FullTweet: React.FC = (): React.ReactElement | null => {
                 <Typography variant="body1" gutterBottom className={classes.fullTweetText}>
                         {tweetData.text}
                         <div className='tweet-images'>
-                           { tweetData.images && <ImageList classes={classes} images={tweetData.images}/>}
+                           { tweetData.images && <ImageList classes={imageClasses} images={tweetData.images}/>}
                         </div>
                 </Typography>
                 <Typography>
