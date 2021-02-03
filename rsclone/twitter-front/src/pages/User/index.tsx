@@ -73,7 +73,6 @@ export const UserPage: React.FC<RouteComponentProps<{ id: string }>> = ({ match 
         <p className='user__info-description'>Информация о пользователе</p>
         <ul className='user__info-details'>
           <li>Belarus, Minsk</li>
-          <li>Дата рождения: 01.01.2001 г.</li>
           <li>Регистрация: {format(new Date(userData?.createdAt ? userData?.createdAt : 0), 'dd MMM yyyy, HH:mm', {locale: ruLang})}</li>
         </ul>
       </div>

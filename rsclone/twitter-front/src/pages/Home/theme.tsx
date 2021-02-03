@@ -154,6 +154,13 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
     tweetsUserName: {
         color: grey[500],
     },
+    userNameLink: {
+        textDecoration: 'none',
+        color: 'black',
+        '&:hover': {
+            textDecoration: 'underline',
+        },
+    },
     tweet: {
         display: 'flex',
         alignItems: 'flex-start',

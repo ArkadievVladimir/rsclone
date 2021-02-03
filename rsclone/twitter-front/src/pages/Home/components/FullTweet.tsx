@@ -57,7 +57,7 @@ export const FullTweet: React.FC = (): React.ReactElement | null => {
                         // src={tweetData.user.avatarUrl} 
                     />
                     <Typography>
-                        <Link to={`/user/${tweetData.user._id}`}><b>{tweetData.user.fullname}</b>&nbsp; </Link>                
+                        <Link to={`/user/${tweetData.user._id}`} className={classes.userNameLink}><b>{tweetData.user.fullname}</b></Link>&nbsp;                
                         <div>
                             <span className={classes.tweetsUserName}>@{tweetData.user.username}</span>&nbsp;
                         </div>

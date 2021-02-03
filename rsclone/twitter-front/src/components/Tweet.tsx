@@ -6,7 +6,6 @@ import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutline
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ReplyOutlinedIcon from '@material-ui/icons/ReplyOutlined';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-
 import { Avatar, Button, IconButton, Menu, MenuItem, Paper, TextareaAutosize, Typography, } from '@material-ui/core';
 import { tweetImageListStyles, useHomeStyles } from '../pages/Home/theme';
 import { useHistory } from 'react-router-dom';
@@ -18,6 +17,7 @@ import { fetchAddLike, fetchEditTweet, removeTweet } from '../store/ducks/tweets
 import { ModalBlock } from './ModalBlock';
 import { selectUserData } from '../store/ducks/user/selectors';
 import { isLiked } from '../utils/isLikedTweet';
+import { Link } from 'react-router-dom';
 
 interface TweetProps {
     _id: string;
@@ -55,6 +55,10 @@ export const Tweet: React.FC<TweetProps> = ({
         event.stopPropagation();
         event.preventDefault();
         setAnchorEl(event.currentTarget);
+    };
+
+    const nameClick = (event: React.MouseEvent<HTMLElement>) => {
+        event.stopPropagation();
     };
 
     const handleClose = () => {
@@ -127,7 +131,7 @@ export const Tweet: React.FC<TweetProps> = ({
         <div className={classes.tweeetContent}>
             <div className={classes.tweetHeader}>
                 <div>
-                    <b>{user.fullname}</b>&nbsp;
+                    <Link to={`/user/${user._id}`} className={classes.userNameLink} onClick={nameClick}><b>{user.fullname}</b></Link> &nbsp; 
                     <span className={classes.tweetsUserName}>@{user.username}</span>&nbsp;
                     <span className={classes.tweetsUserName}> · </span>&nbsp;
                     <span className={classes.tweetsUserName}>{formatDate(new Date(createdAt))}</span>
