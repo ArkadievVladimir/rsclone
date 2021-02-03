@@ -69,7 +69,6 @@ export const Home = (): React.ReactElement => {
                 </Route>
 
                 <Route path="/home/tweet/:id" component={FullTweet} exact />
-                
             </Paper>
     );
 };

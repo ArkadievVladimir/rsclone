@@ -12,6 +12,7 @@ import { LoadingStatus } from './store/types';
 import { useHomeStyles } from './pages/Home/theme';
 import { ActivatePage } from './pages/ActivatePage';
 import { UserSideProfile } from './components/UserSideProfile';
+import { Footer } from './components/Footer';
 
 function App() {
   const classes = useHomeStyles();
@@ -52,6 +53,7 @@ function App() {
           <Route path="/user/activate/:hash" component={ActivatePage} />
         </Layout>
       </Switch>
+      <Footer/>
     </div>
   );
 }

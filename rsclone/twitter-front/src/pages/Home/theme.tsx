@@ -279,7 +279,7 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
         display: 'flex',
         alignItems: 'center',
         position: 'fixed',
-        bottom: 30,
+        bottom: 44,
         backgroundColor: 'white',
         border: '1px solid rgba(0,0,0,0.1)',
         boxSizing: 'content-box',
@@ -341,7 +341,47 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
         padding: '0 !important',
         backgroundColor: '#ff4d4d !important',
         borderRadius: '50%'
+    },
+    footer: {
+        width: '100vw',
+        //height: '10vh',
+        backgroundColor: '#3f51b5',
+    },
+    footer__container: {
+        width: '90%',
+        padding: '0 10px',
+    },
+    footer__body: {
+		padding: '10px',
+		display: 'flex',
+		justifyContent: 'space-around',
+		alignItems: 'flex-end',
+	},
+    footer__logo: {
+        margin: '15px 170px 0 0'
+    },
+    footer__logo__img: {
+        display: 'block',
+        margin: '0px 0px 5px 0px',
+        '& img': {
+            width: '80px'
+        }
+    },
+    footer__author: {
+        paddingBottom: '10px',
+		fontSize: '14px',
+		color: '#fff'
+    },
+    footer__author__link: {
+        color: 'inherit',
+        padding: '0 0 0 5px',
+        textDecoration: 'underline',
+    },
+    footer__copyright: {
+        color: 'white',
+        paddingBottom: '10px',
     }
+   
 }));
 
 export const uploadImagesListStyles = makeStyles((theme: Theme) => ({
