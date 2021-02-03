@@ -30,10 +30,10 @@ return (
           <SearchTextField
             variant='outlined'
             placeholder='Поиск по Твиттеру'
-            inputProps={{
+            InputProps={{
               startAdornment: (
                 <InputAdornment position='start'>
-                  <SearchIcon />
+                  <SearchIcon className={classes.searchIcon} />
                 </InputAdornment>
               ),
             }}

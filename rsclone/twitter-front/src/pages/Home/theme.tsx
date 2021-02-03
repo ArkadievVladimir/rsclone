@@ -19,6 +19,10 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
         fontSize: 36,
         margin: '10px 0'
     },
+    searchIcon: {
+        marginLeft: '10px',
+        opacity: '0.25',
+    },
     sideMenuList: {
         maxWidth: 230,
         position: 'sticky',
