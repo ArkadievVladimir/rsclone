@@ -412,7 +412,8 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
         borderRadius: '50%'
     },
     footer: {
-        backgroundColor: '#cccccc',
+        backgroundColor: '#e6ecf0',
+        border: '1px solid rgba(0, 0, 0, 0.12)',
         display: 'flex',
         justifyContent: 'center'
     },
