@@ -1,6 +1,5 @@
 import axios from 'axios';
-
-
+import { BACKEND_URL } from '../services/backendUrl';
 interface UploadImageReturnProps {
     height: number;
     size: number;
@@ -12,7 +11,7 @@ export const uploadImage = async (image: File): Promise<UploadImageReturnProps> 
     const formData = new FormData();
     formData.append('image', image);
 
-    const { data } = await axios.post('/upload', formData, {
+    const { data } = await axios.post(`${BACKEND_URL}/upload`, formData, {
         headers: {
             'Content-Type': 'multipart/form-data'
         }
