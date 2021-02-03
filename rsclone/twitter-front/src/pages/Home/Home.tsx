@@ -14,6 +14,8 @@ import { fetchTags } from '../../store/ducks/tags/actionCreators';
 import { Tweet } from '../../components/Tweet';
 import { Sidebar } from '../../components/Sidebar';
 import { UserSideProfile } from '../../components/UserSideProfile';
+import { Footer } from '../../components/Footer';
+
 
 
 export const Home = (): React.ReactElement => {
@@ -67,7 +69,6 @@ export const Home = (): React.ReactElement => {
                         />)
                     )}
                 </Route>
-
                 <Route path="/home/tweet/:id" component={FullTweet} exact />
             </Paper>
     );

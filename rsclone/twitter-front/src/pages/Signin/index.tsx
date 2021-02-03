@@ -24,7 +24,10 @@ export const useStylesSignIn = makeStyles((theme) => ({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        overflow: 'hidden'
+        overflow: 'hidden',
+        [theme.breakpoints.down('xs')]: {
+            display: 'none',
+        },
     },
     blueSideBigIcon: {
         position: 'absolute',
@@ -46,6 +49,10 @@ export const useStylesSignIn = makeStyles((theme) => ({
             color: 'white',
             fontWeight: 700,
             fontSize: 20,
+            [theme.breakpoints.down('sm')]: {
+                padding: '0 12px 0',
+                fontSize: 18,
+            },
         }
     },
     blueSideListInfoIcons: {
@@ -60,19 +67,38 @@ export const useStylesSignIn = makeStyles((theme) => ({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        overflow: 'hidden'
+        overflow: 'hidden',
+        [theme.breakpoints.down('xs')]: {
+            flex: '0 0 100%',
+        },
     },
     loginSideTwitterIcon: {
-        fontSize: 45
+        fontSize: 35
     },
     loginSideWrapper: {
-        width: 380
+        width: 380,
+        '& svg': {
+            margin: '10px'
+        },
+        '& h4': {
+            margin: '10px'
+        },
+        '& p': {
+            margin: '10px'
+        },
+        '& button': {
+            width: '90%',
+            margin: '10px'
+        }
     },
     loginSideTitle: {
         fontWeight: 700,
-        fontSize: 32,
-        marginBottom: 60,
-        marginTop: 20
+        fontSize: 26,
+        margin: '20px 10px 60px 10px',
+        [theme.breakpoints.only('sm')]: {
+            fontSize: 20,
+            margin: '20px 20px 60px 20px',
+        },
     },
     loginSideField: {
         marginBottom: 18
