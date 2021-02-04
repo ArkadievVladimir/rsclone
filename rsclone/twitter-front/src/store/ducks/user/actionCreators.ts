@@ -1,7 +1,7 @@
-import { LoginFormProps } from "../../../pages/Signin/components/LoginModal";
-import { RegisterFormProps } from "../../../pages/Signin/components/RegisterModal";
-import { FetchSignInActionInterface, FetchSignUpActionInterface, FetchUserDataActionInterface, SetUserDataActionInterface, SetUserLoadingStatusActionInterface, SignOutActionInterface, UserActionsType } from "./contracts/actionTypes";
-import { UserState } from "./contracts/state";
+import { LoginFormProps } from '../../../pages/Signin/components/LoginModal';
+import { RegisterFormProps } from '../../../pages/Signin/components/RegisterModal';
+import { FetchSignInActionInterface, FetchSignUpActionInterface, FetchUserDataActionInterface, SetUserDataActionInterface, SetUserLoadingStatusActionInterface, SignOutActionInterface, UserActionsType } from './contracts/actionTypes';
+import { UserState } from './contracts/state';
 
 export const setUserData = (payload: UserState['data']): SetUserDataActionInterface => ({
     type: UserActionsType.SET_USER_DATA,
@@ -36,5 +36,4 @@ export const setUserLoadingStatus = (
 export type UserActions = 
     | SetUserLoadingStatusActionInterface 
     | SetUserDataActionInterface
-    | FetchUserDataActionInterface | SignOutActionInterface
-    ;
+    | FetchUserDataActionInterface | SignOutActionInterface;

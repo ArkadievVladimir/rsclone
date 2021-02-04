@@ -30,8 +30,6 @@ let homeComponentWordsPreset: Array<string> = homeComponentWords.map((item) => {
     return item[index];
   });
 
-
-
 export const Home = (): React.ReactElement => {
     const classes = useHomeStyles();
     const dispatch = useDispatch();
@@ -44,8 +42,8 @@ export const Home = (): React.ReactElement => {
     }, [dispatch]);
 
     return (
-            <Paper className={classes.tweetsWrapper} variant="outlined">
-                <Paper className={classes.tweetsHeader} variant="outlined" >
+            <Paper className={classes.tweetsWrapper} variant='outlined'>
+                <Paper className={classes.tweetsHeader} variant='outlined'>
                 <Route path='/home/:any'>
                     <BackButton />
                 </Route>
@@ -68,7 +66,7 @@ export const Home = (): React.ReactElement => {
                 </Paper>
                 </Route>
 
-                <Route path="/home" exact>
+                <Route path='/home' exact>
                     {isLoading ? (
                         <div className={classes.tweetsWrapper}>
                             <CircularProgress />
@@ -83,8 +81,7 @@ export const Home = (): React.ReactElement => {
                         />)
                     )}
                 </Route>
-
-                <Route path="/home/tweet/:id" component={FullTweet} exact />
+                <Route path='/home/tweet/:id' component={FullTweet} exact />
             </Paper>
     );
 };

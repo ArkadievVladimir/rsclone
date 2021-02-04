@@ -1,9 +1,6 @@
 // @ts-nocheck
-
 import { createMuiTheme } from '@material-ui/core/styles';
 import { red } from '@material-ui/core/colors';
-
-
 
 export const theme = createMuiTheme({
     typography: {
@@ -51,7 +48,7 @@ export const theme = createMuiTheme({
                 },
                 textPrimary: {
                     paddingLeft: 20,
-                    paddingRght: 20
+                    paddingRight: 20
                 },
                 outlinedPrimary: {
                     borderColor: 'rgb(29, 161, 243)'
@@ -76,7 +73,7 @@ export const theme = createMuiTheme({
                     borderRadius: 15
                 }
             },
-            MuiDalogActions: {
+            MuiDialogActions: {
                 root: {
                     marginBottom: 8,
                 }
@@ -84,7 +81,7 @@ export const theme = createMuiTheme({
             MuiDialogTitle: {
                 root: {
                     borderBottom: '1px solid rgb(204, 214, 221)',
-                    marginBottm: 10,
+                    marginBottom: 10,
                     padding: '10px 15px',
                     '& h2': {
                         display: 'flex',

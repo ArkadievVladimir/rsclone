@@ -13,7 +13,6 @@ import { selectIsTweetLoading, selectTweetData } from '../../../store/ducks/twee
 import { tweetImageListStyles, useHomeStyles } from '../theme';
 import { ImageList } from '../../../components/ImageList';
 
-
 export const FullTweet: React.FC = (): React.ReactElement | null => {
     const classes = useHomeStyles();
     const dispatch = useDispatch();
@@ -39,7 +38,7 @@ export const FullTweet: React.FC = (): React.ReactElement | null => {
                 background: 'rgba(0, 0, 0, 0.74)'
               });
         }
-    },[isLoading])
+    },[isLoading]);
 
     if (isLoading) {
         return (
@@ -53,22 +52,22 @@ export const FullTweet: React.FC = (): React.ReactElement | null => {
         return  <Paper className={classes.fullTweet}>                   
                 <div className={classNames(classes.tweetsHeaderUser)}>
                     <Avatar 
-                        alt="Ava" 
+                        alt='Ava' 
                         className={classes.tweetAvatar}
                         // src={tweetData.user.avatarUrl} 
                     />
                     <Typography>
                         <Link to={`/user/${tweetData.user._id}`} className={classes.userNameLink}><b>{tweetData.user.fullname}</b></Link>&nbsp;                
-                        <div>
+                        <span>
                             <span className={classes.tweetsUserName}>@{tweetData.user.username}</span>&nbsp;
-                        </div>
+                        </span>
                     </Typography>
                 </div> 
-                <Typography variant="body1" gutterBottom className={classes.fullTweetText}>
+                <Typography variant='body1' gutterBottom className={classes.fullTweetText}>
                         {tweetData.text}
-                        <div className='tweet-images'>
+                        <span className='tweet-images'>
                            { tweetData.images && <ImageList classes={imageClasses} images={tweetData.images}/>}
-                        </div>
+                        </span>
                 </Typography>
                 <Typography>
                     <span className={classes.tweetsUserName}>{format(new Date(tweetData.createdAt),'H:mm', {locale: ruLang})} · </span>
@@ -76,12 +75,11 @@ export const FullTweet: React.FC = (): React.ReactElement | null => {
                 </Typography>
                 {/* <div className={classNames(classes.tweetFooter, classes.fullTweetFooter)}> */}
                 <div className={classNames(classes.tweetFooter)}>
-                    <IconButton color="primary">
+                    <IconButton color='primary'>
                         <ChatBubbleOutlineOutlinedIcon style={{fontSize: 16}} />
                     </IconButton>
                 </div>
             </Paper>
     }
-    
     return null;
 };

@@ -1,6 +1,5 @@
 import React from 'react';
 import { IconButton } from '@material-ui/core';
-import { useHomeStyles } from '../pages/Home/theme';
 import ClearIcon from '@material-ui/icons/Clear';
 
 interface ImageListProps {
@@ -11,12 +10,12 @@ interface ImageListProps {
 
 export const ImageList: React.FC<ImageListProps> = ({ classes, images, removeImage }) => {
     if (!images.length) {
-        return null
+        return null;
     }
     return (
-        <div className={classes.imagesList}>
+        <span className={classes.imagesList}>
         {images.map((url) => (
-            <div className={classes.imagesListItem}>
+            <span key={url} className={classes.imagesListItem}>
                 {removeImage && (
                 <IconButton
                  onClick={(): void => removeImage(url)} 
@@ -25,8 +24,8 @@ export const ImageList: React.FC<ImageListProps> = ({ classes, images, removeIma
                 </IconButton>
                 )}
                 <img key={url} src={url} alt=''/>
-            </div> 
+            </span> 
         ))}
-    </div>
+        </span>
     )
-}
+};

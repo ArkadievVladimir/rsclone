@@ -4,9 +4,9 @@ import FormGroup from '@material-ui/core/FormGroup';
 import TextField from '@material-ui/core/TextField';
 import React from 'react';
 import { useDispatch, useSelector} from 'react-redux'
-import { useForm, Controller } from "react-hook-form";
+import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from "yup";
+import * as yup from 'yup';
 import { useStylesSignIn } from '..';
 import { ModalBlock } from '../../../components/ModalBlock';
 import { Color } from '@material-ui/lab';
@@ -14,7 +14,6 @@ import { fetchSignUp } from '../../../store/ducks/user/actionCreators';
 import { selectUserStatus } from '../../../store/ducks/user/selectors';
 import { LoadingStatus } from '../../../store/types';
 import { RegisterModalWords } from '../../../languages';
-
 
 interface RegisterModalProps {
     open: boolean;
@@ -60,8 +59,7 @@ export const RegisterModal: React.FC<RegisterModalProps> = ({ open, onClose }): 
         resolver: yupResolver(RegisterFormSchema)
       });
     const onSubmit = async (data: RegisterFormProps) => {
-        dispatch(fetchSignUp(data))
-
+        dispatch(fetchSignUp(data));
     }
 
     React.useEffect( () => {
@@ -71,6 +69,7 @@ export const RegisterModal: React.FC<RegisterModalProps> = ({ open, onClose }): 
         } else if (loadingStatus === LoadingStatus.ERROR) {
             openNotificationRef.current(RegisterModalWordsPreset[8], 'error')
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [loadingStatus])
 
     return (
@@ -81,22 +80,22 @@ export const RegisterModal: React.FC<RegisterModalProps> = ({ open, onClose }): 
                      classes={classes}
                     >
                         <form onSubmit={handleSubmit(onSubmit)}>
-                        <FormControl className={classes.loginFormControl} component="fieldset" fullWidth>
-                            <FormGroup aria-label="position" row>
+                        <FormControl className={classes.loginFormControl} component='fieldset' fullWidth>
+                            <FormGroup aria-label='position' row>
                             <Controller
                             as={TextField}
-                                name="email"
+                                name='email'
                                 control={control}
-                                defaultValue=""
+                                defaultValue=''
                                 // render={({ onChange, value }) => <input onChange={onChange} value={value} />}
                                 className={classes.registerField}
                                 autoFocus
                                 error={!!errors.email}
                                 helperText={errors.email?.message}
-                                id="email"
-                                label="E-Mail"
-                                type="email"
-                                variant="filled"
+                                id='email'
+                                label='E-Mail'
+                                type='email'
+                                variant='filled'
                                 InputLabelProps={{
                                     shrink: true
                                 }}
@@ -104,9 +103,9 @@ export const RegisterModal: React.FC<RegisterModalProps> = ({ open, onClose }): 
                             />
                             <Controller
                             as={TextField}
-                                name="fullname"
+                                name='fullname'
                                 control={control}
-                                defaultValue=""
+                                defaultValue=''
                                 //render={({ onChange, value }) => <input onChange={onChange} value={value} />}
                                 className={classes.registerField}
                                 autoFocus
@@ -123,9 +122,9 @@ export const RegisterModal: React.FC<RegisterModalProps> = ({ open, onClose }): 
                             />
                             <Controller
                             as={TextField}
-                                name="username"
+                                name='username'
                                 control={control}
-                                defaultValue=""
+                                defaultValue=''
                                 //render={({ onChange, value }) => <input onChange={onChange} value={value} />}
                                 className={classes.registerField}
                                 autoFocus
@@ -145,8 +144,8 @@ export const RegisterModal: React.FC<RegisterModalProps> = ({ open, onClose }): 
                                 control={control}
                                 error={!!errors.password}
                                 helperText={errors.password?.message}
-                                defaultValue=""
-                                name="password"
+                                defaultValue=''
+                                name='password'
                                 className={classes.registerField}
                                 id="password"
                                 label={RegisterModalWordsPreset[12]}
@@ -162,8 +161,8 @@ export const RegisterModal: React.FC<RegisterModalProps> = ({ open, onClose }): 
                                 control={control}
                                 error={!!errors.password2}
                                 helperText={errors.password2?.message}
-                                defaultValue=""
-                                name="password2"
+                                defaultValue=''
+                                name='password2'
                                 className={classes.registerField}
                                 id="password2"
                                 label={RegisterModalWordsPreset[13]}
@@ -174,7 +173,7 @@ export const RegisterModal: React.FC<RegisterModalProps> = ({ open, onClose }): 
                                 }}
                                 fullWidth 
                             />
-                             
+          
                                 <Button disabled={loadingStatus === LoadingStatus.LOADING} type="submit" variant="contained" color="primary" fullWidth>
                                     {RegisterModalWordsPreset[14]}
                                 </Button>
@@ -183,5 +182,4 @@ export const RegisterModal: React.FC<RegisterModalProps> = ({ open, onClose }): 
                         </form>
                     </ModalBlock>
     )
-}
-
+};

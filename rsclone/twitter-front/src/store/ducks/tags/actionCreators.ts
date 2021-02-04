@@ -2,7 +2,6 @@ import { Action } from 'redux';
 import { LoadingStatus } from '../../types';
 import { TagsState } from './contracts/state';
 
-
 export enum TagsActionsType {
     SET_TAGS = 'hashtags/SET_TAGS',
     FETCH_TAGS = 'hashtags/FETCH_TAGS',
@@ -22,8 +21,6 @@ export interface SetTagsItemsLoadingStatusActionInterface extends Action<TagsAct
     type:  TagsActionsType.SET_LOADING_STATE;
     payload: LoadingStatus;
 };
-
-
 
 export const setTags = (payload:  TagsState['items']): SetTagsItemsActionInterface => ({
     type: TagsActionsType.SET_TAGS,

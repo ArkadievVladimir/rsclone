@@ -6,7 +6,6 @@ import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 import ListAltIcon from '@material-ui/icons/ListAlt';
-
 import { useState } from 'react';
 import { 
     Button,
@@ -68,14 +67,14 @@ export const Sidebar: React.FC<SidebarProps> = ({
     return (
     <ul className={classes.sideMenuList}> 
         <li className={classes.sideMenuListItem}>
-            <Link to="/home">
-            <IconButton className={classes.logo} aria-label="" color="primary">
+            <Link to='/home'>
+            <IconButton className={classes.logo} aria-label='' color='primary'>
                 <TwitterIcon  className={classes.logoIcon}/>
             </IconButton>
             </Link>
         </li>
         <li className={classes.sideMenuListItem}>
-            <Link to="/home">
+            <Link to='/home'>
                 <div>
                     <HomeIcon className={classes.sideMenuListItemIcon} />
                     <Hidden smDown>
@@ -156,8 +155,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
             <Button 
                 onClick={handleClickOpenAddTweet} 
                 className={classes.sideMenuTweetBtn} 
-                variant="contained" 
-                color="primary" 
+                variant='contained' 
+                color='primary' 
                 fullWidth>
                 <Hidden smDown>
                     {sideBarPreset[7]}                  

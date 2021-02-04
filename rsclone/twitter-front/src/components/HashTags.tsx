@@ -43,6 +43,7 @@ export const Tags: React.FC<TagsProps> = ({
         </Paper>
     <List>
        {
+           // eslint-disable-next-line array-callback-return
            items.map((obj) => {
            <React.Fragment key={obj._id}>
             <Link to={`/home/search?q=${obj.name}`}>
@@ -56,11 +57,11 @@ export const Tags: React.FC<TagsProps> = ({
             />
         </ListItem>
         </Link>
-        <Divider component="li" />
+        <Divider component='li'/>
             </React.Fragment>
         })
        }
     </List>
     </Paper>
     )
-}
+};

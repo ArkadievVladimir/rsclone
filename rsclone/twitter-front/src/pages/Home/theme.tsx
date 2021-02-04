@@ -9,7 +9,7 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
         transform: 'translate(-50%, -50%)'
     },
     wrapper: {
-        height: '100vh'
+        height: '100vh',
     },
     logo: {
         fontSize: 36,
@@ -28,7 +28,26 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
         top: 0,
         listStyle: 'none',
         padding: 0,
-        margin: 0
+        margin: 0,
+        'z-index': 100,
+        [theme.breakpoints.down('xs')]: {
+            width: '5vw',
+            margin: '5%',
+            '& svg': {
+                width: '20px'
+            },
+            '& li': {
+                width: '20px',
+                '& div': {
+                    padding: '11px'
+                },
+                '& button': {
+                    width: '20px',
+                },
+            }
+        },
+        
+        
     },
     sideMenuListItem: {
         '& a': {
@@ -92,13 +111,26 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
         padding: theme.spacing(2),
         maxWidth: 230,
         marginTop: theme.spacing(3),
-        borderRadius: 30
+        borderRadius: 30,  
+        [theme.breakpoints.down('xs')]: {
+            display: 'none'
+        },    
     },
     tweetsWrapper: {
         borderRadius: 0,
         height: '100%',
+        'min-height': 'calc(100vh - 75px)',
         borderTop: 0,
-        borderBottom: 0
+        borderBottom: 0,
+        [theme.breakpoints.down('xs')]: {
+           'min-width': '240px',
+           width:'calc(80vw - 5vw)'
+        },
+        [theme.breakpoints.only('sm')]: {
+            width: '75vw',
+            marginLeft: '30px'
+         },
+        
     },
     tweetWrapper: {
         color: 'inherit',
@@ -134,7 +166,10 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
     },
     fullTweetText: {
         fontSize: 28,
-        marginTop: 15
+        marginTop: 15,
+        [theme.breakpoints.down('xs')]: {
+            fontSize: 14,
+        },
     },
     tweetFooter: {
         display: 'flex',
@@ -145,20 +180,20 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
     },
     tweetMessagesIcon: {
         color: grey[500],
-        "&:hover": {
+        '&:hover': {
             color: 'rgb(29,161,242)',
         },
     },
     retweetIcon: {
         color: grey[500],
-        "&:hover": {
+        '&:hover': {
             color: 'rgb(23, 191, 99)',
         },
     },
     likeIcon: {
         color: grey[500],
         fontSize: '14px',
-        "&:hover": {
+        '&:hover': {
             color: 'rgb(224, 36, 94)',
         },
     },
@@ -167,7 +202,7 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
     },
     settingIcon: {
         color: grey[500],
-        "&:hover": {
+        '&:hover': {
             color: 'rgb(29,161,242)',
         },
     },
@@ -194,7 +229,8 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
     tweetAvatar: {
         width: theme.spacing(5),
         height: theme.spacing(5),
-        marginRight: 15
+        marginRight: 15,
+        'z-index': 0
     }, 
     tweetHeader: {
         display: 'flex',
@@ -207,7 +243,15 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
     rightSide: {
         paddingTop: 20,
         position: 'sticky',
-        top: 0
+        top: 0,
+        [theme.breakpoints.down('xs')]: {
+            display: 'none',
+            padding: 0
+        },
+        [theme.breakpoints.down('sm')]: {
+            display: 'none',
+            padding: 0
+        },
     },
     rightSideBlock: {
         backgroundColor: '#f5f8fa',
@@ -215,7 +259,10 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
         marginTop: 20,
         '& .MuiList-root': {
             paddingTop: 0,
-        }
+        },
+        [theme.breakpoints.down('xs')]: {
+            display: 'none'
+        },
     },
     rightSideBlockHeader: {
         borderTop: 0,
@@ -251,7 +298,10 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
     },
     addFormBody: {
         display: 'flex',
-        width: '100%'
+        width: '100%',
+        [theme.breakpoints.down('xs')]: {
+            width: '80vw',
+         },
     },
     addFormBottom: {
         display: 'flex',
@@ -261,6 +311,12 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
     addFormBottomActions: {
         marginTop: 10,
         paddingLeft: 65
+        ,
+        [theme.breakpoints.down('xs')]: {
+            display: 'none',
+            padding: 0, 
+            margin: 0
+         },
     },
     addFormTextArea: {
         width: '100%',
@@ -268,7 +324,11 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
         fontSize: 20,
         outline: 'none',
         fontFamily: 'inherit',
-        resize: 'none'
+        resize: 'none',
+        [theme.breakpoints.down('xs')]: {
+            width: '60%',
+            fontSize: 14,
+         },
     },
     addFormTextAreaEditor: {
         width: '32rem',
@@ -277,7 +337,11 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
         fontSize: 20,
         outline: 'none',
         fontFamily: 'inherit',
-        resize: 'none'
+        resize: 'none',
+        [theme.breakpoints.down('xs')]: {
+            width: '100%',
+            fontSize: 14,
+        },
     },
     addFormBottomLine: {
         height: 12,
@@ -295,6 +359,9 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
     addFormBottomRight: {
         display: 'flex',
         alignItems: 'center',
+        [theme.breakpoints.down('xs')]: {
+            paddingTop: '5px'
+        },
     },
     sideProfile: {
         display: 'flex',
@@ -308,9 +375,11 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
         width: 260,
         borderRadius: 50,
         cursor: 'pointer',
+        'z-index': 1000,
         '&:hover': {
             backgroundColor: 'rgba(230, 250, 255, 1)',
-        }
+        },
+        
     },
     sideProfileInfo: {
         flex: 1,
@@ -364,22 +433,42 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
         borderRadius: '50%'
     },
     footer: {
-        width: '100vw',
-        //height: '10vh',
-        backgroundColor: '#3f51b5',
+        backgroundColor: '#e6ecf0',
+        border: '1px solid rgba(0, 0, 0, 0.12)',
+        display: 'flex',
+        justifyContent: 'center'
     },
     footer__container: {
         width: '90%',
         padding: '0 10px',
+        [theme.breakpoints.down('xs')]: {
+            padding: 0
+        },
     },
     footer__body: {
 		padding: '10px',
 		display: 'flex',
 		justifyContent: 'space-around',
-		alignItems: 'flex-end',
+        alignItems: 'flex-end',
+        [theme.breakpoints.down('xs')]: {
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center'
+        },
+        [theme.breakpoints.down('sm')]: {
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center'
+        },
 	},
     footer__logo: {
-        margin: '15px 170px 0 0'
+        margin: '15px 222px 0 0',
+        [theme.breakpoints.down('xs')]: {
+            margin: '15px 0 0 15px'
+        },
+        [theme.breakpoints.down('sm')]: {
+            margin: '15px 0 0 15px'
+        },
     },
     footer__logo__img: {
         display: 'block',
@@ -390,8 +479,8 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
     },
     footer__author: {
         paddingBottom: '10px',
-		fontSize: '14px',
-		color: '#fff'
+		fontSize: '10px',
+		color: 'black'
     },
     footer__author__link: {
         color: 'inherit',
@@ -399,9 +488,11 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
         textDecoration: 'underline',
     },
     footer__copyright: {
-        color: 'white',
+        color: 'black',
         paddingBottom: '10px',
-    }
+    },
+
+    
    
 }));
 
@@ -463,4 +554,4 @@ export const tweetImageListStyles = makeStyles((theme: Theme) => ({
             fill: 'white'
         },
     },
-}))
+}));

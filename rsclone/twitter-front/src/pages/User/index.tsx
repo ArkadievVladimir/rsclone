@@ -85,17 +85,17 @@ export const UserPage: React.FC<RouteComponentProps<{ id: string }>> = ({ match 
         </div>
       </Paper>
 
-      <div className="user__header"></div>
+      <div className='user__header'></div>
 
-      <div className="user__info">
+      <div className='user__info'>
         <Avatar />
         {!userData ? (
-          <Skeleton variant="text" width={259} height={30} />
+          <Skeleton variant='text' width={259} height={30} />
           ) : (
           <h2 className='user__info-fullname'>{userData?.fullname}</h2>
           )}
         {!userData ? (
-        <Skeleton variant="text" width={60}/>
+        <Skeleton variant='text' width={60}/>
         ) : (
         <span className='user__info-username'>@{userData?.username}</span>
         )}

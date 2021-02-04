@@ -1,19 +1,19 @@
 import React from 'react';
-import { Container, Grid, InputAdornment } from "@material-ui/core";
+import { Container, Grid, InputAdornment } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/SearchOutlined';
-
 import { Sidebar } from '../components/Sidebar';
 import { useHomeStyles } from '../pages/Home/theme';
-import { SearchTextField } from "../components/SearchTextField";
+import { SearchTextField } from '../components/SearchTextField';
 import { Tags } from '../components/HashTags';
 import { ThemeBtn } from '../components/themeBtn';
 import { LanguageBtn } from '../components/languageBtn';
 import { searchFieldPlaceholderWord } from '../languages';
 // import { Users } from '../components/Users';
 
-interface Layout {
+interface LayoutProp {
   children: React.ReactNode;
 }
+
 
 let index: number = 0;
 
@@ -29,11 +29,12 @@ let searchFieldPlaceholderWordPreset: Array<string> = searchFieldPlaceholderWord
     return item[index];
   });
 
-export const Layout: React.FC<Layout> = ({ children }): React.ReactElement => {
+
+export const Layout: React.FC<LayoutProp> = ({ children }): React.ReactElement => {
+
   const classes = useHomeStyles();
 
 return (
-  // <Container classname={classes.wrapper} maxWidth='lg'>
     <Container  maxWidth='lg'>
     <Grid container spacing={3}>
       <Grid sm={1} md={3} item>
@@ -68,4 +69,4 @@ return (
     </Grid>
   </Container>
 );
-}
+};

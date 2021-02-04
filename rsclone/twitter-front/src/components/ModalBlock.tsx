@@ -28,20 +28,20 @@ export const ModalBlock: React.FC<ModalBlockProps> = ({
         event.stopPropagation();
     }
     return (
-        <Dialog open={visible} onClose={onClose} aria-labelledby="form-dialog">
-            <DialogTitle id="form-dialog-title">
+        <Dialog open={ visible } onClose={ onClose } aria-labelledby='form-dialog'>
+            <DialogTitle id='form-dialog-title'>
                 <IconButton
-                    onClick={onClose}
-                    color="secondary"
-                    aria-label="close">
+                    onClick={ onClose }
+                    color='secondary'
+                    aria-label='close'>
                         <CloseIcon 
                             style={{ fontSize: 26 }}
-                            color="secondary"
+                            color='secondary'
                         />
                 </IconButton>
                 { title }
             </DialogTitle>
-            <DialogContent onClick={preventClose}>
+            <DialogContent onClick={ preventClose }>
                 { children }
             </DialogContent>
         </Dialog> 

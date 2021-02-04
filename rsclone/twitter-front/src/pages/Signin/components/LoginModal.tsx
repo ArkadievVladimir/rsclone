@@ -4,9 +4,9 @@ import FormGroup from '@material-ui/core/FormGroup';
 import TextField from '@material-ui/core/TextField';
 import React from 'react';
 import { useDispatch, useSelector} from 'react-redux'
-import { useForm, Controller } from "react-hook-form";
+import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from "yup";
+import * as yup from 'yup';
 import { useStylesSignIn } from '..';
 import { ModalBlock } from '../../../components/ModalBlock';
 import { Color } from '@material-ui/lab';
@@ -53,7 +53,7 @@ export const LoginModal: React.FC<LoginModalProps> = ({ open, onClose }): React.
         resolver: yupResolver(LoginFormSchema)
       });
     const onSubmit = async (data: LoginFormProps) => {
-        dispatch(fetchSignIn(data))
+        dispatch(fetchSignIn(data));
     }
 
     React.useEffect( () => {
@@ -64,7 +64,7 @@ export const LoginModal: React.FC<LoginModalProps> = ({ open, onClose }): React.
             openNotificationRef.current(loginModalWordsPreset[5], 'error')
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [loadingStatus])
+    }, [loadingStatus]);
 
     return (
         <ModalBlock
@@ -74,22 +74,22 @@ export const LoginModal: React.FC<LoginModalProps> = ({ open, onClose }): React.
                      classes={classes}
                     >
                         <form onSubmit={handleSubmit(onSubmit)}>
-                        <FormControl className={classes.loginFormControl} component="fieldset" fullWidth>
-                            <FormGroup aria-label="position" row>
+                        <FormControl className={classes.loginFormControl} component='fieldset' fullWidth>
+                            <FormGroup aria-label='position' row>
                             <Controller
                             as={TextField}
-                                name="email"
+                                name='email'
                                 control={control}
-                                defaultValue=""
+                                defaultValue=''
                                 // render={({ onChange, value }) => <input onChange={onChange} value={value} />}
                                 className={classes.loginSideField}
                                 autoFocus
                                 error={!!errors.email}
                                 helperText={errors.email?.message}
-                                id="email"
-                                label="E-Mail"
-                                type="email"
-                                variant="filled"
+                                id='email'
+                                label='E-Mail'
+                                type='email'
+                                variant='filled'
                                 InputLabelProps={{
                                     shrink: true
                                 }}
@@ -100,8 +100,8 @@ export const LoginModal: React.FC<LoginModalProps> = ({ open, onClose }): React.
                                 control={control}
                                 error={!!errors.password}
                                 helperText={errors.password?.message}
-                                defaultValue=""
-                                name="password"
+                                defaultValue=''
+                                name='password'
                                 className={classes.loginSideField}
                                 id="password"
                                 label={loginModalWordsPreset[7]}
@@ -112,7 +112,6 @@ export const LoginModal: React.FC<LoginModalProps> = ({ open, onClose }): React.
                                 }}
                                 fullWidth 
                             />
-                             
                                 <Button disabled={loadingStatus === LoadingStatus.LOADING} type="submit" variant="contained" color="primary" fullWidth>
                                     {loginModalWordsPreset[8]}
                                 </Button>
@@ -121,4 +120,4 @@ export const LoginModal: React.FC<LoginModalProps> = ({ open, onClose }): React.
                         </form>
                     </ModalBlock>
     )
-}
+};

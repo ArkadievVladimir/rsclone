@@ -28,4 +28,4 @@ export const SearchTextField = withStyles((theme: Theme) => ({
         }
         }
     }
-}))(TextField)
+}))(TextField);

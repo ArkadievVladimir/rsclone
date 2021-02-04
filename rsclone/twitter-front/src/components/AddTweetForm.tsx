@@ -20,7 +20,7 @@ import { addTweetFormWords } from '../languages';
 interface AddTweetFormProps {
     classes: ReturnType<typeof useHomeStyles>;
     rowsMax?: number;
-    onClose?: () => void
+    onClose?: () => void;
 }    
 
 export interface ImageObj {
@@ -62,16 +62,16 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
     };
 
     const handlerAddTweetOnClick = async (): Promise<void> => {
-        let result = []
+        let result = [];
         dispatch(setAddFormState(AddFormState.LOADING))
         for (let i = 0; i < images.length; i++) {
             let file = images[i].file;
-            const { url } = await uploadImage(file)
+            const { url } = await uploadImage(file);
             result.push(url);
         }
         dispatch(fetchAddTweet({text, images: result}));
         setText('');
-        setImages([])
+        setImages([]);
     };
 
     return (
@@ -79,7 +79,7 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
         <div className={classes.addFormBody}>
             <Avatar className={classes.tweetAvatar}
             alt='ava'
-            // src="https://images.unsplash.com/photo-1584799235813-aaf50775698c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80"
+            // src='https://images.unsplash.com/photo-1584799235813-aaf50775698c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80'
             />
         <TextareaAutosize
             onChange={handlerChangeTextarea}
@@ -99,21 +99,22 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
                     <span>{text.length} /</span>
                     <span>{maxTweetSymbols}</span>
                     <div className={classes.addFormCircleProgress}>
-                        <CircularProgress variant="determinate" style={text.length >= maxTweetSymbols ? {color:'rgb(255, 0, 0)'} : {}}
+                        <CircularProgress variant='determinate' style={text.length >= maxTweetSymbols ? {color:'rgb(255, 0, 0)'} : {}}
                          size={20} thickness={4} value={text.length >= maxTweetSymbols ? 100 : percentOfTextInTweet} />
-                        <CircularProgress variant="determinate" size={20} thickness={4} value={100} 
+                        <CircularProgress variant='determinate' size={20} thickness={4} value={100} 
                         style={{color: 'rgba(0, 0, 0, 0.1'}} />
                     </div>
                     </>
                 )}
              
-                <Button disabled={!text || text.length > maxTweetSymbols || addFormState === AddFormState.LOADING} color="primary" variant="contained"
+                <Button disabled={!text || text.length > maxTweetSymbols || addFormState === AddFormState.LOADING} color='primary' variant='contained'
                     onClick={() => {
                         handlerAddTweetOnClick() 
                             if(onClose) {
                                 onClose()
                             }
                         }} > {addFormState === AddFormState.LOADING ? <CircularProgress size={18} color="inherit" /> : addTweetFormWordsPreset[1] }
+
                 </Button>
             </div>
         </div>

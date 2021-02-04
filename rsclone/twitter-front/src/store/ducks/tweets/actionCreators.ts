@@ -51,7 +51,6 @@ export const removeTweet = (payload: string): RemoveTweetActionInterface => ({
     payload
 });
  
-
 export type  TweetsActions = RemoveTweetActionInterface
     | SetTweetsActionInterface
     | FetchAddTweetActionInterface
@@ -59,5 +58,4 @@ export type  TweetsActions = RemoveTweetActionInterface
     | FetchTweetsActionInterface
     | SetTweetsLoadingStatusInterface
     | SetAddFormStateInterface
-    | EditTweetActionInterface
-    ;
+    | EditTweetActionInterface;

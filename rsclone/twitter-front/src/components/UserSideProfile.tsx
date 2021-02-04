@@ -29,7 +29,7 @@ let userSideProfilePreset: Array<string> = userSideProfileWords.map((item) => {
   });
 
 export const UserSideProfile: React.FC<UserSideProfileProps> = () => {
-  const classes = useHomeStyles()
+  const classes = useHomeStyles();
   const dispatch = useDispatch();
   const userData = useSelector(selectUserData);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -80,4 +80,4 @@ return (
       </Menu>
   </>
 );
-}
+};

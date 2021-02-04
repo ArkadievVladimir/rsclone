@@ -11,7 +11,6 @@ import { selectIsAuth, selectUserStatus } from './store/ducks/user/selectors';
 import { LoadingStatus } from './store/types';
 import { useHomeStyles } from './pages/Home/theme';
 import { ActivatePage } from './pages/ActivatePage';
-import { UserSideProfile } from './components/UserSideProfile';
 import { Footer } from './components/Footer';
 
 function App() {
@@ -70,13 +69,13 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className='App'>
       <Switch>
-        <Route path="/signin" component={SignIn} />
+        <Route path='/signin' component={SignIn} />
         <Layout>
-          <Route path="/home" component={Home} />
-          <Route path="/user/:id" component={UserPage} />
-          <Route path="/user/activate/:hash" component={ActivatePage} />
+          <Route path='/home' component={Home} />
+          <Route path='/user/:id' component={UserPage} />
+          <Route path='/user/activate/:hash' component={ActivatePage} />
         </Layout>
       </Switch>
       <Footer/>
