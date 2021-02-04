@@ -19,6 +19,35 @@ import { AuthApi } from '../../services/api/authApi';
 import { RouteComponentProps } from 'react-router-dom';
 import format from 'date-fns/format';
 import ruLang from 'date-fns/locale/ru';
+import { userPageWords } from '../../languages';
+import engLang from 'date-fns/locale/en-GB';
+import espLang from 'date-fns/locale/es';
+
+let lang: object = {};
+
+if (!localStorage.getItem('lang')) {
+  lang = ruLang;
+} else if (localStorage.getItem('lang') === 'ru') {
+  lang = ruLang;
+} else if (localStorage.getItem('lang') === 'eng') {
+  lang = engLang;
+} else if (localStorage.getItem('lang') === 'esp') {
+  lang = espLang;
+}
+
+let index: number = 0;
+
+if (!localStorage.getItem('lang')) {
+    localStorage.setItem('lang', 'ru');
+} else if (localStorage.getItem('lang') === 'eng') {
+    index = 1; 
+} else if (localStorage.getItem('lang') === 'esp') {
+    index = 2; 
+}
+
+let userPageWordsPreset: Array<string> = userPageWords.map((item) => {
+    return item[index];
+});
 
 export const UserPage: React.FC<RouteComponentProps<{ id: string }>> = ({ match }) => {
   const classes = useHomeStyles();
@@ -51,7 +80,7 @@ export const UserPage: React.FC<RouteComponentProps<{ id: string }>> = ({ match 
         <div>
           <Typography variant='h6'>{userData?.fullname}</Typography>
           <Typography variant='caption' display='block' gutterBottom>
-            Количество твитов: {tweets.length}
+            {userPageWordsPreset[0]} {tweets.length}
           </Typography>
         </div>
       </Paper>
@@ -70,17 +99,17 @@ export const UserPage: React.FC<RouteComponentProps<{ id: string }>> = ({ match 
         ) : (
         <span className='user__info-username'>@{userData?.username}</span>
         )}
-        <p className='user__info-description'>Информация о пользователе</p>
+        <p className='user__info-description'>{userPageWordsPreset[1]}</p>
         <ul className='user__info-details'>
-          <li>Belarus, Minsk</li>
-          <li>Регистрация: {format(new Date(userData?.createdAt ? userData?.createdAt : 0), 'dd MMM yyyy, HH:mm', {locale: ruLang})}</li>
+          <li>{userPageWordsPreset[2]}</li>
+          <li>{userPageWordsPreset[3]} {format(new Date(userData?.createdAt ? userData?.createdAt : 0), 'dd MMM yyyy, HH:mm', { locale: lang })}</li>
         </ul>
       </div>
       <Tabs value={activeTab} indicatorColor="primary" textColor="primary" onChange={handleChange}>
-        <Tab label="Твиты" />
-        <Tab label="Твиты и ответы" />
-        <Tab label="Медиа" />
-        <Tab label="Нравится" />
+        <Tab label={userPageWordsPreset[4]} />
+        <Tab label={userPageWordsPreset[5]} />
+        <Tab label={userPageWordsPreset[6]} />
+        <Tab label={userPageWordsPreset[7]} />
       </Tabs>
       <div className='user__tweets'>
       {isLoading ? (

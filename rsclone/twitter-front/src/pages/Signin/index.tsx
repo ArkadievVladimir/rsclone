@@ -11,6 +11,7 @@ import PeopleOutlineIcon from '@material-ui/icons/PeopleOutline';
 import ChatBubbleOutlineOutlinedIcon from '@material-ui/icons/ChatBubbleOutlineOutlined';
 import { LoginModal } from './components/LoginModal';
 import { RegisterModal } from './components/RegisterModal';
+import { signInPageWords } from '../../languages';
 
 export const useStylesSignIn = makeStyles((theme) => ({
     wrapper: {
@@ -85,6 +86,20 @@ export const useStylesSignIn = makeStyles((theme) => ({
     }
 }));
 
+let index: number = 0;
+
+if (!localStorage.getItem('lang')) {
+    localStorage.setItem('lang', 'ru');
+} else if (localStorage.getItem('lang') === 'eng') {
+    index = 1; 
+} else if (localStorage.getItem('lang') === 'esp') {
+    index = 2; 
+}
+
+let signInPageWordsPreset: Array<string> = signInPageWords.map((item) => {
+    return item[index];
+});
+
 export const SignIn: React.FC = (): React.ReactElement => {
     const classes = useStylesSignIn();
 
@@ -110,17 +125,17 @@ export const SignIn: React.FC = (): React.ReactElement => {
                     <li className={classes.blueSideListInfoItem}>
                         <Typography variant="h6">
                             <SearchIcon className={classes.blueSideListInfoIcons}/>
-                            Читайте о том, что Вам интересно</Typography>
+                            {signInPageWordsPreset[0]}</Typography>
                     </li>
                     <li className={classes.blueSideListInfoItem}>
                         <Typography variant="h6">
                             <PeopleOutlineIcon className={classes.blueSideListInfoIcons}/>
-                            Узнайте о чем говорят в мире.</Typography>
+                            {signInPageWordsPreset[1]}</Typography>
                     </li>
                     <li className={classes.blueSideListInfoItem}>
                         <Typography variant="h6">
                             <ChatBubbleOutlineOutlinedIcon className={classes.blueSideListInfoIcons}/>
-                            Присоединяйтесь к общению</Typography>
+                            {signInPageWordsPreset[2]}</Typography>
                     </li>
                 </ul>
             </section>
@@ -128,17 +143,17 @@ export const SignIn: React.FC = (): React.ReactElement => {
                 <div className={classes.loginSideWrapper}>
                     <TwitterIcon color="primary" className={classes.loginSideTwitterIcon} />
                     <Typography  gutterBottom className={classes.loginSideTitle} variant="h4">
-                        Узнайте, что происходит в мире прямо сейчас
+                        {signInPageWordsPreset[3]}
                     </Typography>
                     <Typography>
-                        <b>Присоединяйтесь к Твиттеру прямо сейчас!</b>
+                        <b>{signInPageWordsPreset[4]}</b>
                     </Typography>
                     <br />
                     <Button onClick={ handleClickOpenSignUp } style={{ marginBottom: 20}} variant="contained" color="primary" fullWidth>
-                        Зарегистрироваться
+                        {signInPageWordsPreset[5]}
                     </Button>
                     <Button onClick={ handleClickOpenSignIn } variant="outlined" color="primary" fullWidth>
-                        Войти
+                        {signInPageWordsPreset[6]}
                     </Button>
                     <LoginModal open={visibleModal === 'signIn'} onClose={handleCloseModal}/>
                     <RegisterModal open={visibleModal === 'signUp'} onClose={handleCloseModal}/>

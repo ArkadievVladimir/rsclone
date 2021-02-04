@@ -13,19 +13,35 @@ import { Color } from '@material-ui/lab';
 import { fetchSignIn } from '../../../store/ducks/user/actionCreators';
 import { selectUserStatus } from '../../../store/ducks/user/selectors';
 import { LoadingStatus } from '../../../store/types';
+import { loginModalWords } from '../../../languages';
 
 interface LoginModalProps {
     open: boolean;
     onClose: () => void;
 }
+
+let index: number = 0;
+
+if (!localStorage.getItem('lang')) {
+    localStorage.setItem('lang', 'ru');
+} else if (localStorage.getItem('lang') === 'eng') {
+    index = 1; 
+} else if (localStorage.getItem('lang') === 'esp') {
+    index = 2; 
+}
+
+let loginModalWordsPreset: Array<string> = loginModalWords.map((item) => {
+    return item[index];
+});
+
 export interface LoginFormProps {
     email: string;
     password: string;
 }
 
 const LoginFormSchema = yup.object().shape({
-    email: yup.string().email("Неверно введена почта").required("Введите почту"),
-    password: yup.string().min(6, "Минимальная длина пароля 6 символов").required("Введите пароль"),
+    email: yup.string().email(loginModalWordsPreset[0]).required(loginModalWordsPreset[1]),
+    password: yup.string().min(6, loginModalWordsPreset[2]).required(loginModalWordsPreset[3]),
   });
 
 export const LoginModal: React.FC<LoginModalProps> = ({ open, onClose }): React.ReactElement => {
@@ -42,17 +58,17 @@ export const LoginModal: React.FC<LoginModalProps> = ({ open, onClose }): React.
 
     React.useEffect( () => {
         if (loadingStatus === LoadingStatus.SUCCESS){
-            openNotificationRef.current('Авторизация успешно завершена', 'success');
+            openNotificationRef.current(loginModalWordsPreset[4], 'success');
             onClose();
         } else if (loadingStatus === LoadingStatus.ERROR) {
-            openNotificationRef.current('Неверный логин или пароль', 'error')
+            openNotificationRef.current(loginModalWordsPreset[5], 'error')
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [loadingStatus])
 
     return (
         <ModalBlock
-                     title="Войти в аккаунт"
+                     title={loginModalWordsPreset[6]}
                      onClose={onClose}
                      visible={open}
                      classes={classes}
@@ -88,7 +104,7 @@ export const LoginModal: React.FC<LoginModalProps> = ({ open, onClose }): React.
                                 name="password"
                                 className={classes.loginSideField}
                                 id="password"
-                                label="Пароль"
+                                label={loginModalWordsPreset[7]}
                                 type="password"
                                 variant="filled"
                                 InputLabelProps={{
@@ -98,7 +114,7 @@ export const LoginModal: React.FC<LoginModalProps> = ({ open, onClose }): React.
                             />
                              
                                 <Button disabled={loadingStatus === LoadingStatus.LOADING} type="submit" variant="contained" color="primary" fullWidth>
-                                    Войти
+                                    {loginModalWordsPreset[8]}
                                 </Button>
                             </FormGroup>
                         </FormControl>

@@ -13,6 +13,7 @@ import { Color } from '@material-ui/lab';
 import { fetchSignUp } from '../../../store/ducks/user/actionCreators';
 import { selectUserStatus } from '../../../store/ducks/user/selectors';
 import { LoadingStatus } from '../../../store/types';
+import { RegisterModalWords } from '../../../languages';
 
 
 interface RegisterModalProps {
@@ -27,12 +28,26 @@ export interface RegisterFormProps {
     password2: string;
 }
 
+let index: number = 0;
+
+if (!localStorage.getItem('lang')) {
+    localStorage.setItem('lang', 'ru');
+} else if (localStorage.getItem('lang') === 'eng') {
+    index = 1; 
+} else if (localStorage.getItem('lang') === 'esp') {
+    index = 2; 
+}
+
+let RegisterModalWordsPreset: Array<string> = RegisterModalWords.map((item) => {
+    return item[index];
+});
+
 const RegisterFormSchema = yup.object().shape({
-    email: yup.string().email("Неверно введена почта").required("Введите почту"),
-    username: yup.string().required("Введите логин"),
-    fullname: yup.string().required("Введите полное имя"),
-    password: yup.string().min(6, "Минимальная длина пароля 6 символов").required("Введите пароль"),
-    password2: yup.string().oneOf([yup.ref('password')], 'Пароль не совпадает'),
+    email: yup.string().email(RegisterModalWordsPreset[0]).required(RegisterModalWordsPreset[1]),
+    username: yup.string().required(RegisterModalWordsPreset[2]),
+    fullname: yup.string().required(RegisterModalWordsPreset[3]),
+    password: yup.string().min(6, RegisterModalWordsPreset[4]).required(RegisterModalWordsPreset[5]),
+    password2: yup.string().oneOf([yup.ref('password')], RegisterModalWordsPreset[6]),
   });
 
 
@@ -51,16 +66,16 @@ export const RegisterModal: React.FC<RegisterModalProps> = ({ open, onClose }): 
 
     React.useEffect( () => {
         if (loadingStatus === LoadingStatus.SUCCESS){
-            openNotificationRef.current('Регистрация успешно завершена', 'success');
+            openNotificationRef.current(RegisterModalWordsPreset[7], 'success');
             onClose();
         } else if (loadingStatus === LoadingStatus.ERROR) {
-            openNotificationRef.current('Произошла ошибка при регистрации', 'error')
+            openNotificationRef.current(RegisterModalWordsPreset[8], 'error')
         }
     }, [loadingStatus])
 
     return (
         <ModalBlock
-                     title="Зарегистрироваться"
+                     title={RegisterModalWordsPreset[9]}
                      onClose={onClose}
                      visible={open}
                      classes={classes}
@@ -98,7 +113,7 @@ export const RegisterModal: React.FC<RegisterModalProps> = ({ open, onClose }): 
                                 error={!!errors.fullname}
                                 helperText={errors.fullname?.message}
                                 id="fullname"
-                                label="Имя"
+                                label={RegisterModalWordsPreset[10]}
                                 type="fullname"
                                 variant="filled"
                                 InputLabelProps={{
@@ -117,7 +132,7 @@ export const RegisterModal: React.FC<RegisterModalProps> = ({ open, onClose }): 
                                 error={!!errors.username}
                                 helperText={errors.username?.message}
                                 id="username"
-                                label="Логин"
+                                label={RegisterModalWordsPreset[11]}
                                 type="usernamel"
                                 variant="filled"
                                 InputLabelProps={{
@@ -134,7 +149,7 @@ export const RegisterModal: React.FC<RegisterModalProps> = ({ open, onClose }): 
                                 name="password"
                                 className={classes.registerField}
                                 id="password"
-                                label="Пароль"
+                                label={RegisterModalWordsPreset[12]}
                                 type="password"
                                 variant="filled"
                                 InputLabelProps={{
@@ -151,7 +166,7 @@ export const RegisterModal: React.FC<RegisterModalProps> = ({ open, onClose }): 
                                 name="password2"
                                 className={classes.registerField}
                                 id="password2"
-                                label="Подтвердите пароль"
+                                label={RegisterModalWordsPreset[13]}
                                 type="password"
                                 variant="filled"
                                 InputLabelProps={{
@@ -161,7 +176,7 @@ export const RegisterModal: React.FC<RegisterModalProps> = ({ open, onClose }): 
                             />
                              
                                 <Button disabled={loadingStatus === LoadingStatus.LOADING} type="submit" variant="contained" color="primary" fullWidth>
-                                    Зарегистрироваться
+                                    {RegisterModalWordsPreset[14]}
                                 </Button>
                             </FormGroup>
                         </FormControl>

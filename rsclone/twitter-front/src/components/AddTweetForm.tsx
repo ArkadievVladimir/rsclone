@@ -15,6 +15,7 @@ import { selectAddFormState } from '../store/ducks/tweets/selectors';
 import { AddFormState } from '../store/ducks/tweets/contracts/state';
 import { UploadImages } from './UploadImages';
 import { uploadImage } from '../utils/uploadImage';
+import { addTweetFormWords } from '../languages';
 
 interface AddTweetFormProps {
     classes: ReturnType<typeof useHomeStyles>;
@@ -26,6 +27,20 @@ export interface ImageObj {
     file: File;
     blobUrl: string;
 }
+
+let index: number = 0;
+
+if (!localStorage.getItem('lang')) {
+    localStorage.setItem('lang', 'ru');
+} else if (localStorage.getItem('lang') === 'eng') {
+    index = 1; 
+} else if (localStorage.getItem('lang') === 'esp') {
+    index = 2; 
+}
+
+let addTweetFormWordsPreset: Array<string> = addTweetFormWords.map((item) => {
+    return item[index];
+  });
 
 export const AddTweetForm: React.FC<AddTweetFormProps> = ({
     classes, 
@@ -71,7 +86,7 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
             rowsMax={rowsMax}
             value={text}
             className={classes.addFormTextArea}
-            placeholder="Оставить твит"
+            placeholder={addTweetFormWordsPreset[0]}
         />        
         </div>
         <div className={classes.addFormBottom}>
@@ -98,12 +113,12 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
                             if(onClose) {
                                 onClose()
                             }
-                        }} > {addFormState === AddFormState.LOADING ? <CircularProgress size={18} color="inherit" /> : 'Твитнуть' }
+                        }} > {addFormState === AddFormState.LOADING ? <CircularProgress size={18} color="inherit" /> : addTweetFormWordsPreset[1] }
                 </Button>
             </div>
         </div>
         {addFormState === AddFormState.ERROR && (
-            <Alert severity="error">Ошибка</Alert>
+            <Alert severity="error">{addTweetFormWordsPreset[2]}</Alert>
         )} 
     </div>
     );

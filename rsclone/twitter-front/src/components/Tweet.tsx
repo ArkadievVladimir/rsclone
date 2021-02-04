@@ -18,6 +18,7 @@ import { ModalBlock } from './ModalBlock';
 import { selectUserData } from '../store/ducks/user/selectors';
 import { isLiked } from '../utils/isLikedTweet';
 import { Link } from 'react-router-dom';
+import { tweetSettingsWords } from '../languages';
 
 interface TweetProps {
     _id: string;
@@ -28,6 +29,20 @@ interface TweetProps {
     createdAt: string;
     user: Pick<User, '_id' | 'fullname' | 'username'>;
 }
+
+let index: number = 0;
+
+if (!localStorage.getItem('lang')) {
+    localStorage.setItem('lang', 'ru');
+} else if (localStorage.getItem('lang') === 'eng') {
+    index = 1; 
+} else if (localStorage.getItem('lang') === 'esp') {
+    index = 2; 
+}
+
+let tweetSettingsWordsPreset: Array<string> = tweetSettingsWords.map((item) => {
+    return item[index];
+  });
 
 export const Tweet: React.FC<TweetProps> = ({ 
     _id, 
@@ -68,7 +83,7 @@ export const Tweet: React.FC<TweetProps> = ({
     const handleRemove = (event: React.MouseEvent<HTMLElement>): void => {
         event.stopPropagation();
         event.preventDefault();
-        if (window.confirm("Вы действительно хотите удалить?")) {
+        if (window.confirm(tweetSettingsWordsPreset[0])) {
             dispatch(removeTweet(_id));
         }
     }
@@ -113,11 +128,11 @@ export const Tweet: React.FC<TweetProps> = ({
                     rowsMax={15}
                     value={tweetText}
                     className={classes.addFormTextArea}
-                    placeholder="Отредактируйте твит"
+                    placeholder={tweetSettingsWordsPreset[1]}
                 /> 
             </div>
             <Button  color="primary" variant="contained"
-                    onClick={handlerAddEditedTweetOnClick} > { 'Сохранить' }
+                    onClick={handlerAddEditedTweetOnClick} > { tweetSettingsWordsPreset[2] }
             </Button>
         </ModalBlock>
 
@@ -154,10 +169,10 @@ export const Tweet: React.FC<TweetProps> = ({
                         onClose={handleClose}
                     >
                         <MenuItem onClick={handleEdit}>
-                           Редактировать
+                          {tweetSettingsWordsPreset[3]}
                         </MenuItem>
                         <MenuItem onClick={handleRemove}>
-                           Удалить твит
+                           {tweetSettingsWordsPreset[4]}
                         </MenuItem>
                     </Menu>
                 </div>
