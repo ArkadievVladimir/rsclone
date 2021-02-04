@@ -179,7 +179,7 @@ export const Tweet: React.FC<TweetProps> = ({
                     </Menu>
                 </div>
             </div>
-            <Typography variant='body1' gutterBottom>
+            <Typography variant='body1' gutterBottom className={classes.tweetText}>
                 {text}
                     {images && <ImageList classes={imageClasses} images={images}/>}
             </Typography>

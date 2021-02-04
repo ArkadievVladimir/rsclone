@@ -12,8 +12,6 @@ import { FullTweet } from './components/FullTweet';
 import { fetchTweets } from '../../store/ducks/tweets/actionCreators';
 import { fetchTags } from '../../store/ducks/tags/actionCreators';
 import { Tweet } from '../../components/Tweet';
-import { Sidebar } from '../../components/Sidebar';
-import { UserSideProfile } from '../../components/UserSideProfile';
 import { homeComponentWords } from '../../languages';
 
 let index: number = 0;

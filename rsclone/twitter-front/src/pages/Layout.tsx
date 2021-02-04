@@ -4,7 +4,6 @@ import SearchIcon from '@material-ui/icons/SearchOutlined';
 import { Sidebar } from '../components/Sidebar';
 import { useHomeStyles } from '../pages/Home/theme';
 import { SearchTextField } from '../components/SearchTextField';
-import { Tags } from '../components/HashTags';
 import { ThemeBtn } from '../components/themeBtn';
 import { LanguageBtn } from '../components/languageBtn';
 import { searchFieldPlaceholderWord } from '../languages';
@@ -13,7 +12,6 @@ import { searchFieldPlaceholderWord } from '../languages';
 interface LayoutProp {
   children: React.ReactNode;
 }
-
 
 let index: number = 0;
 
@@ -28,7 +26,6 @@ if (!localStorage.getItem('lang')) {
 let searchFieldPlaceholderWordPreset: Array<string> = searchFieldPlaceholderWord.map((item) => {
     return item[index];
   });
-
 
 export const Layout: React.FC<LayoutProp> = ({ children }): React.ReactElement => {
 
@@ -59,11 +56,10 @@ return (
           />
           {/* <Tags classes={classes} /> */}
           {/* <Users /> */}
-          
-        </div>
-        <div className={classes.optionalBtnsWrapper}>
-        <ThemeBtn classes={classes}/>
-        <LanguageBtn classes={classes}/>
+          <div className={classes.optionalBtnsWrapper}>
+            <ThemeBtn classes={classes}/>
+            <LanguageBtn classes={classes}/>
+          </div>
         </div>
       </Grid>
     </Grid>

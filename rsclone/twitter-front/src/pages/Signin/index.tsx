@@ -167,18 +167,18 @@ export const SignIn: React.FC = (): React.ReactElement => {
             </section>
             <section className={classes.loginSide}>
                 <div className={classes.loginSideWrapper}>
-                    <TwitterIcon color="primary" className={classes.loginSideTwitterIcon} />
-                    <Typography  gutterBottom className={classes.loginSideTitle} variant="h4">
+                    <TwitterIcon color='primary' className={classes.loginSideTwitterIcon} />
+                    <Typography  gutterBottom className={classes.loginSideTitle} variant='h4'>
                         {signInPageWordsPreset[3]}
                     </Typography>
                     <Typography>
                         <b>{signInPageWordsPreset[4]}</b>
                     </Typography>
                     <br />
-                    <Button onClick={ handleClickOpenSignUp } style={{ marginBottom: 20}} variant="contained" color="primary" fullWidth>
+                    <Button onClick={ handleClickOpenSignUp } style={{ marginBottom: 20}} variant='contained' color='primary' fullWidth>
                         {signInPageWordsPreset[5]}
                     </Button>
-                    <Button onClick={ handleClickOpenSignIn } variant="outlined" color="primary" fullWidth>
+                    <Button onClick={ handleClickOpenSignIn } variant='outlined' color='primary' fullWidth>
                         {signInPageWordsPreset[6]}
                     </Button>
                     <LoginModal open={visibleModal === 'signIn'} onClose={handleCloseModal}/>

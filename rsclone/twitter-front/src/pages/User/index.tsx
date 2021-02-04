@@ -105,7 +105,7 @@ export const UserPage: React.FC<RouteComponentProps<{ id: string }>> = ({ match 
           <li>{userPageWordsPreset[3]} {format(new Date(userData?.createdAt ? userData?.createdAt : 0), 'dd MMM yyyy, HH:mm', { locale: lang })}</li>
         </ul>
       </div>
-      <Tabs value={activeTab} indicatorColor="primary" textColor="primary" onChange={handleChange}>
+      <Tabs value={activeTab} indicatorColor='primary' textColor='primary' onChange={handleChange}>
         <Tab label={userPageWordsPreset[4]} />
         <Tab label={userPageWordsPreset[5]} />
         <Tab label={userPageWordsPreset[6]} />

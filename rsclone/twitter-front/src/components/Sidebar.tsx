@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import SearchIcon from '@material-ui/icons/Search';
 import HomeIcon from '@material-ui/icons/Home';
@@ -48,14 +48,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
     const [visibleAddTweet, setSetVisibleAddTweet] = useState<boolean>(false);
     const userData = useSelector(selectUserData);
 
-    // useEffect(()=> {
-    //     console.log('weokmcowmec')
-    //     sideBarPreset = langauages.map((item) => {
-    //         return item[index];
-    //       })
-    // }, [index])
-
-
     const handleClickOpenAddTweet = () => {
         setSetVisibleAddTweet(true);
     };
@@ -78,7 +70,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 <div>
                     <HomeIcon className={classes.sideMenuListItemIcon} />
                     <Hidden smDown>
-                        <Typography className={classes.sideMenuListItemLabel} variant="h6">
+                        <Typography className={classes.sideMenuListItemLabel} variant='h6'>
                             {sideBarPreset[0]}
                         </Typography>
                     </Hidden>
@@ -89,7 +81,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             <div>
                 <SearchIcon  className={classes.sideMenuListItemIcon}/>
                 <Hidden smDown>
-                    <Typography className={classes.sideMenuListItemLabel} variant="h6">
+                    <Typography className={classes.sideMenuListItemLabel} variant='h6'>
                             {sideBarPreset[1]}
                     </Typography>
                 </Hidden>
@@ -99,7 +91,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             <div>
                 <NotificationsNoneIcon  className={classes.sideMenuListItemIcon}/>
                 <Hidden smDown>
-                    <Typography className={classes.sideMenuListItemLabel} variant="h6">
+                    <Typography className={classes.sideMenuListItemLabel} variant='h6'>
                         {sideBarPreset[2]}
                     </Typography>
                 </Hidden>
@@ -110,7 +102,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 <MailOutlineIcon className={classes.sideMenuListItemIcon}/>
                 
                 <Hidden smDown>
-                    <Typography className={classes.sideMenuListItemLabel} variant="h6">
+                    <Typography className={classes.sideMenuListItemLabel} variant='h6'>
                         {sideBarPreset[3]}
                     </Typography>
                 </Hidden>
@@ -121,7 +113,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 <BookmarkBorderIcon  className={classes.sideMenuListItemIcon}/>
                 
                 <Hidden smDown>
-                    <Typography className={classes.sideMenuListItemLabel} variant="h6">
+                    <Typography className={classes.sideMenuListItemLabel} variant='h6'>
                         {sideBarPreset[4]}
                     </Typography>
                 </Hidden>
@@ -132,7 +124,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 <ListAltIcon  className={classes.sideMenuListItemIcon}/>
                 
                 <Hidden smDown>
-                    <Typography className={classes.sideMenuListItemLabel} variant="h6">
+                    <Typography className={classes.sideMenuListItemLabel} variant='h6'>
                         {sideBarPreset[5]}
                     </Typography>
                 </Hidden>
@@ -144,7 +136,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 <PermIdentityOutlinedIcon  className={classes.sideMenuListItemIcon}/>
                 
                 <Hidden smDown>
-                    <Typography className={classes.sideMenuListItemLabel} variant="h6">
+                    <Typography className={classes.sideMenuListItemLabel} variant='h6'>
                         {sideBarPreset[6]}   
                     </Typography>
                 </Hidden>

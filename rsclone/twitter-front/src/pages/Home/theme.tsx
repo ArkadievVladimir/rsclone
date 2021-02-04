@@ -90,7 +90,7 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
         fontSize: 14,
         color: '#fff',
         backgroundColor: '#3f51b5',
-        "&:hover": {
+        '&:hover': {
             backgroundColor: '#303f9f'
         }
     },
@@ -98,14 +98,18 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
         fontSize: 14,
         color: '#fff',
         backgroundColor: '#3f51b5',
-        "&:hover": {
+        '&:hover': {
             backgroundColor: '#303f9f'
         }
     },
     optionalBtnsWrapper: {
         display: 'flex',
+        flexWrap: 'wrap',
         marginTop: '20px',
         justifyContent: 'space-between',
+        '& div': {
+            margin: '5px',
+        }
     },
     sideMenuTweetBtn: {
         padding: theme.spacing(2),
@@ -167,9 +171,13 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
     fullTweetText: {
         fontSize: 28,
         marginTop: 15,
+        wordBreak: 'break-word',
         [theme.breakpoints.down('xs')]: {
             fontSize: 14,
         },
+    },
+    tweetText: {
+        wordBreak: 'break-word',
     },
     tweetFooter: {
         display: 'flex',

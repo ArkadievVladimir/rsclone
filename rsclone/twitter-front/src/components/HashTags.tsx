@@ -38,7 +38,7 @@ export const Tags: React.FC<TagsProps> = ({
 
     return (
         <Paper className={classes.rightSideBlock}>
-        <Paper className={classes.rightSideBlockHeader} variant="outlined">
+        <Paper className={classes.rightSideBlockHeader} variant='outlined'>
             <b>{hashTagsWordsPreset[0]}</b>
         </Paper>
     <List>
@@ -50,7 +50,7 @@ export const Tags: React.FC<TagsProps> = ({
             <ListItem className={classes.rightSideBlockItem}>
             <ListItemText primary={obj.name}
             secondary={
-                <Typography component="span" variant="body2" color="textSecondary">
+                <Typography component='span' variant='body2' color='textSecondary'>
                     {hashTagsWordsPreset[1]}: {obj.count}
                 </Typography>
             }

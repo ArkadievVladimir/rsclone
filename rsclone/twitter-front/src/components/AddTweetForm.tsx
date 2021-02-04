@@ -113,13 +113,13 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
                             if(onClose) {
                                 onClose()
                             }
-                        }} > {addFormState === AddFormState.LOADING ? <CircularProgress size={18} color="inherit" /> : addTweetFormWordsPreset[1] }
+                        }} > {addFormState === AddFormState.LOADING ? <CircularProgress size={18} color='inherit' /> : addTweetFormWordsPreset[1] }
 
                 </Button>
             </div>
         </div>
         {addFormState === AddFormState.ERROR && (
-            <Alert severity="error">{addTweetFormWordsPreset[2]}</Alert>
+            <Alert severity='error'>{addTweetFormWordsPreset[2]}</Alert>
         )} 
     </div>
     );

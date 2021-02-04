@@ -111,10 +111,10 @@ export const RegisterModal: React.FC<RegisterModalProps> = ({ open, onClose }): 
                                 autoFocus
                                 error={!!errors.fullname}
                                 helperText={errors.fullname?.message}
-                                id="fullname"
+                                id='fullname'
                                 label={RegisterModalWordsPreset[10]}
-                                type="fullname"
-                                variant="filled"
+                                type='fullname'
+                                variant='filled'
                                 InputLabelProps={{
                                     shrink: true
                                 }}
@@ -130,10 +130,10 @@ export const RegisterModal: React.FC<RegisterModalProps> = ({ open, onClose }): 
                                 autoFocus
                                 error={!!errors.username}
                                 helperText={errors.username?.message}
-                                id="username"
+                                id='username'
                                 label={RegisterModalWordsPreset[11]}
-                                type="usernamel"
-                                variant="filled"
+                                type='usernamel'
+                                variant='filled'
                                 InputLabelProps={{
                                     shrink: true
                                 }}
@@ -147,10 +147,10 @@ export const RegisterModal: React.FC<RegisterModalProps> = ({ open, onClose }): 
                                 defaultValue=''
                                 name='password'
                                 className={classes.registerField}
-                                id="password"
+                                id='password'
                                 label={RegisterModalWordsPreset[12]}
-                                type="password"
-                                variant="filled"
+                                type='password'
+                                variant='filled'
                                 InputLabelProps={{
                                     shrink: true
                                 }}
@@ -164,17 +164,17 @@ export const RegisterModal: React.FC<RegisterModalProps> = ({ open, onClose }): 
                                 defaultValue=''
                                 name='password2'
                                 className={classes.registerField}
-                                id="password2"
+                                id='password2'
                                 label={RegisterModalWordsPreset[13]}
-                                type="password"
-                                variant="filled"
+                                type='password'
+                                variant='filled'
                                 InputLabelProps={{
                                     shrink: true
                                 }}
                                 fullWidth 
                             />
           
-                                <Button disabled={loadingStatus === LoadingStatus.LOADING} type="submit" variant="contained" color="primary" fullWidth>
+                                <Button disabled={loadingStatus === LoadingStatus.LOADING} type='submit' variant='contained' color='primary' fullWidth>
                                     {RegisterModalWordsPreset[14]}
                                 </Button>
                             </FormGroup>

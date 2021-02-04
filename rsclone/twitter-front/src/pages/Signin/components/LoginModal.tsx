@@ -103,16 +103,16 @@ export const LoginModal: React.FC<LoginModalProps> = ({ open, onClose }): React.
                                 defaultValue=''
                                 name='password'
                                 className={classes.loginSideField}
-                                id="password"
+                                id='password'
                                 label={loginModalWordsPreset[7]}
-                                type="password"
-                                variant="filled"
+                                type='password'
+                                variant='filled'
                                 InputLabelProps={{
                                     shrink: true
                                 }}
                                 fullWidth 
                             />
-                                <Button disabled={loadingStatus === LoadingStatus.LOADING} type="submit" variant="contained" color="primary" fullWidth>
+                                <Button disabled={loadingStatus === LoadingStatus.LOADING} type='submit' variant='contained' color='primary' fullWidth>
                                     {loginModalWordsPreset[8]}
                                 </Button>
                             </FormGroup>
