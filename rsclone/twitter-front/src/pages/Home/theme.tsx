@@ -159,20 +159,20 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
     },
     tweetMessagesIcon: {
         color: grey[500],
-        "&:hover": {
+        '&:hover': {
             color: 'rgb(29,161,242)',
         },
     },
     retweetIcon: {
         color: grey[500],
-        "&:hover": {
+        '&:hover': {
             color: 'rgb(23, 191, 99)',
         },
     },
     likeIcon: {
         color: grey[500],
         fontSize: '14px',
-        "&:hover": {
+        '&:hover': {
             color: 'rgb(224, 36, 94)',
         },
     },
@@ -181,7 +181,7 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
     },
     settingIcon: {
         color: grey[500],
-        "&:hover": {
+        '&:hover': {
             color: 'rgb(29,161,242)',
         },
     },
@@ -354,7 +354,7 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
         width: 260,
         borderRadius: 50,
         cursor: 'pointer',
-        "z-index": 1000,
+        'z-index': 1000,
         '&:hover': {
             backgroundColor: 'rgba(230, 250, 255, 1)',
         },
@@ -533,4 +533,4 @@ export const tweetImageListStyles = makeStyles((theme: Theme) => ({
             fill: 'white'
         },
     },
-}))
+}));

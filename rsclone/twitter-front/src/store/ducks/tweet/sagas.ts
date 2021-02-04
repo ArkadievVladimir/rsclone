@@ -5,7 +5,6 @@ import { setTweetData, setTweetLoadingStatus } from './actionCreators';
 import { FetchTweetDataActionInterface, TweetActionsType} from './contracts/actionTypes'
 import { LoadingStatus } from '../../types'
 
-
 export function* fetchTweetDataRequest({ payload: tweetId }: FetchTweetDataActionInterface) {
     try {
         const data: Tweet = yield call(TweetsApi.fetchTweetData, tweetId);

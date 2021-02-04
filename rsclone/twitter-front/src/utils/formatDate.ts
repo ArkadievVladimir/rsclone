@@ -7,4 +7,4 @@ export const formatDate = (date: Date): string => {
     new Date(),
     { locale: ruLang }
   );
-}
+};

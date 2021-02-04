@@ -12,11 +12,6 @@ import { FullTweet } from './components/FullTweet';
 import { fetchTweets } from '../../store/ducks/tweets/actionCreators';
 import { fetchTags } from '../../store/ducks/tags/actionCreators';
 import { Tweet } from '../../components/Tweet';
-import { Sidebar } from '../../components/Sidebar';
-import { UserSideProfile } from '../../components/UserSideProfile';
-import { Footer } from '../../components/Footer';
-
-
 
 export const Home = (): React.ReactElement => {
     const classes = useHomeStyles();
@@ -30,18 +25,18 @@ export const Home = (): React.ReactElement => {
     }, [dispatch]);
 
     return (
-            <Paper className={classes.tweetsWrapper} variant="outlined">
-                <Paper className={classes.tweetsHeader} variant="outlined" >
+            <Paper className={classes.tweetsWrapper} variant='outlined'>
+                <Paper className={classes.tweetsHeader} variant='outlined'>
                 <Route path='/home/:any'>
                     <BackButton />
                 </Route>
                 
                 <Route path={['/home', '/home/search']} exact>
-                    <Typography variant="h6">Твиты</Typography>  
+                    <Typography variant='h6'>Твиты</Typography>  
                 </Route>
 
                 <Route path='/home/tweet' >
-                    <Typography variant="h6">Твитнуть</Typography>  
+                    <Typography variant='h6'>Твитнуть</Typography>  
                 </Route> 
                 </Paper>
 
@@ -54,7 +49,7 @@ export const Home = (): React.ReactElement => {
                 </Paper>
                 </Route>
 
-                <Route path="/home" exact>
+                <Route path='/home' exact>
                     {isLoading ? (
                         <div className={classes.tweetsWrapper}>
                             <CircularProgress />
@@ -69,7 +64,7 @@ export const Home = (): React.ReactElement => {
                         />)
                     )}
                 </Route>
-                <Route path="/home/tweet/:id" component={FullTweet} exact />
+                <Route path='/home/tweet/:id' component={FullTweet} exact />
             </Paper>
     );
 };

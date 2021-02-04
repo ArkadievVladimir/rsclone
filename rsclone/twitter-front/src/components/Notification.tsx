@@ -17,11 +17,11 @@ export const Notification: React.FC<NotificationProps> = ({ children }): React.R
     return (
         <>
             {children(openNotification)}
-            <Snackbar open={open} autoHideDuration={3000} onClose={() => setOpen(false)}>
-                <Alert onClose={() => setOpen(false)} severity={notificationObj?.type}>
-                    {notificationObj?.text}
+            <Snackbar open={ open } autoHideDuration={ 3000 } onClose={ () => setOpen(false) }>
+                <Alert onClose={() => setOpen(false)} severity={ notificationObj?.type }>
+                    { notificationObj?.text }
                 </Alert>
             </Snackbar>
         </>
     )
-}
+};

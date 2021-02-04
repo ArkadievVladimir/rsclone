@@ -23,7 +23,7 @@ export const AuthApi = {
             fullname: postData.fullname, 
             email: postData.email, 
             password: postData.password, 
-            password2: postData.password2 
+            password2: postData.password2,
         });
         return data;
     },
@@ -35,4 +35,4 @@ export const AuthApi = {
         const { data } = await axios.get<AuthResponse>(`${BACKEND_URL}/users/` + userId);
         return data;
     },
-}
+};

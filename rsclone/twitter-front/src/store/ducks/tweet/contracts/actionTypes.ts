@@ -1,5 +1,5 @@
-import { Action } from "redux";
-import { LoadingStatus } from "../../../types";
+import { Action } from 'redux';
+import { LoadingStatus } from '../../../types';
 import { TweetState } from './state';
 
 export enum TweetActionsType {

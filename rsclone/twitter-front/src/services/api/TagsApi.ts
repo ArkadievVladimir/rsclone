@@ -7,4 +7,4 @@ export const TagsApi = {
         return axios.get(`${BACKEND_URL}/tags`)
         .then(({data}) => data);
     }
-}
+};

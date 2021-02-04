@@ -1,8 +1,8 @@
 import React from 'react';
-import { useDispatch } from "react-redux";
-import { AuthApi } from "../services/api/authApi";
-import { setUserLoadingStatus } from "../store/ducks/user/actionCreators";
-import { LoadingStatus } from "../store/types";
+import { useDispatch } from 'react-redux';
+import { AuthApi } from '../services/api/authApi';
+import { setUserLoadingStatus } from '../store/ducks/user/actionCreators';
+import { LoadingStatus } from '../store/types';
 
 export const ActivatePage = () => {
   const dispatch = useDispatch();
@@ -20,7 +20,8 @@ export const ActivatePage = () => {
       dispatch(setUserLoadingStatus(LoadingStatus.LOADED));
     });
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return null;
-}
+};

@@ -1,8 +1,8 @@
-import { Action } from "redux";
-import { LoginFormProps } from "../../../../pages/Signin/components/LoginModal";
-import { RegisterFormProps } from "../../../../pages/Signin/components/RegisterModal";
-import { LoadingStatus } from "../../../types";
-import { User } from "./state";
+import { Action } from 'redux';
+import { LoginFormProps } from '../../../../pages/Signin/components/LoginModal';
+import { RegisterFormProps } from '../../../../pages/Signin/components/RegisterModal';
+import { LoadingStatus } from '../../../types';
+import { User } from './state';
 
 export enum UserActionsType {
     SET_USER_DATA = 'user/SET_USER_DATA',

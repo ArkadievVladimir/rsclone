@@ -8,7 +8,7 @@ import { TweetActionsType } from './contracts/actionTypes';
 const initialTweetState: TweetState = {
     data: undefined,
     LoadingStatus: LoadingStatus.NEVER
-}
+};
 
 export const tweetReducer = produce((draft: Draft<TweetState>, action: TweetActions) => {
     switch (action.type) {

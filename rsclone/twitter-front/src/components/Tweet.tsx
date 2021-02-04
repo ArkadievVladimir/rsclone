@@ -68,7 +68,7 @@ export const Tweet: React.FC<TweetProps> = ({
     const handleRemove = (event: React.MouseEvent<HTMLElement>): void => {
         event.stopPropagation();
         event.preventDefault();
-        if (window.confirm("Вы действительно хотите удалить?")) {
+        if (window.confirm('Вы действительно хотите удалить?')) {
             dispatch(removeTweet(_id));
         }
     }
@@ -113,24 +113,26 @@ export const Tweet: React.FC<TweetProps> = ({
                     rowsMax={15}
                     value={tweetText}
                     className={classes.addFormTextArea}
-                    placeholder="Отредактируйте твит"
+                    placeholder='Отредактируйте твит'
                 /> 
             </div>
-            <Button  color="primary" variant="contained"
+            <Button  color='primary' variant='contained'
                     onClick={handlerAddEditedTweetOnClick} > { 'Сохранить' }
             </Button>
         </ModalBlock>
 
-        <Paper className={classNames(classes.tweet, classes.tweetsHeader)} variant="outlined" >
+        <Paper className={classNames(classes.tweet, classes.tweetsHeader)} variant='outlined' >
              <Avatar 
-                alt="Ava"
+                alt='Ava'
                 className={classes.tweetAvatar}
                 // src={user.avatarUrl} 
                 />
         <div className={classes.tweeetContent}>
             <div className={classes.tweetHeader}>
                 <div>
-                    <Link to={`/user/${user._id}`} className={classes.userNameLink} onClick={nameClick}><b>{user.fullname}</b></Link> &nbsp; 
+                    <object type="owo/uwu">
+                        <Link to={`/user/${user._id}`} className={classes.userNameLink} onClick={nameClick}><b>{user.fullname}</b></Link> &nbsp; 
+                    </object>
                     <span className={classes.tweetsUserName}>@{user.username}</span>&nbsp;
                     <span className={classes.tweetsUserName}> · </span>&nbsp;
                     <span className={classes.tweetsUserName}>{formatDate(new Date(createdAt))}</span>
@@ -138,16 +140,16 @@ export const Tweet: React.FC<TweetProps> = ({
                 <div >
                 {user._id === userData?._id ? 
                     <IconButton
-                        aria-label="more"
-                        aria-controls="long-menu"
-                        aria-haspopup="true"
+                        aria-label='more'
+                        aria-controls='long-menu'
+                        aria-haspopup='true'
                         onClick={handleClick}
                     >
                     <MoreVertIcon />
                     </IconButton>
                  : ''}
                     <Menu
-                        id="long-menu"
+                        id='long-menu'
                         anchorEl={anchorEl}
                         keepMounted
                         open={open}
@@ -162,24 +164,24 @@ export const Tweet: React.FC<TweetProps> = ({
                     </Menu>
                 </div>
             </div>
-            <Typography variant="body1" gutterBottom>
+            <Typography variant='body1' gutterBottom>
                 {text}
                     {images && <ImageList classes={imageClasses} images={images}/>}
             </Typography>
             <div className={classes.tweetFooter}>
                 <div>
-                    <IconButton color="primary" className={classes.tweetMessagesIcon}>
+                    <IconButton color='primary' className={classes.tweetMessagesIcon}>
                         <ChatBubbleOutlineOutlinedIcon style={{fontSize: 16}} />
                     </IconButton>
                     <span style={{fontSize: 14}}></span>
                 </div>
                 <div>
-                    <IconButton color="primary" className={classes.retweetIcon}>
+                    <IconButton color='primary' className={classes.retweetIcon}>
                         <RepeatOutlinedIcon style={{fontSize: 16}} />
                     </IconButton>
                 </div>
                 <div>
-                    <IconButton color="primary" onClick={likeClick} className={classes[isLikedTweet ? 'likeIconAction' : 'likeIcon']}>
+                    <IconButton color='primary' onClick={likeClick} className={classes[isLikedTweet ? 'likeIconAction' : 'likeIcon']}>
                         {isLikedTweet ? 
                             <FavoriteIcon style={{fontSize: 16}} />
                         : 
@@ -189,7 +191,7 @@ export const Tweet: React.FC<TweetProps> = ({
                     <span className={classes[isLikedTweet ? 'likeIconAction' : 'likeIcon']} style={{fontSize: 14}}>{like.length === 0 ? '' : like.length}</span>                            
                 </div>
                 <div>
-                    <IconButton color="primary" className={classes.settingIcon}>
+                    <IconButton color='primary' className={classes.settingIcon}>
                         <ReplyOutlinedIcon style={{fontSize: 16}}/> 
                     </IconButton>                                   
                 </div>

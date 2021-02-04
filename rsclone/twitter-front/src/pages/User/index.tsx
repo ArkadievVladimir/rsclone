@@ -56,17 +56,17 @@ export const UserPage: React.FC<RouteComponentProps<{ id: string }>> = ({ match 
         </div>
       </Paper>
 
-      <div className="user__header"></div>
+      <div className='user__header'></div>
 
-      <div className="user__info">
+      <div className='user__info'>
         <Avatar />
         {!userData ? (
-          <Skeleton variant="text" width={259} height={30} />
+          <Skeleton variant='text' width={259} height={30} />
           ) : (
           <h2 className='user__info-fullname'>{userData?.fullname}</h2>
           )}
         {!userData ? (
-        <Skeleton variant="text" width={60}/>
+        <Skeleton variant='text' width={60}/>
         ) : (
         <span className='user__info-username'>@{userData?.username}</span>
         )}
@@ -76,11 +76,11 @@ export const UserPage: React.FC<RouteComponentProps<{ id: string }>> = ({ match 
           <li>Регистрация: {format(new Date(userData?.createdAt ? userData?.createdAt : 0), 'dd MMM yyyy, HH:mm', {locale: ruLang})}</li>
         </ul>
       </div>
-      <Tabs value={activeTab} indicatorColor="primary" textColor="primary" onChange={handleChange}>
-        <Tab label="Твиты" />
-        <Tab label="Твиты и ответы" />
-        <Tab label="Медиа" />
-        <Tab label="Нравится" />
+      <Tabs value={activeTab} indicatorColor='primary' textColor='primary' onChange={handleChange}>
+        <Tab label='Твиты' />
+        <Tab label='Твиты и ответы' />
+        <Tab label='Медиа' />
+        <Tab label='Нравится' />
       </Tabs>
       <div className='user__tweets'>
       {isLoading ? (

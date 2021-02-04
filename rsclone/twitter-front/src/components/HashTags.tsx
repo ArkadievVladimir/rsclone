@@ -7,7 +7,6 @@ import { useHomeStyles } from '../pages/Home/theme';
 import { selectTagsItems, selectIsTagsLoaded } from '../store/ducks/tags/selectors';
 import { Link } from 'react-router-dom';
 
-
 interface TagsProps {
     classes: ReturnType<typeof useHomeStyles>;
 }
@@ -24,29 +23,30 @@ export const Tags: React.FC<TagsProps> = ({
 
     return (
         <Paper className={classes.rightSideBlock}>
-        <Paper className={classes.rightSideBlockHeader} variant="outlined">
+        <Paper className={classes.rightSideBlockHeader} variant='outlined'>
             <b>Актуальные темы</b>
         </Paper>
     <List>
        {
+           // eslint-disable-next-line array-callback-return
            items.map((obj) => {
            <React.Fragment key={obj._id}>
             <Link to={`/home/search?q=${obj.name}`}>
             <ListItem className={classes.rightSideBlockItem}>
             <ListItemText primary={obj.name}
             secondary={
-                <Typography component="span" variant="body2" color="textSecondary">
+                <Typography component='span' variant='body2' color='textSecondary'>
                     Твитов: {obj.count}
                 </Typography>
             }
             />
         </ListItem>
         </Link>
-        <Divider component="li" />
+        <Divider component='li'/>
             </React.Fragment>
         })
        }
     </List>
     </Paper>
     )
-}
+};

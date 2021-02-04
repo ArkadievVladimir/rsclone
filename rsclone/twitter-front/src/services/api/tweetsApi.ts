@@ -56,5 +56,5 @@ export const TweetsApi = {
         return data.data;
     },
     removeTweet: (id: string): Promise<void> => axios.delete(`${BACKEND_URL}/tweets/` + id)
-}
+};
  

@@ -131,20 +131,20 @@ export const SignIn: React.FC = (): React.ReactElement => {
     return (
         <div className={classes.wrapper}>
             <section className={classes.blueSide}>
-            <TwitterIcon color="primary" className={classes.blueSideBigIcon} />
+            <TwitterIcon color='primary' className={classes.blueSideBigIcon} />
                 <ul className={classes.blueSideListInfo}>
                     <li className={classes.blueSideListInfoItem}>
-                        <Typography variant="h6">
+                        <Typography variant='h6'>
                             <SearchIcon className={classes.blueSideListInfoIcons}/>
                             Читайте о том, что Вам интересно</Typography>
                     </li>
                     <li className={classes.blueSideListInfoItem}>
-                        <Typography variant="h6">
+                        <Typography variant='h6'>
                             <PeopleOutlineIcon className={classes.blueSideListInfoIcons}/>
                             Узнайте о чем говорят в мире.</Typography>
                     </li>
                     <li className={classes.blueSideListInfoItem}>
-                        <Typography variant="h6">
+                        <Typography variant='h6'>
                             <ChatBubbleOutlineOutlinedIcon className={classes.blueSideListInfoIcons}/>
                             Присоединяйтесь к общению</Typography>
                     </li>
@@ -152,18 +152,18 @@ export const SignIn: React.FC = (): React.ReactElement => {
             </section>
             <section className={classes.loginSide}>
                 <div className={classes.loginSideWrapper}>
-                    <TwitterIcon color="primary" className={classes.loginSideTwitterIcon} />
-                    <Typography  gutterBottom className={classes.loginSideTitle} variant="h4">
+                    <TwitterIcon color='primary' className={classes.loginSideTwitterIcon} />
+                    <Typography  gutterBottom className={classes.loginSideTitle} variant='h4'>
                         Узнайте, что происходит в мире прямо сейчас
                     </Typography>
                     <Typography>
                         <b>Присоединяйтесь к Твиттеру прямо сейчас!</b>
                     </Typography>
                     <br />
-                    <Button onClick={ handleClickOpenSignUp } style={{ marginBottom: 20}} variant="contained" color="primary" fullWidth>
+                    <Button onClick={ handleClickOpenSignUp } style={{ marginBottom: 20}} variant='contained' color='primary' fullWidth>
                         Зарегистрироваться
                     </Button>
-                    <Button onClick={ handleClickOpenSignIn } variant="outlined" color="primary" fullWidth>
+                    <Button onClick={ handleClickOpenSignIn } variant='outlined' color='primary' fullWidth>
                         Войти
                     </Button>
                     <LoginModal open={visibleModal === 'signIn'} onClose={handleCloseModal}/>
@@ -172,4 +172,4 @@ export const SignIn: React.FC = (): React.ReactElement => {
             </section>
         </div>
     )
-}
+};
