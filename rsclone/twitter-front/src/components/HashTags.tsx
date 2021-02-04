@@ -6,10 +6,25 @@ import { useSelector } from 'react-redux';
 import { useHomeStyles } from '../pages/Home/theme';
 import { selectTagsItems, selectIsTagsLoaded } from '../store/ducks/tags/selectors';
 import { Link } from 'react-router-dom';
+import { hashTagsWords } from '../languages';
 
 interface TagsProps {
     classes: ReturnType<typeof useHomeStyles>;
 }
+
+let index: number = 0;
+
+if (!localStorage.getItem('lang')) {
+    localStorage.setItem('lang', 'ru');
+} else if (localStorage.getItem('lang') === 'eng') {
+    index = 1; 
+} else if (localStorage.getItem('lang') === 'esp') {
+    index = 2; 
+}
+
+let hashTagsWordsPreset: Array<string> = hashTagsWords.map((item) => {
+    return item[index];
+  });
 
 export const Tags: React.FC<TagsProps> = ({
     classes
@@ -23,8 +38,8 @@ export const Tags: React.FC<TagsProps> = ({
 
     return (
         <Paper className={classes.rightSideBlock}>
-        <Paper className={classes.rightSideBlockHeader} variant='outlined'>
-            <b>Актуальные темы</b>
+        <Paper className={classes.rightSideBlockHeader} variant="outlined">
+            <b>{hashTagsWordsPreset[0]}</b>
         </Paper>
     <List>
        {
@@ -35,8 +50,8 @@ export const Tags: React.FC<TagsProps> = ({
             <ListItem className={classes.rightSideBlockItem}>
             <ListItemText primary={obj.name}
             secondary={
-                <Typography component='span' variant='body2' color='textSecondary'>
-                    Твитов: {obj.count}
+                <Typography component="span" variant="body2" color="textSecondary">
+                    {hashTagsWordsPreset[1]}: {obj.count}
                 </Typography>
             }
             />

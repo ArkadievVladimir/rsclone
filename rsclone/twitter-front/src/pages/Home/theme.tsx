@@ -86,6 +86,27 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
     sideMenuListItemIcon: {
         fontSize: 28,
     },
+    changeThemeBtn: {
+        fontSize: 14,
+        color: '#fff',
+        backgroundColor: '#3f51b5',
+        "&:hover": {
+            backgroundColor: '#303f9f'
+        }
+    },
+    changeLanguageBtn: {
+        fontSize: 14,
+        color: '#fff',
+        backgroundColor: '#3f51b5',
+        "&:hover": {
+            backgroundColor: '#303f9f'
+        }
+    },
+    optionalBtnsWrapper: {
+        display: 'flex',
+        marginTop: '20px',
+        justifyContent: 'space-between',
+    },
     sideMenuTweetBtn: {
         padding: theme.spacing(2),
         maxWidth: 230,

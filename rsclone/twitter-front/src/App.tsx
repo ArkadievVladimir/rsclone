@@ -20,6 +20,32 @@ function App() {
   const isAuth = useSelector(selectIsAuth);
   const loadingStatus = useSelector(selectUserStatus);
   const isReady = loadingStatus !== LoadingStatus.NEVER && loadingStatus !== LoadingStatus.LOADING;
+
+  if (!localStorage.getItem('backGround')) {
+    document.body.style.backgroundColor = '#fafafa';
+    localStorage.setItem('backGround', '#fafafa');
+  } else {
+    const curentBackGround = localStorage.getItem('backGround');
+    switch (curentBackGround) {
+      case '#fafafa': 
+        document.body.style.backgroundColor = '#fafafa';
+        break;
+      case '#b3b3c8': 
+        document.body.style.backgroundColor = '#b3b3c8';
+        break;
+      case '#86eba1':
+        document.body.style.backgroundColor = '#86eba1';
+        break;
+      case '#96def2': 
+        document.body.style.backgroundColor = '#86eba1';
+        break;
+      case '#dcfadc': 
+        document.body.style.backgroundColor = '#dcfadc';
+        break;
+      default: 
+        document.body.style.backgroundColor = '#dcfadc';
+    }
+  }
  
   React.useEffect(() => {
     dispatch(fetchUserData());

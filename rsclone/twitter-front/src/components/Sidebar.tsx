@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import SearchIcon from '@material-ui/icons/Search';
 import HomeIcon from '@material-ui/icons/Home';
@@ -22,16 +22,39 @@ import { AddTweetForm } from './AddTweetForm';
 import { selectUserData } from '../store/ducks/user/selectors';
 import { useSelector } from 'react-redux';
 import { UserSideProfile } from './UserSideProfile';
+import { sideBarWords } from '../languages';
 
 interface SidebarProps {
     classes: ReturnType<typeof useHomeStyles>;
 }
+
+let index: number = 0;
+
+if (!localStorage.getItem('lang')) {
+    localStorage.setItem('lang', 'ru');
+} else if (localStorage.getItem('lang') === 'eng') {
+    index = 1; 
+} else if (localStorage.getItem('lang') === 'esp') {
+    index = 2; 
+}
+
+let sideBarPreset: Array<string> = sideBarWords.map((item) => {
+    return item[index];
+});
 
 export const Sidebar: React.FC<SidebarProps> = ({
     classes,
 }: SidebarProps): React.ReactElement => {
     const [visibleAddTweet, setSetVisibleAddTweet] = useState<boolean>(false);
     const userData = useSelector(selectUserData);
+
+    // useEffect(()=> {
+    //     console.log('weokmcowmec')
+    //     sideBarPreset = langauages.map((item) => {
+    //         return item[index];
+    //       })
+    // }, [index])
+
 
     const handleClickOpenAddTweet = () => {
         setSetVisibleAddTweet(true);
@@ -55,8 +78,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 <div>
                     <HomeIcon className={classes.sideMenuListItemIcon} />
                     <Hidden smDown>
-                        <Typography className={classes.sideMenuListItemLabel} variant='h6'>
-                            Главная
+                        <Typography className={classes.sideMenuListItemLabel} variant="h6">
+                            {sideBarPreset[0]}
                         </Typography>
                     </Hidden>
                 </div>
@@ -66,8 +89,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
             <div>
                 <SearchIcon  className={classes.sideMenuListItemIcon}/>
                 <Hidden smDown>
-                    <Typography className={classes.sideMenuListItemLabel} variant='h6'>
-                        Поиск
+                    <Typography className={classes.sideMenuListItemLabel} variant="h6">
+                            {sideBarPreset[1]}
                     </Typography>
                 </Hidden>
             </div>        
@@ -76,8 +99,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
             <div>
                 <NotificationsNoneIcon  className={classes.sideMenuListItemIcon}/>
                 <Hidden smDown>
-                    <Typography className={classes.sideMenuListItemLabel} variant='h6'>
-                        Уведомления
+                    <Typography className={classes.sideMenuListItemLabel} variant="h6">
+                        {sideBarPreset[2]}
                     </Typography>
                 </Hidden>
             </div>
@@ -87,8 +110,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 <MailOutlineIcon className={classes.sideMenuListItemIcon}/>
                 
                 <Hidden smDown>
-                    <Typography className={classes.sideMenuListItemLabel} variant='h6'>
-                        Сообщения
+                    <Typography className={classes.sideMenuListItemLabel} variant="h6">
+                        {sideBarPreset[3]}
                     </Typography>
                 </Hidden>
             </div>
@@ -98,8 +121,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 <BookmarkBorderIcon  className={classes.sideMenuListItemIcon}/>
                 
                 <Hidden smDown>
-                    <Typography className={classes.sideMenuListItemLabel} variant='h6'>
-                        Закладки
+                    <Typography className={classes.sideMenuListItemLabel} variant="h6">
+                        {sideBarPreset[4]}
                     </Typography>
                 </Hidden>
             </div>
@@ -109,8 +132,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 <ListAltIcon  className={classes.sideMenuListItemIcon}/>
                 
                 <Hidden smDown>
-                    <Typography className={classes.sideMenuListItemLabel} variant='h6'>
-                        Список
+                    <Typography className={classes.sideMenuListItemLabel} variant="h6">
+                        {sideBarPreset[5]}
                     </Typography>
                 </Hidden>
             </div>
@@ -121,8 +144,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 <PermIdentityOutlinedIcon  className={classes.sideMenuListItemIcon}/>
                 
                 <Hidden smDown>
-                    <Typography className={classes.sideMenuListItemLabel} variant='h6'>
-                        Профиль
+                    <Typography className={classes.sideMenuListItemLabel} variant="h6">
+                        {sideBarPreset[6]}   
                     </Typography>
                 </Hidden>
             </div>
@@ -135,7 +158,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 variant='contained' 
                 color='primary' 
                 fullWidth>
-                <Hidden smDown>Твитнуть</Hidden> 
+                <Hidden smDown>
+                    {sideBarPreset[7]}                  
+                </Hidden> 
                 <Hidden mdUp>
                     <CreateIcon />
                 </Hidden>

@@ -5,12 +5,33 @@ import { Sidebar } from '../components/Sidebar';
 import { useHomeStyles } from '../pages/Home/theme';
 import { SearchTextField } from '../components/SearchTextField';
 import { Tags } from '../components/HashTags';
+import { ThemeBtn } from '../components/themeBtn';
+import { LanguageBtn } from '../components/languageBtn';
+import { searchFieldPlaceholderWord } from '../languages';
+// import { Users } from '../components/Users';
 
 interface LayoutProp {
   children: React.ReactNode;
 }
 
+
+let index: number = 0;
+
+if (!localStorage.getItem('lang')) {
+    localStorage.setItem('lang', 'ru');
+} else if (localStorage.getItem('lang') === 'eng') {
+    index = 1; 
+} else if (localStorage.getItem('lang') === 'esp') {
+    index = 2; 
+}
+
+let searchFieldPlaceholderWordPreset: Array<string> = searchFieldPlaceholderWord.map((item) => {
+    return item[index];
+  });
+
+
 export const Layout: React.FC<LayoutProp> = ({ children }): React.ReactElement => {
+
   const classes = useHomeStyles();
 
 return (
@@ -26,7 +47,7 @@ return (
         <div className={classes.rightSide}>
           <SearchTextField
             variant='outlined'
-            placeholder='Поиск по Твиттеру'
+            placeholder={searchFieldPlaceholderWordPreset[0]}
             InputProps={{
               startAdornment: (
                 <InputAdornment position='start'>
@@ -36,8 +57,13 @@ return (
             }}
             fullWidth
           />
-          <Tags classes={classes} />
+          {/* <Tags classes={classes} /> */}
           {/* <Users /> */}
+          
+        </div>
+        <div className={classes.optionalBtnsWrapper}>
+        <ThemeBtn classes={classes}/>
+        <LanguageBtn classes={classes}/>
         </div>
       </Grid>
     </Grid>

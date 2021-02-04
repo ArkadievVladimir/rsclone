@@ -8,10 +8,25 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectUserData } from '../store/ducks/user/selectors';
 import { Link } from 'react-router-dom';
 import { signOut } from '../store/ducks/user/actionCreators';
+import { userSideProfileWords } from '../languages';
 
 interface UserSideProfileProps {
   classes: ReturnType<typeof useHomeStyles>;
 }
+
+let index: number = 0;
+
+if (!localStorage.getItem('lang')) {
+    localStorage.setItem('lang', 'ru');
+} else if (localStorage.getItem('lang') === 'eng') {
+    index = 1; 
+} else if (localStorage.getItem('lang') === 'esp') {
+    index = 2; 
+}
+
+let userSideProfilePreset: Array<string> = userSideProfileWords.map((item) => {
+    return item[index];
+  });
 
 export const UserSideProfile: React.FC<UserSideProfileProps> = () => {
   const classes = useHomeStyles();
@@ -59,9 +74,9 @@ return (
         open={Boolean(anchorEl)} 
         onClose={handleClosePopup}>
         <Link to={`/user/${userData?._id}`}>
-          <MenuItem onClick={handleClosePopup}>Мой профиль</MenuItem>
+          <MenuItem onClick={handleClosePopup}>{userSideProfilePreset[0]}</MenuItem>
         </Link>
-        <MenuItem onClick={handleSignOut}>Выйти</MenuItem>
+        <MenuItem onClick={handleSignOut}>{userSideProfilePreset[1]}</MenuItem>
       </Menu>
   </>
 );

@@ -12,6 +12,23 @@ import { FullTweet } from './components/FullTweet';
 import { fetchTweets } from '../../store/ducks/tweets/actionCreators';
 import { fetchTags } from '../../store/ducks/tags/actionCreators';
 import { Tweet } from '../../components/Tweet';
+import { Sidebar } from '../../components/Sidebar';
+import { UserSideProfile } from '../../components/UserSideProfile';
+import { homeComponentWords } from '../../languages';
+
+let index: number = 0;
+
+if (!localStorage.getItem('lang')) {
+    localStorage.setItem('lang', 'ru');
+} else if (localStorage.getItem('lang') === 'eng') {
+    index = 1; 
+} else if (localStorage.getItem('lang') === 'esp') {
+    index = 2; 
+}
+
+let homeComponentWordsPreset: Array<string> = homeComponentWords.map((item) => {
+    return item[index];
+  });
 
 export const Home = (): React.ReactElement => {
     const classes = useHomeStyles();
@@ -32,11 +49,11 @@ export const Home = (): React.ReactElement => {
                 </Route>
                 
                 <Route path={['/home', '/home/search']} exact>
-                    <Typography variant='h6'>Твиты</Typography>  
+                    <Typography variant="h6">{homeComponentWordsPreset[0]}</Typography>  
                 </Route>
 
                 <Route path='/home/tweet' >
-                    <Typography variant='h6'>Твитнуть</Typography>  
+                    <Typography variant="h6">{homeComponentWordsPreset[1]}</Typography>  
                 </Route> 
                 </Paper>
 
